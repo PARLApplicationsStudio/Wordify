@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Wordify</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Animate.css for cool text animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="animate__animated animate__bounceInDown">Welcome to Wordify</h1>
+    <form id="userForm">
+      <label for="name" class="animate__animated animate__bounceInUp animate__delay-0.5s">Enter your name:</label>
+      <input type="text" id="name" required>
+
+      <label for="stage" class="animate__animated animate__bounceInUp animate__delay-0.5s">Select your English level:</label>
+      <select id="stage" required>
+        <option value="" disabled selected>Select your level</option>
+        <option value="A1">A1 (Beginner)</option>
+        <option value="A2">A2 (Elementary)</option>
+      </select>
+
+      <button id="submitButton" class="animate__animated animate__pulse animate__infinite animate__slower" onclick="redirect(event)">Start Learning</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

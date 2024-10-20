@@ -1,0 +1,115 @@
+@font-face {
+    font-family: "Comic Sans MS"; /* Name of the font */
+    src: url("fonts/comic-sans.ttf") format("truetype"); /* Correct format */
+}
+
+* {
+    font-family: "Comic Sans MS", cursive; /* Use Comic Sans MS as the primary font */
+    user-select: none;
+}
+
+body {
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('images/main-background.jpeg');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    display: flex;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.83);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    height: 55%;
+    backdrop-filter: blur(10px);
+
+    /* Animation */
+    
+    transform: translateY(100px); /* Start lower */
+    animation: bounceSlideIn 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+}
+
+input, select, button {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #117fda;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s all;
+    border-radius: 50px;
+    padding: 15px;
+    font-size: 16px;
+    margin-top: 25px;
+    width: 50%;
+    align-self: center;
+}
+
+button:hover {
+    background-color: #0068b3;
+    width: 80%;
+    scale: 1.05;
+}
+
+button:active {
+    background-color: #0068b3;
+    width: 80%;
+    scale: 1.05;
+}
+
+/* Bouncy Slide-in Keyframes */
+@keyframes bounceSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(100px); /* Start much lower */
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-10px); /* Overshoot slightly */
+    }
+    100% {
+        transform: translateY(0); /* Settle into place */
+    }
+}
+
+/* Media Query for Mobile Screens */
+@media (max-width: 768px) {
+    .container {
+        width: 60%;
+        height: auto;
+    }
+
+    button {
+        width: 80%;
+    }
+
+    button:hover {
+        width: 90%;
+    }
+}
+
