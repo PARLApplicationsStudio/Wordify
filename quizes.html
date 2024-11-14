@@ -34,7 +34,7 @@
       color: white;
       padding: 40px;
       text-align: left;
-      z-index: 10000;
+      z-index: 998;
       position: sticky;
       top: 0;
       transition: 0.6s all cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -88,6 +88,10 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
+    .quiz-item:active {
+      scale: 0.97;
+      filter: brightness(80%);
+    }
     .test-name {
       font-size: 30px; 
       color: #000000;
@@ -124,6 +128,16 @@
       grid-row: span 1;
     }
 
+    .item-high {
+      grid-column: span 1;
+      grid-row: span 2;
+    }
+
+    .item-wide {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
+
     .order-number {
         font-weight: bold;
       position: absolute;
@@ -133,7 +147,7 @@
       font-size: 20px;
       padding: 5px 10px;
       text-align: center;
-      z-index: 1000;
+      z-index: 997;
     }
 
 /* Overlay background */
@@ -204,6 +218,13 @@
 .form div button:hover {
   scale: 1.03;
   opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+  .item-large, .item-high, .item-wide {
+      grid-column: span 1;
+      grid-row: span 1;
+  }
 }
 
   </style>
@@ -399,11 +420,11 @@ function renderQuizzes() {
     listItem.style.backgroundImage = `url(${quiz.backgroundImage})`;
 
     // Add random classes for varying sizes
-    if (Math.random() > 0.5) {
-      listItem.classList.add('item-large');
-    } else {
-      listItem.classList.add('item-small');
-    }
+    const classes = ['item-large', 'item-small', 'item-high', 'item-wide'];
+const randomClass = classes[Math.floor(Math.random() * classes.length)];
+
+listItem.classList.add(randomClass);
+
 
     // Add order number to the top-right corner
     const orderNumber = document.createElement("div");

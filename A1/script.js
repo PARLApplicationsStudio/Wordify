@@ -43,12 +43,41 @@ function renderQuestions() {
                 });
                 break;
 
+            case "listening-test":
+                  // Listening-Test Question
+                  questionDiv.innerHTML = `<p>${q.question}</p><audio src="${q.audioUrl}" type="audio/mpeg" controls style="width: 100%;">Your browser does not support the audio element.</audio>`;
+  
+                  q.questions.forEach((subQuestion, subIndex) => {
+                      const subQuestionDiv = document.createElement("div");
+                      subQuestionDiv.classList.add("sub-question");
+                      subQuestionDiv.innerHTML = `<p>${subQuestion.question}</p>`;
+                      subQuestion.options.forEach((opt, optIndex) => {
+                          subQuestionDiv.innerHTML += `<div class="radio-option"><input type="radio" name="question_${index}_subQuestion_${subIndex}" id="question_${index}_subQuestion_${subIndex}_option_${optIndex}" value="${opt}"><label for="question_${index}_subQuestion_${subIndex}_option_${optIndex}">${opt}</label></div>`;
+                      });
+                      questionDiv.appendChild(subQuestionDiv);
+                  });
+                  break;                
+
             case "reference":
                 questionDiv.innerHTML = `<p>${q.question}</p>`;
                 q.options.forEach((opt, optIndex) => {
                     questionDiv.innerHTML += `<div class="radio-option"><input type="radio" name="question_${index}" id="question_${index}_option_${optIndex}" value="${opt}"><label for="question_${index}_option_${optIndex}">${opt}</label></div>`;
                 });
                 break;
+
+            case "paragraph":
+                  // Rendering the paragraph text
+                  questionDiv.innerHTML = `<p class="paragraph-text">${q.text}</p>`;
+                  
+                  // Rendering the list of questions related to the paragraph
+                  q.questions.forEach((subQ, subIndex) => {
+                      questionDiv.innerHTML += `<p>${subQ.question}</p>`;
+                      subQ.options.forEach((opt, optIndex) => {
+                          questionDiv.innerHTML += `<div class="radio-option"><input type="radio" name="question_${index}_subQuestion_${subIndex}" id="question_${index}_subQuestion_${subIndex}_option_${optIndex}" value="${opt}"><label for="question_${index}_subQuestion_${subIndex}_option_${optIndex}">${opt}</label></div>`;
+                      });
+                  });
+            break;
+            
         }
 
         exerciseSection.appendChild(questionDiv);
@@ -60,134 +89,176 @@ function renderQuestions() {
 }
 
 function submitTest() {
-    // 1. Calculate the total number of questions and the score per question
-    const totalQuestions = questions.length;
-    const pointsPerQuestion = 100 / totalQuestions; // Points for each question
+  const totalQuestions = questions.length;
+  const pointsPerQuestion = 100 / totalQuestions; // Points for each question
 
-    let score = 0;
+  let score = 0;
 
-    // 2. Iterate over each question to check the user's answer
-    questions.forEach((question, index) => {
-        let userAnswer = "";
-        
-        // Get the question DOM element based on index
-        const questionElement = document.querySelectorAll(".question")[index];
+  // Iterate over each question to check the user's answer
+  questions.forEach((question, index) => {
+      let userAnswer = "";
+      
+      // Get the question DOM element based on index
+      const questionElement = document.querySelectorAll(".question")[index];
 
-        // Check if it's a text input (normal or fill-in-the-blank type)
-        const textInput = questionElement.querySelector("input[type='text']");
-        if (textInput) {
-            userAnswer = textInput.value.trim().toLowerCase();
-        }
+      // Check for paragraph questions
+      if (question.type === "paragraph") {
+          question.questions.forEach((subQ, subIndex) => {
+              const subQuestionElement = questionElement.querySelectorAll(".radio-option")[subIndex];
+              const radioInput = subQuestionElement.querySelector("input[type='radio']:checked");
 
-        // Check if it's a radio input (multiple-choice type)
-        const radioInput = questionElement.querySelector("input[type='radio']:checked");
-        if (radioInput) {
-            userAnswer = radioInput.value.trim().toLowerCase();
-        }
+              // If a radio input is selected
+              if (radioInput) {
+                  userAnswer = radioInput.value.trim();
+              }
 
-        // 3. Get the correct answer for this question and normalize it
-        const correctAnswer = question.correctAnswer.toLowerCase();  // Normalize the correct answer
+              const correctAnswer = subQ.correctAnswer ? subQ.correctAnswer.trim().toLowerCase() : ""; // Safely access correctAnswer
 
-        // 4. Compare user answer with the correct answer
-        if (userAnswer === correctAnswer && userAnswer !== "") {
-            // Correct answer, add points
-            score += pointsPerQuestion;
-            questionElement.classList.add("correct");
-        } else {
-            // Incorrect answer
-            questionElement.classList.add("incorrect");
-        }
-    });
+              // Compare user answer with the correct answer
+              if (userAnswer.toLowerCase() === correctAnswer && userAnswer !== "") {
+                  score += pointsPerQuestion / question.questions.length;
+                  subQuestionElement.classList.add("correct");
+              } else {
+                  subQuestionElement.classList.add("incorrect");
+              }
+          });
+      } else {
+          let userAnswer = "";
+          const textInput = questionElement.querySelector("input[type='text']");
+          if (textInput) {
+              userAnswer = textInput.value.trim();
+          }
 
-    // 5. Show the result modal
-    const resultModal = document.getElementById("resultModal");
-    const resultText = document.getElementById("resultText");
+          const radioInput = questionElement.querySelector("input[type='radio']:checked");
+          if (radioInput) {
+              userAnswer = radioInput.value.trim();
+          }
 
-    // Call the animateCounter function to animate the score
-    animateCounter(resultText, Math.round(score));
+          const correctAnswer = question.correctAnswer ? question.correctAnswer.trim().toLowerCase() : ""; // Safely access correctAnswer
+          if (userAnswer.toLowerCase() === correctAnswer && userAnswer !== "") {
+              score += pointsPerQuestion;
+              questionElement.classList.add("correct");
+          } else {
+              questionElement.classList.add("incorrect");
+          }
+      }
+  });
 
+  // Display result logic (same as before)
+  const resultModal = document.getElementById("resultModal");
+  const resultText = document.getElementById("resultText");
+  animateCounter(resultText, Math.round(score));
 
-        // 6. Set the score state message based on the score
-        const scoreState = document.getElementById("score-state");
+  const scoreState = document.getElementById("score-state");
+  let scoreMessage = "";
+  let messageColor = "";
 
-        let scoreMessage = "";
-        let messageColor = "";
-    
-        // Define message arrays for each score range
-        const excellentMessages = [
-            "Outstanding performance! You're a genius!",
-            "Perfect score! You've mastered this!",
-            "Amazing! You aced everything!"
-        ];
-    
-        const goodMessages = [
-            "Great job! You're on the right track!",
-            "Well done! Keep up the good work!",
-            "Nice! You're really good at this!"
-        ];
-    
-        const averageMessages = [
-            "Not bad! Keep practicing to improve!",
-            "You're doing great, but there's room for improvement!",
-            "Almost there! With a little more effort, you'll do better!"
-        ];
-    
-        const poorMessages = [
-            "Don't worry! Keep trying and you'll get there!",
-            "Keep practicing! You'll improve with time!",
-            "It's okay! Every mistake is a step toward success!"
-        ];
-    
-        // Decide which message to show based on score
-        if (score === 100) {
-            scoreMessage = excellentMessages[Math.floor(Math.random() * excellentMessages.length)];
-            messageColor = "green";
-        } else if (score >= 90) {
-            scoreMessage = goodMessages[Math.floor(Math.random() * goodMessages.length)];
-            messageColor = "blue";
-        } else if (score >= 70) {
-            scoreMessage = averageMessages[Math.floor(Math.random() * averageMessages.length)];
-            messageColor = "orange";
-        } else {
-            scoreMessage = poorMessages[Math.floor(Math.random() * poorMessages.length)];
-            messageColor = "red";
-        }
-    
-        // Apply the score message and style
-        scoreState.textContent = scoreMessage;
-        scoreState.style.color = messageColor;
-    // Display the modal
-    resultModal.style.display = "block";
+  // Define message arrays for each score range
+  const username = localStorage.getItem("username");
 
-    
-                      // Retrieve the array of completed quizzes from localStorage, or initialize as an empty array if not set
-                      const completed = JSON.parse(localStorage.getItem("completedQuizzes")) || [];
+  const excellentMessages = [
+    `You're on fire, ${username}! Genius at work!`,
+    "Insane score! Total masterclass!",
+    "Brilliant move! Pure brilliance!",
+    `${username}, you absolutely crushed it!`,
+    "Mastered it! No one’s stopping you!"
+  ];
+  
+  const goodMessages = [
+    `Solid work, ${username}! Keep it rolling!`,
+    "Nice job! You’re right on track!",
+    "You're so close to perfection!",
+    `Well done, ${username}! Keep going strong!`,
+    "Great work! Just a step away from mastery!"
+  ];
+  
+  const averageMessages = [
+    "Almost there! A bit more practice will seal it!",
+    `Good effort, ${username}! Just a little more!`,
+    "You’re doing well! Keep pushing!",
+    "Getting close! Keep working on it!",
+    `${username}, just a bit more effort, and you're there!`
+  ];
+  
+  const poorMessages = [
+    "Keep at it! Improvement’s around the corner!",
+    `No biggie, ${username}! Mistakes help you learn!`,
+    "Don’t sweat it, just keep going!",
+    "Every try gets you closer—don’t stop now!",
+    `${username}, stay at it! You’re making progress!`
+  ];
+  
+  const redirectButton = document.getElementById('redirectBtn');
+  const reviseButton = document.getElementById('reviseBtn');
 
-                      // Use an if statement to check if the test is completed
-                      if (completed.includes(testId)) {
-    
-                      } else {
-                        // Add one new quiz (for example, "quiz4")
-                        completed.push(testId);
+  if (score === 100) {
+      scoreMessage = excellentMessages[Math.floor(Math.random() * excellentMessages.length)];
+      messageColor = "green";
+      resultText.style.color = 'darkgreen';
+      reviseButton.style.display = 'none';
+      redirectButton.style.pointerEvents = '';
+      redirectButton.style.backgroundColor = '';
+  } else if (score >= 75) {
+      scoreMessage = goodMessages[Math.floor(Math.random() * goodMessages.length)];
+      messageColor = "blue";
+      resultText.style.color = 'darkblue';
+      redirectButton.style.pointerEvents = '';
+      redirectButton.style.backgroundColor = '';
+  } else if (score >= 49) {
+      scoreMessage = averageMessages[Math.floor(Math.random() * averageMessages.length)];
+      messageColor = "orange";
+      redirectButton.style.pointerEvents = 'none';
+      redirectButton.style.backgroundColor = 'gray';
+      resultText.style.color = 'darkorange';
+  } else {
+      scoreMessage = poorMessages[Math.floor(Math.random() * poorMessages.length)];
+      messageColor = "red";
+      redirectButton.style.pointerEvents = 'none';
+      redirectButton.style.backgroundColor = 'gray';
+      resultText.style.color = 'darkred';
+  }
+  document.querySelector('.modal-content').classList.remove('cover');
+  scoreState.innerHTML = scoreMessage;
+  scoreState.style.color = messageColor;
+  resultModal.style.display = "block";
+  setTimeout(function () {
+    document.querySelector('.modal-content').classList.add('cover');
+  }, 10000);
 
-                        // Save the updated array back to localStorage
-                        localStorage.setItem("completedQuizzes", JSON.stringify(completed));
-                                        // Retrieve the current scores array from localStorage (or initialize an empty array if it doesn't exist)
-                        let scores = JSON.parse(localStorage.getItem('scores')) || [];
+// Select all elements with the class "incorrect"
+const incorrectDivs = document.querySelectorAll('.incorrect');
 
-                        // Add the new score to the array
-                        scores.push(Math.round(score));
+// Loop through each .incorrect element and add the image if it doesn't already exist
+incorrectDivs.forEach(div => {
+    if (!div.querySelector('img.wrong-img')) { // Check if an img with class "wrong-img" doesn't exist
+        const img = document.createElement('img'); // Create a new img element
+        img.src = 'https://img.icons8.com/fluency/48/cancel.png'; // Set the src attribute
+        img.width = 30; // Set width to 30px
+        img.height = 30; // Set height to 30px
+        img.className = 'wrong-img'; // Set the class to 'wrong-img'
+        div.appendChild(img); // Append the img to the .incorrect div
+    }
+});
 
-                        // Store the updated array back into localStorage
-                        localStorage.setItem('scores', JSON.stringify(scores));
-                              }
+// Select all elements with the class "correct"
+const correctDivs = document.querySelectorAll('.correct');
+
+// Loop through each .correct element and remove any existing image with class "wrong-img"
+correctDivs.forEach(div => {
+    const img = div.querySelector('img.wrong-img'); // Find the img with class "wrong-img"
+    if (img) {
+        div.removeChild(img); // Remove the img if it exists
+    }
+});
+
 
 }
 
+
+
 function closeModal() {
-    document.getElementById("resultModal").style.display = "none";
-    document.querySelector(".container").style.opacity = '0.6';
-    document.querySelector(".container").style.pointerEvents = 'none';
+    const resultModal = document.getElementById("resultModal");
+    resultModal.style.display = "none";
 }
   
 function animateCounter(element, target) {
@@ -221,7 +292,7 @@ document.documentElement.style.scrollBehavior = 'smooth';
 window.addEventListener('wheel', function(event) {
   event.preventDefault(); // Prevent default scroll behavior
 
-  const scrollSpeed = 7; // Customize scroll speed
+  const scrollSpeed = 5; // Customize scroll speed
 
   // Adjust the scroll position based on the wheel event delta
   window.scrollBy({
@@ -371,3 +442,36 @@ checkInputs();
 
   // Check every second (1000 milliseconds)
   setInterval(checkQuestions, 100);
+
+  function redirect() {
+    // Step 1: Get the last part of the URL
+const currentURL = window.location.href;
+const lastPart = currentURL.substring(currentURL.lastIndexOf('/') + 1);
+
+// Step 2: Extract the "L" and the number part
+const match = lastPart.match(/L(\d+)\.html/);
+
+if (match) {
+    // Step 3: Get the number after "L", increment it
+    const number = parseInt(match[1], 10);  // Convert to integer
+    const nextNumber = number + 1;
+
+    // Step 4: Construct the new page URL
+    const nextPage = `L${nextNumber}.html`;
+
+    // Step 5: Redirect to the new page
+    window.location.href = nextPage;
+} else {
+    console.error("URL format is incorrect.");
+}
+
+  }
+
+  function revise() {
+    const resultModal = document.getElementById("resultModal");
+    resultModal.style.display = "none";
+    
+    document.querySelectorAll('.correct').forEach(element => {
+        element.style.display = 'none';
+    });
+}
