@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Wordify | Lesson 1</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../icon.png" type="image/png">
+    
+</head>
+<body>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/ring.js"></script>
+
+    <header>
+        <img src="https://img.icons8.com/fluency-systems-regular/48/ffffff/circled-chevron-left.png" alt="Exit" class="exit" id="exit" draggable="false">
+        <h1>Wordify | Lesson 1</h1>
+        <p>Improve your English skills with these beginner-level exercises.</p>
+    </header>
+
+    <main class="container">
+        <l-ring
+        class="loading"
+        size="50"
+        stroke="3"
+        bg-opacity="0"
+        speed="1.8"
+        color="black"
+        class="loading-spinner"
+        style=" position: absolute; top: 50px; left: 50%; transform: translate(-50%, -50%);"
+      ></l-ring>
+
+        <div id="exerciseSection" class="exercise-section">
+            <!-- Custom questions will be inserted here dynamically -->
+        </div>
+
+        <div id="progressContainer">
+            <div id="progressBar" style="width: 0%; height: 10px; background-color: #4caf50;"></div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+          <button id="nextBtn" onclick="submitTest()">Submit</button>          
+        </div>
+    </main>
+
+    <!-- Result Modal -->
+<div id="resultModal" class="modal">
+    <div class="modal-content">
+        <iframe class="modal-iframe-1" src="https://lottie.host/embed/32f300e4-af74-4167-9bfc-30a48f946b82/8zO0l5L8Oe.json"></iframe>
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p id="resultText"></p> <!-- This element is required -->
+        <p id="score-state">Good Job!</p>
+
+    </div>
+</div>
+
+<div class="overlay">
+    <form class="form" onsubmit="return false;">
+      <span class="title">Get Started with Wordify</span>
+      <p class="description">Sign up to Wordify to unlock your personalized study experience!</p>
+      <div>
+        <button type="button" onclick="window.location.href='../../index.html'">Continue</button>
+      </div>
+    </form>
+  </div>
+
+    <script>
+
+const questions = [
+    { type: "normal-test", question: "Which sentence is correct?", options: ["She am a teacher.", "She is a teacher.", "She are a teacher."], correctAnswer: "She is a teacher." },
+
+    { type: "normal-test", question: "Choose the correct answer: 'I ____ a student.'", options: ["am", "is", "are"], correctAnswer: "am" },
+
+    { type: "fill-blank", question: "Fill in the blank: 'This is ____ book.'", correctAnswer: "a" },
+
+    { type: "fill-in-the-blank-test", question: "Complete the sentence: 'He ___ to the park every day.'", options: ["go", "goes", "going"], correctAnswer: "goes" },
+
+    { type: "list-fill-blank", question: "Fill in the blank: 'They ____ from Spain.'", correctAnswer: "are" },
+
+    { type: "listening", question: "Listen to the audio and choose the correct answer: 'What is the woman saying?'", audioUrl: "https://www.exampleaudio.com/hello.mp3", options: ["Hello", "Goodbye", "Please"], correctAnswer: "Hello" },
+
+    { type: "reference", question: "Read the sentence: 'I am from the USA.' Which word is the subject?", options: ["I", "am", "USA"], correctAnswer: "I" },
+
+    { type: "normal-test", question: "Which is the correct plural form?", options: ["dog", "dogs", "doges"], correctAnswer: "dogs" },
+
+    { type: "normal-test", question: "Choose the correct sentence: 'She like pizza.' or 'She likes pizza.'", options: ["She like pizza.", "She likes pizza."], correctAnswer: "She likes pizza." },
+
+    { type: "fill-blank", question: "Fill in the blank with the correct possessive pronoun: 'This is ____ book.'", correctAnswer: "my" }
+];
+
+        const testId = 'a1-l1'
+    </script>
+
+    <script src="script.js"></script>
+    
+    
+</body>
+</html>

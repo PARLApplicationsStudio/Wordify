@@ -1,21 +1,25 @@
 @font-face {
-    font-family: "Comic Sans MS"; /* Name of the font */
-    src: url("fonts/comic-sans.ttf") format("truetype"); /* Correct format */
+    font-family: 'Pangram Sans';
+    src: url('fonts/pangram-sans.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
 }
-
-* {
-    font-family: "Comic Sans MS", cursive; /* Use Comic Sans MS as the primary font */
+  
+  /* Global Styles */
+  * {
+    font-family: 'Pangram Sans', sans-serif;
     user-select: none;
 }
 
 body {
+    font-family: 'Pangram Sans', sans-serif;
     background-color: #f4f4f4;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: url('images/main-background.jpeg');
+    background-image: url('https://images.pexels.com/photos/29097440/pexels-photo-29097440.jpeg?cs=srgb&dl=pexels-steve-29097440.jpg&fm=jpg&_gl=1*1dcuc21*_ga*NjA2NjY1MzUuMTcyNzYxODg3NQ..*_ga_8JE65Q40S6*MTczMTU3MTYzMy42LjEuMTczMTU3MTczMS4wLjAuMA..');
     background-size: cover; /* Ensures the image covers the entire background */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents the image from repeating */
@@ -57,12 +61,20 @@ input, select, button {
     border-radius: 5px;
 }
 
+input, select {
+    outline: none;
+    border: none;
+    padding: 20px;
+    font-size: 17px;
+    max-height: fit-content;
+}
+
 button {
     background-color: #117fda;
     color: white;
     cursor: pointer;
-    transition: 0.3s all;
-    border-radius: 50px;
+    transition: 0.3s all cubic-bezier(0.075, 0.82, 0.165, 1);
+    border-radius: 8px;
     padding: 15px;
     font-size: 16px;
     margin-top: 25px;

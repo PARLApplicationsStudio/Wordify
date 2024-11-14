@@ -7,19 +7,20 @@
   <link rel="stylesheet" href="styles.css">
   <!-- Animate.css for cool text animations -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="icon" href="icon.png" type="image/png">
 </head>
 <body>
   <div class="container">
-    <h1 class="animate__animated animate__bounceInDown">Welcome to Wordify</h1>
+    <h1>Welcome to Wordify</h1>
     <form id="userForm">
-      <label for="name" class="animate__animated animate__bounceInUp animate__delay-0.5s">Enter your name:</label>
-      <input type="text" id="name" required>
+      <label for="name">Enter your name:</label>
+      <input type="text" id="name" autocomplete="off" maxlength="40" required>
 
-      <label for="stage" class="animate__animated animate__bounceInUp animate__delay-0.5s">Select your English level:</label>
+      <label for="stage">Select your English level:</label>
       <select id="stage" required>
         <option value="" disabled selected>Select your level</option>
-        <option value="A1">A1 (Beginner)</option>
-        <option value="A2">A2 (Elementary)</option>
+        <option value="A1">A1/A2</option>
+        <option value="B1">B1</option>
       </select>
 
       <button id="submitButton" class="animate__animated animate__pulse animate__infinite animate__slower" onclick="redirect(event)">Start Learning</button>
@@ -27,5 +28,12 @@
   </div>
 
   <script src="script.js"></script>
+  <script>
+      if (!localStorage.getItem('username') || !localStorage.getItem('stage')) {
+
+      } else {
+        window.location.replace('quizes.html')
+      }
+  </script>
 </body>
 </html>

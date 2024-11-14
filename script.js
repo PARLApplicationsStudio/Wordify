@@ -9,8 +9,8 @@ function redirect(event) {
     // Redirect to the appropriate page based on the selected stage
     const stage = document.getElementById("stage").value;
     if (stage === "A1") {
-        window.location.href = "A1/index.html";
-    } else if (stage === "A2") {
-        window.location.href = "A2/index.html";
+        window.location.href = "quizes.html";
+    } else if (stage === "B1") {
+        window.location.href = "quizes.html";
     }
 }
