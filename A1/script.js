@@ -1,4 +1,4 @@
-
+let totalGems = 0;
 // Function to Render Questions
 function renderQuestions() {
     const exerciseSection = document.getElementById("exerciseSection");
@@ -237,6 +237,9 @@ incorrectDivs.forEach(div => {
         img.height = 30; // Set height to 30px
         img.className = 'wrong-img'; // Set the class to 'wrong-img'
         div.appendChild(img); // Append the img to the .incorrect div
+        localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) - 0.1).toString());
+        totalGems = totalGems - 0.1;
+        
     }
 });
 
@@ -248,6 +251,8 @@ correctDivs.forEach(div => {
     const img = div.querySelector('img.wrong-img'); // Find the img with class "wrong-img"
     if (img) {
         img.src = '../icons/ic_tick_gold.png';
+        localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) + 1).toString());
+        totalGems = totalGems + 1;
     }
 });
 
@@ -257,6 +262,8 @@ correctDivs.forEach(div => {
       // Use an if statement to check if the test is completed
         if (completed.includes(testId)) {
           localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) + 0.2).toString());
+          totalGems = totalGems + 0.2;
+          console.log(totalGems)
     
                       } else {
                         // Add one new quiz (for example, "quiz4")
@@ -270,10 +277,23 @@ correctDivs.forEach(div => {
                         // Add the new score to the array
                         scores.push(Math.round(score));
                         localStorage.setItem('gems', (parseInt(localStorage.getItem('gems') || '0') + 7).toString());
+                        totalGems = totalGems + 7;
                         // Store the updated array back into localStorage
                         localStorage.setItem('scores', JSON.stringify(scores));
+                        console.log(totalGems)
+                        
           }
 
+      
+
+          if (totalGems < 0) {
+            totalGems = 0; // Set totalGems to 0 if it's negative
+            console.log(totalGems)
+        }
+
+        animateCounter(document.getElementById('gemsEarned'), Math.floor(parseFloat(totalGems)));
+
+        
 }
 
 

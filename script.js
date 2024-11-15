@@ -6,6 +6,7 @@ function redirect(event) {
     localStorage.setItem("stage", document.getElementById("stage").value);
     localStorage.setItem("username", document.getElementById("name").value);
 
+
     // Redirect to the appropriate page based on the selected stage
     const stage = document.getElementById("stage").value;
     if (stage === "A1") {
@@ -18,5 +19,9 @@ function redirect(event) {
 
 if (localStorage.getItem('gems') === null) {
     localStorage.setItem('gems', '15');
+}
+
+if (localStorage.getItem('profile') === null) {
+    localStorage.setItem('profile', 'https://cdn-icons-png.flaticon.com/256/4825/4825112.png');
 }
 

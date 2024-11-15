@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordify - Manage Profile</title>
+    <style>
+            @font-face {
+                font-family: 'Pangram Sans';
+                src: url('fonts/pangram-sans.otf') format('opentype');
+                font-weight: normal;
+                font-style: normal;
+            }
+  
+  /* Global Styles */
+            * {
+            font-family: 'Pangram Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f1ff;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            justify-self: center;
+        }
+
+        .profile-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .profile-info {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .profile-info li {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 20px;
+            border-radius: 5px;
+            border: 2px solid #ddd;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .logout-btn {
+            background-color: #ffc5c1;
+            color: rgb(176, 3, 3);
+            border: none;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 90%;
+            margin-top: 20px;
+        }
+
+        .logout-btn:hover {
+            background-color: #d32f2f;
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            overflow-y: auto;
+            max-height: 90%;
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 15px;
+            justify-items: center;
+            padding: 20px;
+            overflow-y: auto;
+            max-height: 90%;
+        }
+
+        .modal-grid img {
+            width: 80px;
+            height: 80px;
+            margin: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+        .modal-grid img:hover {
+            transform: scale(1.05);
+        }
+
+        .modal-grid img:active {
+            transform: scale(0.95);
+            filter: brightness(80%);
+        }
+
+        .modal-close {
+            background-color: rgb(255, 255, 255);
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        #stage {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            left: 0;
+        }
+        .exit {
+            cursor: pointer;
+            width: 25px;
+            height: 25px;
+            margin: 20px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .exit:hover {
+            scale: 1.1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://img.icons8.com/fluency-systems-regular/48/000000/circled-chevron-left.png" alt="Exit" class="exit" id="exit" draggable="false" onclick="window.location.replace('index.html')">
+    </header>
+    <div class="container">
+        <div class="profile-card">
+            <!-- Profile Picture -->
+            <img src="" alt="Profile Picture" class="profile-pic" id="profilePic" onclick="openModal()" draggable="false">
+            
+            <!-- Profile Info -->
+            <ul class="profile-info">
+                <li><strong>Average Score:</strong> <span id="avgScore"></span></li>
+                <li><strong>Completed Quizzes:</strong> <span id="comQuizzesNum"></span></li>
+                <li><strong>Gems:</strong> <span id="gems"></span></li>
+            </ul>
+
+            <!-- Username Input -->
+            <div class="input-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter your username">
+            </div>
+
+            <!-- Stage Selection -->
+            <div class="input-group">
+                <label for="stage">Stage:</label>
+                <select id="stage">
+                    <option value="A1">Elementary</option>
+                    <option value="B1">Intermediate</option>
+                </select>
+            </div>
+
+            <!-- Log Out Button -->
+            <button class="logout-btn" onclick="logout()">Log Out</button>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Wordify | A Project by Kave Amrollahi and Sermed Al-Najjar | All the rights are reserved</p>
+        </footer>
+    </div>
+
+    <!-- Modal for Profile Picture Selection -->
+    <div class="modal" id="profileModal">
+        <div class="modal-content">
+            <h3>Select a Profile Picture</h3>
+            <div class="modal-grid" id="profileGrid"></div>
+            <button class="modal-close" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const profilePictures = [
+            "https://cdn-icons-png.flaticon.com/256/4825/4825112.png",
+            "https://cdn-icons-png.flaticon.com/256/4825/4825038.png",
+            "https://cdn-icons-png.flaticon.com/256/4825/4825044.png",
+            "https://cdn-icons-png.flaticon.com/256/4825/4825015.png",
+            "https://cdn-icons-png.flaticon.com/256/4825/4825082.png",
+            "https://cdn-icons-png.flaticon.com/256/4825/4825087.png",
+            "https://cdn-icons-png.flaticon.com/256/4825/4825051.png",
+            "https://cdn-icons-png.flaticon.com/256/4825/4825108.png",
+            "https://cdn-icons-png.flaticon.com/256/4825/4825123.png",
+            "https://cdn-icons-png.flaticon.com/256/4825/4825072.png",
+            "https://cdn-icons-png.flaticon.com/256/4825/4825027.png",
+            "https://cdn-icons-png.flaticon.com/256/4825/4825076.png",
+            "https://cdn-icons-png.flaticon.com/256/4825/4825062.png",
+            "https://cdn-icons-png.flaticon.com/256/13474/13474467.png"
+        ];
+
+        // Function to load data from localStorage
+        window.onload = function() {
+            const profilePic = document.getElementById("profilePic");
+            const avgScore = document.getElementById("avgScore");
+            const comQuizzesNum = document.getElementById("comQuizzesNum");
+            const gems = document.getElementById("gems");
+            const username = document.getElementById("username");
+            const stage = document.getElementById("stage");
+
+            // Load profile picture
+            const profileImage = localStorage.getItem("profile");
+            if (profileImage) {
+                profilePic.src = profileImage;
+            } else {
+                profilePic.src = "https://cdn-icons-png.flaticon.com/256/4825/4825112.png"; // Placeholder if no profile image is set
+            }
+
+            // Load other information
+            avgScore.textContent = localStorage.getItem("avg-score") || "N/A";
+            comQuizzesNum.textContent = localStorage.getItem("com-quizzes-num") || "0";
+            gems.textContent = localStorage.getItem("gems") || "0";
+            username.value = localStorage.getItem("username") || "Guest";
+
+            // Set stage dropdown value
+            const userStage = localStorage.getItem("stage");
+            if (userStage === "A1") {
+                stage.value = "A1";
+            } else if (userStage === "B1") {
+                stage.value = "B1";
+            }
+
+            // Populate profile pictures in modal
+            const profileGrid = document.getElementById("profileGrid");
+            profilePictures.forEach(picUrl => {
+                const imgElement = document.createElement("img");
+                imgElement.src = picUrl;
+                imgElement.onclick = () => selectProfilePic(picUrl);
+                imgElement.draggable = false;
+                profileGrid.appendChild(imgElement);
+            });
+
+            // Event listener for username change
+            username.addEventListener("input", function() {
+                localStorage.setItem("username", username.value);
+            });
+
+            // Event listener for stage change
+            stage.addEventListener("change", function() {
+                const selectedStage = stage.value;
+                if (selectedStage === "Elementary") {
+                    localStorage.setItem("stage", "A1");
+                } else if (selectedStage === "Intermediate") {
+                    localStorage.setItem("stage", "B1");
+                }
+            });
+        };
+
+        // Function to open the modal
+        function openModal() {
+            document.getElementById("profileModal").style.display = "flex";
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            document.getElementById("profileModal").style.display = "none";
+        }
+
+        // Function to select a profile picture
+        function selectProfilePic(picUrl) {
+            // Set the profile picture on the page
+            const profilePic = document.getElementById("profilePic");
+            profilePic.src = picUrl;
+
+            // Save the selected profile picture in localStorage
+            localStorage.setItem("profile", picUrl);
+
+            // Close the modal
+            closeModal();
+        }
+
+        // Logout function
+        function logout() {
+            // Clear localStorage (or specific items)
+            localStorage.clear();
+            alert("You have been logged out.");
+            window.location.replace('index.html');
+        }
+    </script>
+</body>
+</html>
