@@ -247,10 +247,32 @@ const correctDivs = document.querySelectorAll('.correct');
 correctDivs.forEach(div => {
     const img = div.querySelector('img.wrong-img'); // Find the img with class "wrong-img"
     if (img) {
-        div.removeChild(img); // Remove the img if it exists
+        img.src = '../icons/ic_tick_gold.png';
     }
 });
 
+    // Retrieve the array of completed quizzes from localStorage, or initialize as an empty array if not set
+          const completed = JSON.parse(localStorage.getItem("completedQuizzes")) || [];
+
+      // Use an if statement to check if the test is completed
+        if (completed.includes(testId)) {
+          localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) + 0.2).toString());
+    
+                      } else {
+                        // Add one new quiz (for example, "quiz4")
+                        completed.push(testId);
+
+                        // Save the updated array back to localStorage
+                        localStorage.setItem("completedQuizzes", JSON.stringify(completed));
+                                        // Retrieve the current scores array from localStorage (or initialize an empty array if it doesn't exist)
+                        let scores = JSON.parse(localStorage.getItem('scores')) || [];
+
+                        // Add the new score to the array
+                        scores.push(Math.round(score));
+                        localStorage.setItem('gems', (parseInt(localStorage.getItem('gems') || '0') + 7).toString());
+                        // Store the updated array back into localStorage
+                        localStorage.setItem('scores', JSON.stringify(scores));
+          }
 
 }
 
@@ -292,7 +314,7 @@ document.documentElement.style.scrollBehavior = 'smooth';
 window.addEventListener('wheel', function(event) {
   event.preventDefault(); // Prevent default scroll behavior
 
-  const scrollSpeed = 5; // Customize scroll speed
+  const scrollSpeed = 7; // Customize scroll speed
 
   // Adjust the scroll position based on the wheel event delta
   window.scrollBy({
@@ -316,7 +338,7 @@ window.addEventListener('touchmove', function(event) {
   if (isTouching) {
     event.preventDefault(); // Prevent the default scrolling behavior
 
-    const scrollSpeed = 6; // Customize scroll speed for touch
+    const scrollSpeed = 20; // Customize scroll speed for touch
     const deltaY = startY - event.touches[0].clientY; // Calculate the difference in Y position
 
     // Adjust the scroll position based on touch movement
@@ -475,3 +497,60 @@ if (match) {
         element.style.display = 'none';
     });
 }
+
+
+
+    // Array of gradient background styles
+    const gradients = [
+      "linear-gradient(100deg, #007bff 30%, #009b5f 100%)",
+      "linear-gradient(80deg, #009b5f 30%, #007bff 100%)",
+      "linear-gradient(160deg, #00c8ff 30%, #ffbb00 100%)",
+      "linear-gradient(60deg, #0033ff 30%, #74009b 100%)",
+      "linear-gradient(100deg, #5900ff 30%, #009b55 100%)",
+      "linear-gradient(120deg, #ff4800 30%, #ffd500 100%)",
+      "linear-gradient(110deg, #006aff 10%, #ff8c00 100%)",
+      "linear-gradient(100deg, #ff00a6 8%, #00d575 100%)",
+      "linear-gradient(120deg, #ff0000 20%, #00c66d 100%)",
+      "linear-gradient(100deg, #5900ff 30%, #ffaa00 100%)",
+      "linear-gradient(100deg, #5900ff 30%, #ffbf00 100%)",
+      "linear-gradient(100deg, #9d00ff 30%, #009b55 100%)",
+      "linear-gradient(100deg, #ff0000 20%, #6600ff 100%)",
+      "linear-gradient(100deg, #dfab00 30%, #009b55 100%)",
+      "linear-gradient(100deg, #ff2200 30%, #0d009b 100%)"
+    ];
+
+    // Function to set a random background gradient
+    function setRandomGradient() {
+      const header = document.querySelector("header");
+      const randomIndex = Math.floor(Math.random() * gradients.length);
+      header.style.background = gradients[randomIndex];
+    }
+
+    setRandomGradient();
+
+ // Retrieve the list of completed quizzes from localStorage, or initialize it as an empty array if not found
+const completed = JSON.parse(localStorage.getItem("completedQuizzes")) || [];
+
+// Check if the test is already completed
+if (completed.includes(testId)) {
+    // Show the information message
+    const infoCarElement = document.getElementById('info-card');
+    infoCarElement.style.display = 'flex';
+
+    // Hide the information message after 5 seconds
+    setTimeout(() => {
+        infoCarElement.style.display = 'none';
+    }, 10000);
+}
+
+document.getElementById('close-card').addEventListener('click', function(event) {
+  const infoCarElement = document.getElementById('info-card');
+    infoCarElement.style.display = 'none';
+});
+                     
+   // Use an if statement to check if the test is completed
+   if (completed.includes(testId)) {
+
+   } else {
+    localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) - 3).toString());
+   }

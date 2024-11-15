@@ -220,6 +220,46 @@
   opacity: 0.7;
 }
 
+#gems-container {
+text-align: end;
+padding: 8px;
+}
+
+#gems-ic {
+  width: 30px;
+  display: inline-block;
+  vertical-align: middle;
+  transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: pointer;
+}
+
+#gems {
+  display: inline-block;
+  margin: 5px;
+  vertical-align: middle;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.6s all cubic-bezier(0.075, 0.82, 0.165, 1);
+  font-weight: lighter;
+  font-size: 20px;
+}
+
+#gems:hover {
+  opacity: 1;
+}
+
+#gems:active {
+  scale: 0.8;
+}
+
+#gems-ic:hover {
+  transform: rotate(45deg);
+}
+
+#gems-ic:active {
+  scale: 0.8;
+}
+
 @media (max-width: 600px) {
   .item-large, .item-high, .item-wide {
       grid-column: span 1;
@@ -227,11 +267,30 @@
   }
 }
 
+::-webkit-scrollbar {
+  width: 0; /* Width of the scrollbar */
+  height: 12px; /* Height for horizontal scrollbar */
+}
+
+/* Style the scrollbar handle/thumb */
+::-webkit-scrollbar-thumb {
+  background-color: darkgray;
+  border-radius: 10px;
+  border: 3px solid #fff;
+}
+
+/* Style the scrollbar track (background) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
   </style>
 </head>
 <body>
 
 <header id="header">
+  <div id="gems-container"><img src="icons/ic_gem_gold.png" alt="Gems" id="gems-ic" draggable="false" title="Gems"><h4 id="gems" title="Gems">0</h4></div>
   <h2 id="greeting">Hey, User!</h2>
   <h1 id="main-title">Quizzes</h1>
   <h3 id="avg-score">Your Score: </h3>
@@ -290,12 +349,14 @@ function handleScroll() {
     document.getElementById('greeting').style.display = 'none';
     document.getElementById('avg-score').style.display = 'none';
     document.getElementById('rank').style.display = 'none';
+    document.getElementById('gems-container').style.display = 'none';
   } else {
     header.style.height = '';
     header.style.padding = '';
     document.getElementById('greeting').style.display = '';
     document.getElementById('avg-score').style.display = '';
     document.getElementById('rank').style.display = '';
+    document.getElementById('gems-container').style.display = '';
   }
 }
 
@@ -452,7 +513,7 @@ listItem.classList.add(randomClass);
     const statusIcon = document.createElement("div");
     statusIcon.classList.add("status-icon");
     if (isCompleted) {
-      statusIcon.innerHTML = `<img src="https://img.icons8.com/fluency/48/checked.png" alt="Completed" draggable="false"/>`; // Completed icon
+      statusIcon.innerHTML = `<img src="https://img.icons8.com/fluency/96/ok--v1.png" alt="Completed" draggable="false"/>`; // Completed icon
     } else {
       statusIcon.innerHTML = `<img src="https://img.icons8.com/fluency/48/do-not-disturb.png" alt="Not Started" draggable="false"/>`; // Not started icon
     }
@@ -494,8 +555,9 @@ document.getElementById('greeting').textContent = `Hey, ${username}!`;
     document.querySelector('.overlay').style.display = 'none';
   }
 
+  document.getElementById('gems').innerText = Math.round(Number(localStorage.getItem('gems')));
 
 </script>
-
+<script src="time.js"></script>
 </body>
 </html>

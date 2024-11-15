@@ -14,3 +14,9 @@ function redirect(event) {
         window.location.href = "quizes.html";
     }
 }
+
+
+if (localStorage.getItem('gems') === null) {
+    localStorage.setItem('gems', '15');
+}
+
