@@ -247,7 +247,6 @@ incorrectDivs.forEach(div => {
         img.height = 30; // Set height to 30px
         img.className = 'wrong-img'; // Set the class to 'wrong-img'
         div.appendChild(img); // Append the img to the .incorrect div
-        localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) - 0.1).toString());
         totalGems = totalGems - 0.1;
         
     }
@@ -261,7 +260,6 @@ correctDivs.forEach(div => {
     const img = div.querySelector('img.wrong-img'); // Find the img with class "wrong-img"
     if (img) {
         img.src = '../icons/ic_tick_gold.png';
-        localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) + 1).toString());
         totalGems = totalGems + 1;
     }
 });
@@ -271,8 +269,7 @@ correctDivs.forEach(div => {
 
       // Use an if statement to check if the test is completed
         if (completed.includes(testId)) {
-          localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) + 0.2).toString());
-          totalGems = totalGems + 0.2;
+          totalGems = totalGems + 3;
           console.log(totalGems)
     
                       } else {
@@ -286,8 +283,7 @@ correctDivs.forEach(div => {
 
                         // Add the new score to the array
                         scores.push(Math.round(score));
-                        localStorage.setItem('gems', (parseInt(localStorage.getItem('gems') || '0') + 7).toString());
-                        totalGems = totalGems + 7;
+                        totalGems = totalGems + 15;
                         // Store the updated array back into localStorage
                         localStorage.setItem('scores', JSON.stringify(scores));
                         console.log(totalGems)
@@ -302,6 +298,7 @@ correctDivs.forEach(div => {
         }
 
         animateCounter(document.getElementById('gemsEarned'), Math.floor(parseFloat(totalGems)));
+        localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) + totalGems).toString());
 
         
 }
@@ -582,7 +579,7 @@ document.getElementById('close-card').addEventListener('click', function(event) 
    if (completed.includes(testId)) {
 
    } else {
-    localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) - 3).toString());
+    localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) - 1.5).toString());
    }
 
 

@@ -23,7 +23,7 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f1ff;
+            background-color: #dfedff;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -85,8 +85,8 @@
         }
 
         .logout-btn {
-            background-color: #ffc5c1;
-            color: rgb(176, 3, 3);
+            background-color: #000000;
+            color: rgb(255, 255, 255);
             border: none;
             padding: 20px;
             border-radius: 8px;
@@ -194,12 +194,19 @@
         .exit:hover {
             scale: 1.1;
         }
+
+        .logo {
+            width: 100%;
+            height: 100px;
+            object-fit: contain;
+        }
     </style>
 </head>
 <body>
     <header>
         <img src="https://img.icons8.com/fluency-systems-regular/48/000000/circled-chevron-left.png" alt="Exit" class="exit" id="exit" draggable="false" onclick="window.location.replace('index.html')">
     </header>
+    <img src="images/wordify-brand.png" alt="Wordify" class="logo" draggable="false">
     <div class="container">
         <div class="profile-card">
             <!-- Profile Picture -->
@@ -233,7 +240,7 @@
 
         <!-- Footer -->
         <footer>
-            <p>Wordify | A Project by Kave Amrollahi and Sermed Al-Najjar | All the rights are reserved</p>
+            <p style="font-size: 17px;">Wordify | A Project by <strong> Kave Amrollahi </strong> and <strong> Sermed Al-Najjar </strong>| All the rights are reserved</p>
         </footer>
     </div>
 
@@ -264,6 +271,18 @@
             "https://cdn-icons-png.flaticon.com/256/13474/13474467.png"
         ];
 
+
+                   // Create an audio element
+                   const clickSound = new Audio("../sfx/click.wav");
+           clickSound.volume = 0.05; // Set volume to 10%
+   
+           // Add event listener to play sound on document click
+           document.addEventListener("click", () => {
+               clickSound.currentTime = 0; // Restart sound if already playing
+               clickSound.play();
+           });
+
+           
         // Function to load data from localStorage
         window.onload = function() {
             const profilePic = document.getElementById("profilePic");

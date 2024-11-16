@@ -92,7 +92,7 @@
       filter: brightness(80%);
     }
     .test-name {
-      font-size: 30px; 
+      font-size: 23px; 
       color: #000000;
       margin-bottom: 10px;
       z-index: 1;
@@ -101,7 +101,7 @@
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
       padding: 15px;
-      filter: brightness(130%);
+      filter: brightness(180%);
       min-height: 70px;
     }
 
@@ -343,6 +343,30 @@ padding: 8px;
   }
 }
 
+.sort-container {
+  margin-top: 20px;
+  padding: 8px;
+
+  img {
+     vertical-align: middle;
+     transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+     cursor: pointer;
+  }
+
+  img:hover {
+    scale: 1.1;
+  }
+
+  img:active {
+   scale: 0.9;
+  }
+
+  h4 {
+    display: inline-block;
+    font-weight: lighter;
+    margin-left: 5px;
+  }
+}
 
   </style>
 </head>
@@ -354,6 +378,7 @@ padding: 8px;
   <h1 id="main-title">Quizzes</h1>
   <h3 id="avg-score">Your Score: </h3>
   <h3 id="rank"><span>Rank: Starter </span><img src="https://img.icons8.com/3d-fluency/94/compass.png" width="25px" style="vertical-align: middle; margin-left: 5px;" draggable="false"></h3>
+  <div class="sort-container" id="sortContainer"><img draggable="false" src="https://img.icons8.com/fluency-systems-regular/25/ffffff/empty-filter.png" alt="Sort By" class="sort-ic" id="sort"><h4 id="sort-name">All</h4></div>
 </header>
 
 <div class="quiz-list-container">
@@ -387,17 +412,30 @@ padding: 8px;
 
 <script>
 const quizzes = [
+  // A1 Quizzes
   { testName: "Grammar Basics", url: "A1/L1.html", id: "a1-l1", backgroundImage: "https://cdn.pixabay.com/photo/2022/06/12/22/48/gradient-7258997_1280.png" },
-  { testName: "Present Tense Usage", url: "A1/L2.html", id: "a1-l2", backgroundImage: "https://cdn.pixabay.com/photo/2022/06/23/17/13/ball-7280265_640.jpg" },
+  { testName: "Present Tense", url: "A1/L2.html", id: "a1-l2", backgroundImage: "https://cdn.pixabay.com/photo/2022/06/23/17/13/ball-7280265_640.jpg" },
   { testName: "W Questions", url: "A1/L3.html", id: "a1-l3", backgroundImage: "https://cdn.pixabay.com/photo/2023/10/15/01/23/abstract-8315974_640.jpg" },
-  { testName: "Asking and Answering Questions", url: "A1/L4.html", id: "a1-l4", backgroundImage: "https://cdn.pixabay.com/photo/2022/06/29/19/07/colored-7292420_640.jpg" },
-  { testName: "Likes and Dislikes", url: "A1/L5.html", id: "a1-l5", backgroundImage: "https://cdn.pixabay.com/photo/2016/11/05/12/38/fuzzy-1800136_640.jpg" },
+  { testName: "Q&A Basics", url: "A1/L4.html", id: "a1-l4", backgroundImage: "https://cdn.pixabay.com/photo/2022/06/29/19/07/colored-7292420_640.jpg" },
+  { testName: "Likes & Dislikes", url: "A1/L5.html", id: "a1-l5", backgroundImage: "https://cdn.pixabay.com/photo/2016/11/05/12/38/fuzzy-1800136_640.jpg" },
   { testName: "Present Continuous", url: "A1/L6.html", id: "a1-l6", backgroundImage: "https://cdn.pixabay.com/photo/2023/02/01/10/07/geometric-7760112_640.jpg" },
-  { testName: "Simple Future Tense", url: "A1/L7.html", id: "a1-l7", backgroundImage: "https://cdn.pixabay.com/photo/2020/03/30/18/04/banner-4985013_1280.jpg" },
-  { testName: "Making Suggestions", url: "A1/L8.html", id: "a1-l8", backgroundImage: "https://cdn.pixabay.com/photo/2023/10/08/17/04/swirls-8302543_640.jpg" },
-  { testName: "Simple Modal Verb", url: "A1/L9.html", id: "a1-l9", backgroundImage: "https://cdn.pixabay.com/photo/2021/07/07/10/04/shapes-6393929_640.jpg" },
-  { testName: "Past Tense", url: "A1/L10.html", id: "a1-l10", backgroundImage: "https://cdn.pixabay.com/photo/2024/02/10/15/03/graphic-8564947_640.png" }
+  { testName: "Simple Future", url: "A1/L7.html", id: "a1-l7", backgroundImage: "https://cdn.pixabay.com/photo/2020/03/30/18/04/banner-4985013_1280.jpg" },
+  { testName: "Suggestions", url: "A1/L8.html", id: "a1-l8", backgroundImage: "https://cdn.pixabay.com/photo/2023/10/08/17/04/swirls-8302543_640.jpg" },
+  { testName: "Modal Verbs", url: "A1/L9.html", id: "a1-l9", backgroundImage: "https://cdn.pixabay.com/photo/2021/07/07/10/04/shapes-6393929_640.jpg" },
+  { testName: "Past Tense", url: "A1/L10.html", id: "a1-l10", backgroundImage: "https://cdn.pixabay.com/photo/2024/02/10/15/03/graphic-8564947_640.png" },
+  // B1 Quizzes
+  { testName: "Past Simple vs. Cont.", url: "B1/L1.html", id: "b1-l1", backgroundImage: "https://images.pexels.com/photos/29404574/pexels-photo-29404574/free-photo-of-abstract-geometric-cube-render-in-blue-tones.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { testName: "Perfect Simple vs. Cont.", url: "B1/L2.html", id: "b1-l2", backgroundImage: "https://images.pexels.com/photos/29404575/pexels-photo-29404575/free-photo-of-vibrant-geometric-abstract-with-red-and-pink-tones.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { testName: "Future Forms", url: "B1/L3.html", id: "b1-l3", backgroundImage: "https://images.pexels.com/photos/29404570/pexels-photo-29404570/free-photo-of-abstract-geometric-digital-art-with-light-contrast.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { testName: "Third Conditional", url: "B1/L4.html", id: "b1-l4", backgroundImage: "https://images.pexels.com/photos/29376746/pexels-photo-29376746/free-photo-of-abstract-3d-art-with-sinuous-shapes-and-lines.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { testName: "Second Conditional", url: "B1/L5.html", id: "b1-l5", backgroundImage: "https://images.pexels.com/photos/29355995/pexels-photo-29355995/free-photo-of-vivid-abstract-neon-color-geometric-art.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { testName: "Modal Verbs: Advice", url: "B1/L6.html", id: "b1-l6", backgroundImage: "https://images.pexels.com/photos/29376742/pexels-photo-29376742/free-photo-of-abstract-3d-render-with-geometric-shapes-and-vibrant-colors.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { testName: "Reported Speech", url: "B1/L7.html", id: "b1-l7", backgroundImage: "https://images.pexels.com/photos/9934462/pexels-photo-9934462.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { testName: "Relative Clauses", url: "B1/L8.html", id: "b1-l8", backgroundImage: "https://images.pexels.com/photos/17483810/pexels-photo-17483810/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-how-ai-accountability-needs-to-be-central-and-the-surrounding-moral-responsibilities-it-was-created-by-cha.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { testName: "Gerunds & Infinitives", url: "B1/L9.html", id: "b1-l9", backgroundImage: "https://images.pexels.com/photos/17485817/pexels-photo-17485817/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-ways-in-which-ai-can-solve-important-problems-it-was-created-by-vincent-schwenk-as-part-of-the-visualis.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { testName: "Noun Phrases", url: "B1/L10.html", id: "b1-l10", backgroundImage: "https://images.pexels.com/photos/18069084/pexels-photo-18069084/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-role-of-ai-in-computer-optimisation-for-reduced-energy-consumption-it-was-created-by-linus-zoll-as-part.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }
 ];
+
 
         // Create an audio element
         const clickSound = new Audio("sfx/click.wav");
@@ -438,13 +476,15 @@ function debounce(func, wait = 1) {
 
 // The scroll event handler with debounce applied
 function handleScroll() {
-  if (window.scrollY > 20) {
+  if (window.scrollY > 10) {
     header.style.height = '80px';
     header.style.padding = '15px';
     document.getElementById('greeting').style.display = 'none';
     document.getElementById('avg-score').style.display = 'none';
     document.getElementById('rank').style.display = 'none';
     document.getElementById('gems-container').style.display = 'none';
+    document.getElementById('sortContainer').style.display = 'none';
+
   } else {
     header.style.height = '';
     header.style.padding = '';
@@ -452,6 +492,7 @@ function handleScroll() {
     document.getElementById('avg-score').style.display = '';
     document.getElementById('rank').style.display = '';
     document.getElementById('gems-container').style.display = '';
+    document.getElementById('sortContainer').style.display = '';
   }
 }
 
@@ -525,33 +566,7 @@ if (scores && scores.length > 0) {
   }
 
   // Function to calculate the average brightness of an image
-  function getAverageColor(imageUrl, callback) {
-    const img = new Image();
-    img.src = imageUrl;
-    img.onload = function () {
-      const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
-      canvas.width = img.width;
-      canvas.height = img.height;
-      ctx.drawImage(img, 0, 0, img.width, img.height);
-
-      const pixelData = ctx.getImageData(0, 0, img.width, img.height).data;
-      let r = 0, g = 0, b = 0;
-      for (let i = 0; i < pixelData.length; i += 4) {
-        r += pixelData[i];
-        g += pixelData[i + 1];
-        b += pixelData[i + 2];
-      }
-
-      const pixelCount = pixelData.length / 4;
-      r = r / pixelCount;
-      g = g / pixelCount;
-      b = b / pixelCount;
-
-      const brightness = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-      callback(brightness);
-    };
-  }
+  function getAverageColor(imageUrl, callback) {}
 
 
 // Function to check the stage value from localStorage
@@ -595,15 +610,6 @@ listItem.classList.add(randomClass);
     testNameElement.classList.add("test-name");
     testNameElement.textContent = quiz.testName;
 
-    // Check brightness of the background image
-    getAverageColor(quiz.backgroundImage, (brightness) => {
-      if (brightness > 50) {
-        testNameElement.style.color = "black";
-      } else {
-        testNameElement.style.color = "white";
-      }
-    });
-
     listItem.appendChild(testNameElement);
 
     // Status icon with Icons8 images
@@ -635,6 +641,36 @@ listItem.appendChild(statusIcon);
 }
 
 renderQuizzes();
+
+
+let filterState = 0; // 0: show all, 1: show uncompleted, 2: show completed
+
+document.getElementById("sort").addEventListener("click", () => {
+  const quizListElement = document.getElementById("quiz-list");
+  const quizItems = quizListElement.getElementsByClassName("quiz-item");
+  const sortName = document.getElementById('sort-name');
+
+  filterState = (filterState + 1) % 3; // Cycle through 0, 1, 2
+
+  for (const item of quizItems) {
+    const isCompleted = item.querySelector(".status-icon img").alt === "Completed";
+    switch (filterState) {
+      case 0: // Show all
+        item.style.display = "block";
+        sortName.innerText = 'All';
+        break;
+      case 1: // Show uncompleted
+        item.style.display = isCompleted ? "none" : "block";
+        sortName.innerText = 'Uncompleted';
+        break;
+      case 2: // Show completed
+        item.style.display = isCompleted ? "block" : "none";
+        sortName.innerText = 'Completed';
+        break;
+    }
+  }
+});
+
 
     // Retrieve username from localStorage
     const username = localStorage.getItem('username') || 'User';
@@ -673,6 +709,18 @@ if (localStorage.getItem('time-interacted') === '60' && localStorage.getItem('aw
 document.getElementById('pfp').src = localStorage.getItem('profile');
 document.getElementById('pfp').title = localStorage.getItem('username');
 
+if (gems !== null) {
+    gems = Number(gems); // Convert the value to a number
+    if (gems < 0) {
+        // If the value is negative, update it to 0
+        localStorage.setItem('gems', '0');
+        console.log('The value of "gems" was negative and has been updated to 0.');
+    } else {
+        console.log(`The value of "gems" is ${gems}. No changes needed.`);
+    }
+} else {
+    console.log('"gems" key does not exist in local storage.');
+}
 </script>
 <script src="time.js"></script>
 </body>

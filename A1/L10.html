@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <title>Wordify | Lesson 2</title>
+    <title>Wordify | Lesson 10</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="../icon.png" type="image/png">
     
@@ -13,7 +13,7 @@
 
     <header>
         <img src="https://img.icons8.com/fluency-systems-regular/48/ffffff/circled-chevron-left.png" alt="Exit" class="exit" id="exit" draggable="false">
-        <h1>Wordify | Lesson 2</h1>
+        <h1>Wordify | Lesson 10</h1>
         <p>Improve your English skills with these beginner-level exercises.</p>
     </header>
 
@@ -112,69 +112,89 @@
 const questions = [
     {
         type: "normal-test",
-        question: "What is the correct past tense form of 'go'?",
-        options: ["go", "went", "going", "gone"],
-        correctAnswer: "went"
+        question: "What is the past tense of 'do'?",
+        options: ["does", "done", "did", "doing"],
+        correctAnswer: "did"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["I don't like coffee.", "I doesn't like coffee.", "I don't likes coffee.", "I don't coffee like."],
-        correctAnswer: "I don't like coffee."
+        options: [
+            "She can sings well.",
+            "She can sing well.",
+            "She sing well.",
+            "She can sung well."
+        ],
+        correctAnswer: "She can sing well."
     },
     {
         type: "normal-test",
-        question: "Choose the correct word: '________ is your favorite color?'",
-        options: ["What", "Where", "How", "Who"],
-        correctAnswer: "What"
+        question: "Which word completes the sentence?\n'They _______ a lot of homework last night.'",
+        options: ["do", "does", "did", "doing"],
+        correctAnswer: "did"
     },
     {
         type: "normal-test",
-        question: "Which word is a profession?",
-        options: ["teacher", "blue", "run", "quickly"],
-        correctAnswer: "teacher"
-    },
-    {
-        type: "normal-test",
-        question: "Which sentence is correct?",
-        options: ["She can plays tennis.", "She can play tennis.", "She can playing tennis.", "She can played tennis."],
-        correctAnswer: "She can play tennis."
-    },
-    {
-        type: "normal-test",
-        question: "Which is the opposite of 'easy'?",
-        options: ["difficult", "soft", "nice", "heavy"],
-        correctAnswer: "difficult"
-    },
-    {
-        type: "normal-test",
-        question: "Which word completes the sentence: 'I need _______ water.'",
-        options: ["a", "an", "some", "any"],
-        correctAnswer: "some"
-    },
-    {
-        type: "normal-test",
-        question: "Which one is a correct question: '________ your friends like sports?'",
-        options: ["Do", "Does", "Are", "Have"],
-        correctAnswer: "Do"
-    },
-    {
-        type: "normal-test",
-        question: "What is the opposite of 'young'?",
-        options: ["old", "big", "short", "tall"],
-        correctAnswer: "old"
+        question: "Which word is a verb?",
+        options: ["run", "book", "house", "quick"],
+        correctAnswer: "run"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["They goes to the park.", "They going to the park.", "They go to the park.", "They gone to the park."],
-        correctAnswer: "They go to the park."
+        options: [
+            "They will go to the party.",
+            "They will goes to the party.",
+            "They will going to the party.",
+            "They will went to the party."
+        ],
+        correctAnswer: "They will go to the party."
+    },
+    {
+        type: "normal-test",
+        question: "What is the opposite of 'happy'?",
+        options: ["sad", "tall", "quick", "large"],
+        correctAnswer: "sad"
+    },
+    {
+        type: "normal-test",
+        question: "Which word completes the sentence?\n'He _______ to the store every day.'",
+        options: ["go", "going", "goes", "gone"],
+        correctAnswer: "goes"
+    },
+    {
+        type: "normal-test",
+        question: "Which sentence is correct?",
+        options: [
+            "They doesn't like pizza.",
+            "They don't likes pizza.",
+            "They don't like pizza.",
+            "They does like pizza."
+        ],
+        correctAnswer: "They don't like pizza."
+    },
+    {
+        type: "normal-test",
+        question: "Which of these is a correct sentence?",
+        options: [
+            "I plays soccer.",
+            "I play soccer.",
+            "I playeds soccer.",
+            "I playing soccer."
+        ],
+        correctAnswer: "I play soccer."
+    },
+    {
+        type: "normal-test",
+        question: "What is the opposite of 'clean'?",
+        options: ["dirty", "quick", "tall", "heavy"],
+        correctAnswer: "dirty"
     }
 ];
 
 
 
-        const testId = 'a1-l2'
+        const testId = 'a1-l10'
         const fullURL = window.location.href;
 console.log(fullURL);  // Outputs the entire URL of the current page
 
