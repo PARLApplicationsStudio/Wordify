@@ -421,15 +421,19 @@ document.addEventListener('click', function() {
 
             // Use an if statement to check if the test is completed
             if (completed.includes(testId)) {
-              window.history.back();
+              window.location.replace('../quizes.html');
+              localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) + 1.5).toString());
             } else {
                                 // Display a confirmation dialog
                 const confirmation = confirm("Are you sure you want to go back? Unsaved data will be lost.");
                 
                 // Navigate back only if the user confirms
                 if (confirmation) {
-                    window.history.back();
+                  window.location.replace('../quizes.html');
+                    localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) + 1.5).toString());
                 }
+
+
             }
       });
 

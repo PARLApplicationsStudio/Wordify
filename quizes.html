@@ -413,28 +413,29 @@ padding: 8px;
 <script>
 const quizzes = [
   // A1 Quizzes
-  { testName: "Grammar Basics", url: "A1/L1.html", id: "a1-l1", backgroundImage: "https://cdn.pixabay.com/photo/2022/06/12/22/48/gradient-7258997_1280.png" },
-  { testName: "Present Tense", url: "A1/L2.html", id: "a1-l2", backgroundImage: "https://cdn.pixabay.com/photo/2022/06/23/17/13/ball-7280265_640.jpg" },
-  { testName: "W Questions", url: "A1/L3.html", id: "a1-l3", backgroundImage: "https://cdn.pixabay.com/photo/2023/10/15/01/23/abstract-8315974_640.jpg" },
-  { testName: "Q&A Basics", url: "A1/L4.html", id: "a1-l4", backgroundImage: "https://cdn.pixabay.com/photo/2022/06/29/19/07/colored-7292420_640.jpg" },
-  { testName: "Likes & Dislikes", url: "A1/L5.html", id: "a1-l5", backgroundImage: "https://cdn.pixabay.com/photo/2016/11/05/12/38/fuzzy-1800136_640.jpg" },
-  { testName: "Present Continuous", url: "A1/L6.html", id: "a1-l6", backgroundImage: "https://cdn.pixabay.com/photo/2023/02/01/10/07/geometric-7760112_640.jpg" },
-  { testName: "Simple Future", url: "A1/L7.html", id: "a1-l7", backgroundImage: "https://cdn.pixabay.com/photo/2020/03/30/18/04/banner-4985013_1280.jpg" },
-  { testName: "Suggestions", url: "A1/L8.html", id: "a1-l8", backgroundImage: "https://cdn.pixabay.com/photo/2023/10/08/17/04/swirls-8302543_640.jpg" },
-  { testName: "Modal Verbs", url: "A1/L9.html", id: "a1-l9", backgroundImage: "https://cdn.pixabay.com/photo/2021/07/07/10/04/shapes-6393929_640.jpg" },
-  { testName: "Past Tense", url: "A1/L10.html", id: "a1-l10", backgroundImage: "https://cdn.pixabay.com/photo/2024/02/10/15/03/graphic-8564947_640.png" },
+  { testName: "Lesson 1", url: "A1/L1.html", id: "a1-l1", backgroundImage: "https://cdn.pixabay.com/photo/2022/06/12/22/48/gradient-7258997_1280.png" },
+  { testName: "Lesson 2", url: "A1/L2.html", id: "a1-l2", backgroundImage: "https://cdn.pixabay.com/photo/2022/06/23/17/13/ball-7280265_640.jpg" },
+  { testName: "Lesson 3", url: "A1/L3.html", id: "a1-l3", backgroundImage: "https://cdn.pixabay.com/photo/2023/10/15/01/23/abstract-8315974_640.jpg" },
+  { testName: "Lesson 4", url: "A1/L4.html", id: "a1-l4", backgroundImage: "https://cdn.pixabay.com/photo/2022/06/29/19/07/colored-7292420_640.jpg" },
+  { testName: "Lesson 5", url: "A1/L5.html", id: "a1-l5", backgroundImage: "https://cdn.pixabay.com/photo/2016/11/05/12/38/fuzzy-1800136_640.jpg" },
+  { testName: "Lesson 6", url: "A1/L6.html", id: "a1-l6", backgroundImage: "https://cdn.pixabay.com/photo/2023/02/01/10/07/geometric-7760112_640.jpg" },
+  { testName: "Lesson 7", url: "A1/L7.html", id: "a1-l7", backgroundImage: "https://cdn.pixabay.com/photo/2020/03/30/18/04/banner-4985013_1280.jpg" },
+  { testName: "Lesson 8", url: "A1/L8.html", id: "a1-l8", backgroundImage: "https://cdn.pixabay.com/photo/2023/10/08/17/04/swirls-8302543_640.jpg" },
+  { testName: "Lesson 9", url: "A1/L9.html", id: "a1-l9", backgroundImage: "https://cdn.pixabay.com/photo/2021/07/07/10/04/shapes-6393929_640.jpg" },
+  { testName: "Lesson 10", url: "A1/L10.html", id: "a1-l10", backgroundImage: "https://cdn.pixabay.com/photo/2024/02/10/15/03/graphic-8564947_640.png" },
   // B1 Quizzes
-  { testName: "Past Simple vs. Cont.", url: "B1/L1.html", id: "b1-l1", backgroundImage: "https://images.pexels.com/photos/29404574/pexels-photo-29404574/free-photo-of-abstract-geometric-cube-render-in-blue-tones.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
-  { testName: "Perfect Simple vs. Cont.", url: "B1/L2.html", id: "b1-l2", backgroundImage: "https://images.pexels.com/photos/29404575/pexels-photo-29404575/free-photo-of-vibrant-geometric-abstract-with-red-and-pink-tones.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
-  { testName: "Future Forms", url: "B1/L3.html", id: "b1-l3", backgroundImage: "https://images.pexels.com/photos/29404570/pexels-photo-29404570/free-photo-of-abstract-geometric-digital-art-with-light-contrast.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
-  { testName: "Third Conditional", url: "B1/L4.html", id: "b1-l4", backgroundImage: "https://images.pexels.com/photos/29376746/pexels-photo-29376746/free-photo-of-abstract-3d-art-with-sinuous-shapes-and-lines.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
-  { testName: "Second Conditional", url: "B1/L5.html", id: "b1-l5", backgroundImage: "https://images.pexels.com/photos/29355995/pexels-photo-29355995/free-photo-of-vivid-abstract-neon-color-geometric-art.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
-  { testName: "Modal Verbs: Advice", url: "B1/L6.html", id: "b1-l6", backgroundImage: "https://images.pexels.com/photos/29376742/pexels-photo-29376742/free-photo-of-abstract-3d-render-with-geometric-shapes-and-vibrant-colors.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
-  { testName: "Reported Speech", url: "B1/L7.html", id: "b1-l7", backgroundImage: "https://images.pexels.com/photos/9934462/pexels-photo-9934462.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
-  { testName: "Relative Clauses", url: "B1/L8.html", id: "b1-l8", backgroundImage: "https://images.pexels.com/photos/17483810/pexels-photo-17483810/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-how-ai-accountability-needs-to-be-central-and-the-surrounding-moral-responsibilities-it-was-created-by-cha.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
-  { testName: "Gerunds & Infinitives", url: "B1/L9.html", id: "b1-l9", backgroundImage: "https://images.pexels.com/photos/17485817/pexels-photo-17485817/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-ways-in-which-ai-can-solve-important-problems-it-was-created-by-vincent-schwenk-as-part-of-the-visualis.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
-  { testName: "Noun Phrases", url: "B1/L10.html", id: "b1-l10", backgroundImage: "https://images.pexels.com/photos/18069084/pexels-photo-18069084/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-role-of-ai-in-computer-optimisation-for-reduced-energy-consumption-it-was-created-by-linus-zoll-as-part.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }
+  { testName: "Lesson 11", url: "B1/L1.html", id: "b1-l1", backgroundImage: "https://images.pexels.com/photos/29404574/pexels-photo-29404574/free-photo-of-abstract-geometric-cube-render-in-blue-tones.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { testName: "Lesson 12", url: "B1/L2.html", id: "b1-l2", backgroundImage: "https://images.pexels.com/photos/29404575/pexels-photo-29404575/free-photo-of-vibrant-geometric-abstract-with-red-and-pink-tones.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { testName: "Lesson 13", url: "B1/L3.html", id: "b1-l3", backgroundImage: "https://images.pexels.com/photos/29404570/pexels-photo-29404570/free-photo-of-abstract-geometric-digital-art-with-light-contrast.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { testName: "Lesson 14", url: "B1/L4.html", id: "b1-l4", backgroundImage: "https://images.pexels.com/photos/29376746/pexels-photo-29376746/free-photo-of-abstract-3d-art-with-sinuous-shapes-and-lines.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { testName: "Lesson 15", url: "B1/L5.html", id: "b1-l5", backgroundImage: "https://images.pexels.com/photos/29355995/pexels-photo-29355995/free-photo-of-vivid-abstract-neon-color-geometric-art.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { testName: "Lesson 16", url: "B1/L6.html", id: "b1-l6", backgroundImage: "https://images.pexels.com/photos/29376742/pexels-photo-29376742/free-photo-of-abstract-3d-render-with-geometric-shapes-and-vibrant-colors.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { testName: "Lesson 17", url: "B1/L7.html", id: "b1-l7", backgroundImage: "https://images.pexels.com/photos/9934462/pexels-photo-9934462.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { testName: "Lesson 18", url: "B1/L8.html", id: "b1-l8", backgroundImage: "https://images.pexels.com/photos/17483810/pexels-photo-17483810/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-how-ai-accountability-needs-to-be-central-and-the-surrounding-moral-responsibilities-it-was-created-by-cha.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { testName: "Lesson 19", url: "B1/L9.html", id: "b1-l9", backgroundImage: "https://images.pexels.com/photos/17485817/pexels-photo-17485817/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-ways-in-which-ai-can-solve-important-problems-it-was-created-by-vincent-schwenk-as-part-of-the-visualis.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { testName: "Lesson 20", url: "B1/L10.html", id: "b1-l10", backgroundImage: "https://images.pexels.com/photos/18069084/pexels-photo-18069084/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-role-of-ai-in-computer-optimisation-for-reduced-energy-consumption-it-was-created-by-linus-zoll-as-part.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }
 ];
+
 
 
         // Create an audio element
@@ -523,22 +524,22 @@ if (scores && scores.length > 0) {
     let rank = 'Novice';
     let rankImage = 'https://img.icons8.com/3d-fluency/94/pencil.png';  // Default image for "Novice"
 
-    if (average >= 100 && scores.length >= 25) {
+    if (average >= 100 && scores.length >= 100) {
         rank = 'Master';
         rankImage = 'https://img.icons8.com/3d-fluency/94/christmas-star.png';  // Master rank image
-    } else if (average >= 95 && scores.length >= 20) {
+    } else if (average >= 95 && scores.length >= 80) {
         rank = 'Expert';
         rankImage = 'https://img.icons8.com/3d-fluency/94/prize.png';  // Expert rank image
-    } else if (average >= 90 && scores.length >= 15) {
+    } else if (average >= 90 && scores.length >= 65) {
         rank = 'Proficient';
         rankImage = 'https://img.icons8.com/3d-fluency/94/medal.png';  // Proficient rank image
-    } else if (average >= 80 && scores.length >= 10) {
+    } else if (average >= 80 && scores.length >= 50) {
         rank = 'Advanced';
         rankImage = 'https://img.icons8.com/3d-fluency/94/trophy.png';  // Advanced rank image
-    } else if (average >= 70 && scores.length >= 7) {
+    } else if (average >= 70 && scores.length >= 25) {
         rank = 'Competent';
         rankImage = 'https://img.icons8.com/3d-fluency/94/gas.png';  // Competent rank image
-    } else if (average >= 60 && scores.length >= 5) {
+    } else if (average >= 60 && scores.length >= 15) {
         rank = 'Intermediate';
         rankImage = 'https://img.icons8.com/3d-fluency/94/flash-on.png';  // Intermediate rank image
     } else if (average >= 50 && scores.length >= 3) {

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Wordify | Lesson 12</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../icon.png" type="image/png">
+    
+</head>
+<body>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/ring.js"></script>
+
+    <header>
+        <img src="https://img.icons8.com/fluency-systems-regular/48/ffffff/circled-chevron-left.png" alt="Exit" class="exit" id="exit" draggable="false">
+        <h1>Wordify | Lesson 12</h1>
+        <p>Improve your English skills with these intermediate-level exercises.</p>
+    </header>
+
+    <main class="container">
+        <l-ring
+        class="loading"
+        size="50"
+        stroke="3"
+        bg-opacity="0"
+        speed="1.8"
+        color="black"
+        class="loading-spinner"
+        style=" position: absolute; top: 50px; left: 50%; transform: translate(-50%, -50%);"
+      ></l-ring>
+
+        <div id="exerciseSection" class="exercise-section">
+            <!-- Custom questions will be inserted here dynamically -->
+        </div>
+
+        <div id="progressContainer">
+            <div id="progressBar" style="width: 0%; height: 10px; background-color: #4caf50;"></div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+          <button id="nextBtn" class="submit-button" onclick="submitTest()">Submit</button>          
+        </div>
+    </main>
+
+    <!-- Result Modal -->
+<div id="resultModal" class="modal">
+    <div class="modal-content">
+        <iframe class="modal-iframe-1" src="https://lottie.host/embed/32f300e4-af74-4167-9bfc-30a48f946b82/8zO0l5L8Oe.json"></iframe>
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p id="resultText"></p> <!-- This element is required -->
+        <p id="score-state">Good Job!</p>
+        <div class="gems-div"><img src="../icons/ic_gem_gold.png" draggable="false"><h3 id="gemsEarned">Gems Earned: 0</h4></div>
+        <button id="reviseBtn" class="modal-button-2" onclick="revise()">Revise Mistakes</button>
+        <button id="redirectBtn" class="modal-button" onclick="redirect()">Next Lesson</button>
+    </div>
+</div>
+
+<div class="overlay">
+    <form class="form" onsubmit="return false;">
+      <span class="title">Get Started with Wordify</span>
+      <p class="description">Sign up to Wordify to unlock your personalized study experience!</p>
+      <div>
+        <button type="button" onclick="window.location.href='../../index.html'">Continue</button>
+      </div>
+    </form>
+  </div>
+
+
+  <div class="card" id="info-card">
+    <div class="icon-container">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        stroke-width="0"
+        fill="currentColor"
+        stroke="currentColor"
+        class="icon"
+      >
+        <path
+          d="M13 7.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-3 3.75a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 .75.75v4.25h.75a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1 0-1.5h.75V12h-.75a.75.75 0 0 1-.75-.75Z"
+        ></path>
+        <path
+          d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1ZM2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5 9.5 9.5 0 0 0 2.5 12Z"
+        ></path>
+      </svg>
+    </div>
+    <div class="message-text-container">
+      <p class="message-text">Note</p>
+      <p class="sub-text">You can't change the score of a test you've already completed.</p>
+    </div>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 15 15"
+      stroke-width="0"
+      fill="none"
+      stroke="currentColor"
+      class="cross-icon"
+      id="close-card"
+    >
+      <path
+        fill="currentColor"
+        d="M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z"
+        clip-rule="evenodd"
+        fill-rule="evenodd"
+      ></path>
+    </svg>
+  </div>
+
+    <script>
+
+const questions = [
+    {
+        type: "normal-test",
+        question: "Which of these sentences is correct?",
+        options: ["She has been to the party yesterday.", "She had been to the party yesterday.", "She was been to the party yesterday.", "She went to the party yesterday."],
+        correctAnswer: "She went to the party yesterday."
+    },
+    {
+        type: "normal-test",
+        question: "Choose the correct verb form: 'By this time next year, I _______ my exams.'",
+        options: ["will finish", "finished", "will have finished", "have finished"],
+        correctAnswer: "will have finished"
+    },
+    {
+        type: "normal-test",
+        question: "Which of these is a correct question?",
+        options: ["How often do you go to the gym?", "How often you go to the gym?", "How often do you going to the gym?", "How often you do go to the gym?"],
+        correctAnswer: "How often do you go to the gym?"
+    },
+    {
+        type: "normal-test",
+        question: "Choose the correct sentence:",
+        options: ["I have studied English for five years.", "I have studying English for five years.", "I studied English for five years.", "I study English for five years."],
+        correctAnswer: "I have studied English for five years."
+    },
+    {
+        type: "normal-test",
+        question: "What is the opposite of 'cheap'?",
+        options: ["expensive", "tall", "hard", "slow"],
+        correctAnswer: "expensive"
+    },
+    {
+        type: "normal-test",
+        question: "Which word completes the sentence: 'He has been working here _______ two years.'",
+        options: ["since", "for", "during", "while"],
+        correctAnswer: "for"
+    },
+    {
+        type: "normal-test",
+        question: "Choose the correct form of the verb: 'If I _______ you, I would apologize.'",
+        options: ["am", "were", "was", "be"],
+        correctAnswer: "were"
+    },
+    {
+        type: "normal-test",
+        question: "What is the plural of 'child'?",
+        options: ["childs", "children", "childes", "childrens"],
+        correctAnswer: "children"
+    },
+    {
+        type: "normal-test",
+        question: "Which sentence is in the past perfect tense?",
+        options: ["He has finished his work.", "He finished his work.", "He had finished his work.", "He will finish his work."],
+        correctAnswer: "He had finished his work."
+    },
+    {
+        type: "normal-test",
+        question: "Which of these is a synonym for 'angry'?",
+        options: ["happy", "furious", "tired", "calm"],
+        correctAnswer: "furious"
+    }
+];
+
+
+
+
+        const testId = 'b1-l2'
+        const fullURL = window.location.href;
+console.log(fullURL);  // Outputs the entire URL of the current page
+
+
+    </script>
+    <script src="script.js"></script>
+    <script src="../time.js"></script>
+    
+</body>
+</html>
