@@ -349,7 +349,7 @@ padding: 8px;
 <body>
 
 <header id="header">
-  <div id="gems-container"><img src="icons/ic_gem_gold.png" alt="Gems" id="gems-ic" draggable="false" title="Gems"><h4 id="gems" title="Gems">0</h4><img id="audioToggle" src="https://img.icons8.com/fluency-systems-regular/25/ffffff/high-volume.png" style="vertical-align: middle; margin-left: 20px; cursor: pointer;" title="Toggle Audio" onclick="toggleAudio()"><img src="" width="35px" height="35px"  style="vertical-align: middle; margin-left: 20px; cursor: pointer;" id="pfp" draggable="false" onclick="window.location.replace('profile.html')"></div>
+  <div id="gems-container"><img src="icons/ic_gem_gold.png" alt="Gems" id="gems-ic" draggable="false" title="Gems"><h4 id="gems" title="Gems">0</h4><img hidden id="audioToggle" src="https://img.icons8.com/fluency-systems-regular/25/ffffff/high-volume.png" style="vertical-align: middle; margin-left: 20px; cursor: pointer;" title="Toggle Audio" onclick="toggleAudio()"><img src="" width="35px" height="35px"  style="vertical-align: middle; margin-left: 20px; cursor: pointer;" id="pfp" draggable="false" onclick="window.location.replace('profile.html')"></div>
   <h2 id="greeting">Hey, User!</h2>
   <h1 id="main-title">Quizzes</h1>
   <h3 id="avg-score">Your Score: </h3>
@@ -381,7 +381,7 @@ padding: 8px;
 </div>
 
 <audio id="background-audio" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2023/07/30/audio_e0908e8569.mp3?filename=good-night-lofi-cozy-chill-music-160166.mp3" type="audio/mp3">
+  <source src="" type="audio/mp3">
   Your browser does not support the audio element.
 </audio>
 
@@ -399,22 +399,24 @@ const quizzes = [
   { testName: "Past Tense", url: "A1/L10.html", id: "a1-l10", backgroundImage: "https://cdn.pixabay.com/photo/2024/02/10/15/03/graphic-8564947_640.png" }
 ];
 
-const audio = document.getElementById('background-audio');
-        // Set the initial volume
-        audio.volume = 0.4;
+        // Create an audio element
+        const clickSound = new Audio("sfx/click.wav");
+        clickSound.volume = 0.05; // Set volume to 10%
 
-        document.addEventListener('click', function() {
-            // Start playing the audio after 5 seconds delay
-            setTimeout(function() {
-                audio.play();
-            }, 5000); // 5 seconds delay
+        // Add event listener to play sound on document click
+        document.addEventListener("click", () => {
+            clickSound.currentTime = 0; // Restart sound if already playing
+            clickSound.play();
         });
+    const audio = document.getElementById('background-audio');
 
+      audio.play();
         // Toggle the audio playback (Pause/Resume) with onclick in HTML
         function toggleAudio() {
             if (audio.paused) {
                 audio.play();
                 document.getElementById('audioToggle').src = 'https://img.icons8.com/fluency-systems-regular/25/ffffff/high-volume.png';
+                audio.volume = 0.3;
             } else {
                 audio.pause();
                 document.getElementById('audioToggle').src = 'https://img.icons8.com/fluency-systems-regular/25/ffffff/no-audio.png';

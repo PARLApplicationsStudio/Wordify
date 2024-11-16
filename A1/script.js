@@ -1,4 +1,11 @@
 let totalGems = 0;
+        // Create an audio element
+        const winSound = new Audio("../sfx/win1.wav");
+        winSound.volume = 0.8; // Set volume to 10%
+
+        // Add event listener to play sound on document click
+            
+
 // Function to Render Questions
 function renderQuestions() {
     const exerciseSection = document.getElementById("exerciseSection");
@@ -198,12 +205,15 @@ function submitTest() {
       reviseButton.style.display = 'none';
       redirectButton.style.pointerEvents = '';
       redirectButton.style.backgroundColor = '';
+      winSound.play();
   } else if (score >= 75) {
       scoreMessage = goodMessages[Math.floor(Math.random() * goodMessages.length)];
       messageColor = "blue";
       resultText.style.color = 'darkblue';
       redirectButton.style.pointerEvents = '';
       redirectButton.style.backgroundColor = '';
+      winSound.play();
+
   } else if (score >= 49) {
       scoreMessage = averageMessages[Math.floor(Math.random() * averageMessages.length)];
       messageColor = "orange";
@@ -574,3 +584,14 @@ document.getElementById('close-card').addEventListener('click', function(event) 
    } else {
     localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) - 3).toString());
    }
+
+
+           // Create an audio element
+           const clickSound = new Audio("../sfx/click.wav");
+           clickSound.volume = 0.05; // Set volume to 10%
+   
+           // Add event listener to play sound on document click
+           document.addEventListener("click", () => {
+               clickSound.currentTime = 0; // Restart sound if already playing
+               clickSound.play();
+           });
