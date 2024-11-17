@@ -481,7 +481,7 @@ document.addEventListener('click', function() {
 
             // Use an if statement to check if the test is completed
             if (completed.includes(testId)) {
-              window.location.replace('../quizes.html');
+              window.history.back();
               localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) + 1.5).toString());
             } else {
                                 // Display a confirmation dialog
@@ -489,7 +489,7 @@ document.addEventListener('click', function() {
                 
                 // Navigate back only if the user confirms
                 if (confirmation) {
-                  window.location.replace('../quizes.html');
+                  window.history.back();
                     localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) + 1.5).toString());
                 }
 
