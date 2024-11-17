@@ -115,7 +115,7 @@ header p {
   scale: 1.03;
   padding: 20px;
   color: white;
-  max-height: 90vh;
+  max-height: 300vh;
   min-height: 40vh;
 }
 
@@ -518,3 +518,10 @@ iframe {
   border-radius: 10px;
 }
 
+.question-image {
+  max-height: 200px;
+  max-width: 200px;
+  margin: 30px;
+  margin-left: 0;
+  pointer-events: none;
+}
