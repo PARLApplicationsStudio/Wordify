@@ -5,7 +5,7 @@ let totalGems = 0;
 
         // Add event listener to play sound on document click
             
-
+let submitted = false;
 // Function to Render Questions
 function renderQuestions() {
     const exerciseSection = document.getElementById("exerciseSection");
@@ -96,6 +96,8 @@ function renderQuestions() {
 }
 
 function submitTest() {
+  
+  
   const totalQuestions = questions.length;
   const pointsPerQuestion = 100 / totalQuestions; // Points for each question
 
@@ -273,6 +275,8 @@ correctDivs.forEach(div => {
           console.log(totalGems)
     
                       } else {
+
+                        
                         // Add one new quiz (for example, "quiz4")
                         completed.push(testId);
 
@@ -282,11 +286,17 @@ correctDivs.forEach(div => {
                         let scores = JSON.parse(localStorage.getItem('scores')) || [];
 
                         // Add the new score to the array
+                        
                         scores.push(Math.round(score));
+                        if (!submitted) {
                         totalGems = totalGems + 15;
+                        submitted = true;
+                        }
                         // Store the updated array back into localStorage
+
                         localStorage.setItem('scores', JSON.stringify(scores));
                         console.log(totalGems)
+                        
                         
           }
 
@@ -422,7 +432,7 @@ document.addEventListener('click', function() {
             // Use an if statement to check if the test is completed
             if (completed.includes(testId)) {
               window.location.replace('../quizes.html');
-              localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) + 2).toString());
+              localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) + 1.5).toString());
             } else {
                                 // Display a confirmation dialog
                 const confirmation = confirm("Are you sure you want to go back? Unsaved data will be lost.");
@@ -430,8 +440,10 @@ document.addEventListener('click', function() {
                 // Navigate back only if the user confirms
                 if (confirmation) {
                   window.location.replace('../quizes.html');
-                    localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) + 2).toString());
+                    localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) + 1.5).toString());
                 }
+
+
             }
       });
 

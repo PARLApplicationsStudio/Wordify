@@ -5,7 +5,7 @@ let totalGems = 0;
 
         // Add event listener to play sound on document click
             
-
+let submitted = false;
 // Function to Render Questions
 function renderQuestions() {
     const exerciseSection = document.getElementById("exerciseSection");
@@ -96,6 +96,8 @@ function renderQuestions() {
 }
 
 function submitTest() {
+  
+  
   const totalQuestions = questions.length;
   const pointsPerQuestion = 100 / totalQuestions; // Points for each question
 
@@ -273,6 +275,8 @@ correctDivs.forEach(div => {
           console.log(totalGems)
     
                       } else {
+
+                        
                         // Add one new quiz (for example, "quiz4")
                         completed.push(testId);
 
@@ -282,11 +286,17 @@ correctDivs.forEach(div => {
                         let scores = JSON.parse(localStorage.getItem('scores')) || [];
 
                         // Add the new score to the array
+                        
                         scores.push(Math.round(score));
+                        if (!submitted) {
                         totalGems = totalGems + 15;
+                        submitted = true;
+                        }
                         // Store the updated array back into localStorage
+
                         localStorage.setItem('scores', JSON.stringify(scores));
                         console.log(totalGems)
+                        
                         
           }
 

@@ -517,7 +517,7 @@ if (scores && scores.length > 0) {
 
     // Set the average score with the arrow in the 'avg-score' h3
     document.getElementById("avg-score").innerHTML = `Average Score: ${average.toFixed(2)} ${arrow}`;
-    localStorage.setItem('avg-score', average);
+    localStorage.setItem('avg-score', average.toFixed(2));
     localStorage.setItem('com-quizzes-num', scores.length);
 
     // Determine the rank based on average score and score count
@@ -546,6 +546,8 @@ if (scores && scores.length > 0) {
         rank = 'Beginner';
         rankImage = 'https://img.icons8.com/3d-fluency/94/graduation-cap.png';  // Beginner rank image
     }
+
+    localStorage.setItem('rank', rank);
 
     // Set the rank text and image in the 'Rank' element
     document.querySelector("h3 span").innerText = `Rank: ${rank}`;

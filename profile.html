@@ -52,6 +52,8 @@
             object-fit: cover;
             margin-bottom: 20px;
             cursor: pointer;
+            border-radius: 100px;
+            border: 1px solid black;
         }
 
         .profile-info {
@@ -152,6 +154,8 @@
             border-radius: 50%;
             cursor: pointer;
             transition: transform 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+            border-radius: 100px;
+            border: 2px solid black;
         }
 
         .modal-grid img:hover {
@@ -216,6 +220,7 @@
             <!-- Profile Info -->
             <ul class="profile-info">
                 <li><strong>Average Score:</strong> <span id="avgScore"></span></li>
+                <li><strong>Rank:</strong> <span id="rank"></span></li>
                 <li><strong>Completed Quizzes:</strong> <span id="comQuizzesNum"></span></li>
                 <li><strong>Gems:</strong> <span id="gems"></span></li>
             </ul>
@@ -223,7 +228,7 @@
             <!-- Username Input -->
             <div class="input-group">
                 <label for="username">Username:</label>
-                <input type="text" id="username" placeholder="Enter your username">
+                <input type="text" id="username" placeholder="Enter your username" autocomplete="off">
             </div>
 
             <!-- Stage Selection -->
@@ -255,22 +260,43 @@
     </div>
 
     <script>
-        const profilePictures = [
-            "https://cdn-icons-png.flaticon.com/256/4825/4825112.png",
-            "https://cdn-icons-png.flaticon.com/256/4825/4825038.png",
-            "https://cdn-icons-png.flaticon.com/256/4825/4825044.png",
-            "https://cdn-icons-png.flaticon.com/256/4825/4825015.png",
-            "https://cdn-icons-png.flaticon.com/256/4825/4825082.png",
-            "https://cdn-icons-png.flaticon.com/256/4825/4825087.png",
-            "https://cdn-icons-png.flaticon.com/256/4825/4825051.png",
-            "https://cdn-icons-png.flaticon.com/256/4825/4825108.png",
-            "https://cdn-icons-png.flaticon.com/256/4825/4825123.png",
-            "https://cdn-icons-png.flaticon.com/256/4825/4825072.png",
-            "https://cdn-icons-png.flaticon.com/256/4825/4825027.png",
-            "https://cdn-icons-png.flaticon.com/256/4825/4825076.png",
-            "https://cdn-icons-png.flaticon.com/256/4825/4825062.png",
-            "https://cdn-icons-png.flaticon.com/256/13474/13474467.png"
-        ];
+const profilePictures = [
+    "https://cdn-icons-png.flaticon.com/256/4825/4825112.png",
+    "https://cdn-icons-png.flaticon.com/256/4825/4825038.png",
+    "https://cdn-icons-png.flaticon.com/256/4825/4825044.png",
+    "https://cdn-icons-png.flaticon.com/256/4825/4825015.png",
+    "https://cdn-icons-png.flaticon.com/256/4825/4825082.png",
+    "https://cdn-icons-png.flaticon.com/256/4825/4825087.png",
+    "https://cdn-icons-png.flaticon.com/256/4825/4825051.png",
+    "https://cdn-icons-png.flaticon.com/256/4825/4825108.png",
+    "https://cdn-icons-png.flaticon.com/256/4825/4825123.png",
+    "https://cdn-icons-png.flaticon.com/256/4825/4825072.png",
+    "https://cdn-icons-png.flaticon.com/256/4825/4825027.png",
+    "https://cdn-icons-png.flaticon.com/256/4825/4825076.png",
+    "https://cdn-icons-png.flaticon.com/256/4825/4825062.png",
+    "https://cdn-icons-png.flaticon.com/256/13474/13474467.png",
+    "https://cdn-icons-png.flaticon.com/256/5046/5046929.png",
+    "https://cdn-icons-png.flaticon.com/256/8326/8326711.png",
+    "https://cdn-icons-png.flaticon.com/256/7102/7102052.png",
+    "https://cdn-icons-png.flaticon.com/256/8326/8326715.png",
+    "https://cdn-icons-png.flaticon.com/256/8360/8360535.png",
+    "https://cdn-icons-png.flaticon.com/256/8360/8360567.png",
+    "https://cdn-icons-png.flaticon.com/256/8360/8360539.png",
+    "https://cdn-icons-png.flaticon.com/256/5046/5046936.png",
+    "https://cdn-icons-png.flaticon.com/256/4825/4825031.png",
+    "https://cdn-icons-png.flaticon.com/256/5046/5046940.png",
+    "https://cdn-icons-png.flaticon.com/256/4825/4825066.png",
+    "https://cdn-icons-png.flaticon.com/256/8326/8326728.png",
+    "https://cdn-icons-png.flaticon.com/256/8326/8326716.png",
+    "https://cdn-icons-png.flaticon.com/256/5046/5046943.png",
+    "https://cdn-icons-png.flaticon.com/256/8526/8526447.png",
+    "https://cdn-icons-png.flaticon.com/256/4825/4825057.png",
+    "https://cdn-icons-png.flaticon.com/256/8360/8360560.png",
+    "https://cdn-icons-png.flaticon.com/256/8326/8326724.png",
+    "https://cdn-icons-png.flaticon.com/256/8360/8360497.png"
+];
+
+
 
 
                    // Create an audio element
@@ -292,6 +318,7 @@
             const gems = document.getElementById("gems");
             const username = document.getElementById("username");
             const stage = document.getElementById("stage");
+            const rank = document.getElementById('rank');
 
             // Load profile picture
             const profileImage = localStorage.getItem("profile");
@@ -305,7 +332,10 @@
             avgScore.textContent = localStorage.getItem("avg-score") || "N/A";
             comQuizzesNum.textContent = localStorage.getItem("com-quizzes-num") || "0";
             gems.textContent = localStorage.getItem("gems") || "0";
+            rank.textContent = localStorage.getItem("rank") || "Novice";
             username.value = localStorage.getItem("username") || "Guest";
+
+
 
             // Set stage dropdown value
             const userStage = localStorage.getItem("stage");
