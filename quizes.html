@@ -20,6 +20,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      image-rendering: optimizeSpeed
     }
 
     body {
@@ -38,7 +39,7 @@
       position: sticky;
       top: 0;
       transition: 0.6s all cubic-bezier(0.075, 0.82, 0.165, 1);
-      backdrop-filter: blur(50px);
+      backdrop-filter: blur(20px);
     }
 
     h2 {
@@ -97,7 +98,7 @@
       margin-bottom: 10px;
       z-index: 1;
       text-shadow: 30px 30px 10px solid rgb(255, 255, 255);
-      backdrop-filter: blur(80px); /* Apply blur effect */
+      backdrop-filter: blur(30px); /* Apply blur effect */
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
       padding: 15px;
@@ -152,7 +153,6 @@
       text-align: center;
       border-radius: 5px;
       z-index: 997;
-      background-color: #eeeeee5b;
     }
 
 /* Overlay background */
@@ -368,6 +368,16 @@ padding: 8px;
   }
 }
 
+#rank img {
+  transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: pointer;
+}
+#rank img:active {
+  scale: 5;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
   </style>
 </head>
 <body>
@@ -413,6 +423,7 @@ padding: 8px;
 <script>
 const quizzes = [
   // A1 Quizzes
+  { testName: "Basics 1", url: "A1/Basic/L1.html", id: "a1-bl1", backgroundImage: "https://images.pexels.com/photos/18069241/pexels-photo-18069241/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-depicts-how-ai-tools-can-democratise-education-and-make-learning-more-efficient-it-was-created-by-martina-stiftinger-a.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
   { testName: "Lesson 1", url: "A1/L1.html", id: "a1-l1", backgroundImage: "https://cdn.pixabay.com/photo/2022/06/12/22/48/gradient-7258997_1280.png" },
   { testName: "Lesson 2", url: "A1/L2.html", id: "a1-l2", backgroundImage: "https://cdn.pixabay.com/photo/2022/06/23/17/13/ball-7280265_640.jpg" },
   { testName: "Lesson 3", url: "A1/L3.html", id: "a1-l3", backgroundImage: "https://cdn.pixabay.com/photo/2023/10/15/01/23/abstract-8315974_640.jpg" },
@@ -522,29 +533,29 @@ if (scores && scores.length > 0) {
 
     // Determine the rank based on average score and score count
     let rank = 'Novice';
-    let rankImage = 'https://img.icons8.com/3d-fluency/94/pencil.png';  // Default image for "Novice"
+    let rankImage = 'https://img.icons8.com/3d-fluency/200/pencil.png';  // Default image for "Novice"
 
     if (average >= 100 && scores.length >= 100) {
         rank = 'Master';
-        rankImage = 'https://img.icons8.com/3d-fluency/94/christmas-star.png';  // Master rank image
+        rankImage = 'https://img.icons8.com/3d-fluency/200/christmas-star.png';  // Master rank image
     } else if (average >= 95 && scores.length >= 80) {
         rank = 'Expert';
-        rankImage = 'https://img.icons8.com/3d-fluency/94/prize.png';  // Expert rank image
+        rankImage = 'https://img.icons8.com/3d-fluency/200/prize.png';  // Expert rank image
     } else if (average >= 90 && scores.length >= 65) {
         rank = 'Proficient';
-        rankImage = 'https://img.icons8.com/3d-fluency/94/medal.png';  // Proficient rank image
+        rankImage = 'https://img.icons8.com/3d-fluency/200/medal.png';  // Proficient rank image
     } else if (average >= 80 && scores.length >= 50) {
         rank = 'Advanced';
-        rankImage = 'https://img.icons8.com/3d-fluency/94/trophy.png';  // Advanced rank image
+        rankImage = 'https://img.icons8.com/3d-fluency/200/trophy.png';  // Advanced rank image
     } else if (average >= 70 && scores.length >= 25) {
         rank = 'Competent';
-        rankImage = 'https://img.icons8.com/3d-fluency/94/gas.png';  // Competent rank image
+        rankImage = 'https://img.icons8.com/3d-fluency/200/gas.png';  // Competent rank image
     } else if (average >= 60 && scores.length >= 15) {
         rank = 'Intermediate';
-        rankImage = 'https://img.icons8.com/3d-fluency/94/flash-on.png';  // Intermediate rank image
+        rankImage = 'https://img.icons8.com/3d-fluency/200/flash-on.png';  // Intermediate rank image
     } else if (average >= 50 && scores.length >= 3) {
         rank = 'Beginner';
-        rankImage = 'https://img.icons8.com/3d-fluency/94/graduation-cap.png';  // Beginner rank image
+        rankImage = 'https://img.icons8.com/3d-fluency/200/graduation-cap.png';  // Beginner rank image
     }
 
     localStorage.setItem('rank', rank);

@@ -8,131 +8,181 @@ let totalGems = 0;
 let submitted = false;
 // Function to Render Questions
 function renderQuestions() {
-    const exerciseSection = document.getElementById("exerciseSection");
-    exerciseSection.innerHTML = ""; // Clear any existing questions
+  const exerciseSection = document.getElementById("exerciseSection");
+  exerciseSection.innerHTML = ""; // Clear any existing questions
 
-    questions.forEach((q, index) => {
-        const questionDiv = document.createElement("div");
-        questionDiv.classList.add("question");
-        questionDiv.tabIndex = '0';
+  questions.forEach((q, index) => {
+      const questionDiv = document.createElement("div");
+      questionDiv.classList.add("question");
+      questionDiv.tabIndex = '0';
 
-        switch (q.type) {
-            case "normal":
-                questionDiv.innerHTML = `<p>${q.question}</p><input type="text" id="question_${index}" placeholder="Type your answer here">`;
-                break;
+      switch (q.type) {
+          case "normal":
+              questionDiv.innerHTML = `<p>${q.question}</p><input type="text" id="question_${index}" placeholder="Type your answer here">`;
+              break;
 
-            case "normal-test":
-                questionDiv.innerHTML = `<p>${q.question}</p>`;
-                q.options.forEach((opt, optIndex) => {
-                    questionDiv.innerHTML += `<div class="radio-option"><input type="radio" name="question_${index}" id="question_${index}_option_${optIndex}" value="${opt}"><label for="question_${index}_option_${optIndex}">${opt}</label></div>`;
-                });
-                break;
+          case "normal-test":
+              questionDiv.innerHTML = `<p>${q.question}</p>`;
+              q.options.forEach((opt, optIndex) => {
+                  questionDiv.innerHTML += `<div class="radio-option"><input type="radio" name="question_${index}" id="question_${index}_option_${optIndex}" value="${opt}"><label for="question_${index}_option_${optIndex}">${opt}</label></div>`;
+              });
+              break;
 
-            case "fill-blank":
-                questionDiv.innerHTML = `<p>${q.question.replace("____", `<input type="text" id="question_${index}" placeholder="Fill in the blank">`)}</p>`;
-                break;
+          case "fill-blank":
+              questionDiv.innerHTML = `<p>${q.question.replace("____", `<input type="text" id="question_${index}" placeholder="Fill in the blank">`)}</p>`;
+              break;
 
-            case "fill-in-the-blank-test":
-                questionDiv.innerHTML = `<p>${q.question.replace("____", `<input type="text" id="question_${index}" placeholder="Fill in the blank">`)}</p>`;
-                q.options.forEach((opt, optIndex) => {
-                    questionDiv.innerHTML += `<div class="radio-option"><input type="radio" name="question_${index}" id="question_${index}_option_${optIndex}" value="${opt}"><label for="question_${index}_option_${optIndex}">${opt}</label></div>`;
-                });
-                break;
+          case "fill-in-the-blank-test":
+              questionDiv.innerHTML = `<p>${q.question.replace("____", `<input type="text" id="question_${index}" placeholder="Fill in the blank">`)}</p>`;
+              q.options.forEach((opt, optIndex) => {
+                  questionDiv.innerHTML += `<div class="radio-option"><input type="radio" name="question_${index}" id="question_${index}_option_${optIndex}" value="${opt}"><label for="question_${index}_option_${optIndex}">${opt}</label></div>`;
+              });
+              break;
 
-            case "list-fill-blank":
-                questionDiv.innerHTML = `<p>${q.question.replace("____", `<input type="text" id="question_${index}" placeholder="Fill in the blank">`)}</p>`;
-                break;
+          case "list-fill-blank":
+              questionDiv.innerHTML = `<p>${q.question.replace("____", `<input type="text" id="question_${index}" placeholder="Fill in the blank">`)}</p>`;
+              break;
 
-            case "listening":
-                questionDiv.innerHTML = `<p>${q.question}</p><audio src="${q.audioUrl}" type="audio/mpeg" controls style="width: 100%;">Your browser does not support the audio element.</audio>`;
-                q.options.forEach((opt, optIndex) => {
-                    questionDiv.innerHTML += `<div class="radio-option"><input type="radio" name="question_${index}" id="question_${index}_option_${optIndex}" value="${opt}"><label for="question_${index}_option_${optIndex}">${opt}</label></div>`;
-                });
-                break;
+          case "listening":
+              questionDiv.innerHTML = `<p>${q.question}</p><audio src="${q.audioUrl}" type="audio/mpeg" controls style="width: 100%;">Your browser does not support the audio element.</audio>`;
+              q.options.forEach((opt, optIndex) => {
+                  questionDiv.innerHTML += `<div class="radio-option"><input type="radio" name="question_${index}" id="question_${index}_option_${optIndex}" value="${opt}"><label for="question_${index}_option_${optIndex}">${opt}</label></div>`;
+              });
+              break;
 
-            case "listening-test":
-                  // Listening-Test Question
-                  questionDiv.innerHTML = `<p>${q.question}</p><audio src="${q.audioUrl}" type="audio/mpeg" controls style="width: 100%;">Your browser does not support the audio element.</audio>`;
-  
-                  q.questions.forEach((subQuestion, subIndex) => {
-                      const subQuestionDiv = document.createElement("div");
-                      subQuestionDiv.classList.add("sub-question");
-                      subQuestionDiv.innerHTML = `<p>${subQuestion.question}</p>`;
-                      subQuestion.options.forEach((opt, optIndex) => {
-                          subQuestionDiv.innerHTML += `<div class="radio-option"><input type="radio" name="question_${index}_subQuestion_${subIndex}" id="question_${index}_subQuestion_${subIndex}_option_${optIndex}" value="${opt}"><label for="question_${index}_subQuestion_${subIndex}_option_${optIndex}">${opt}</label></div>`;
-                      });
-                      questionDiv.appendChild(subQuestionDiv);
+          case "listening-test":
+              // Listening-Test Question
+              questionDiv.innerHTML = `<p>${q.question}</p><audio src="${q.audioUrl}" type="audio/mpeg" controls style="width: 100%;">Your browser does not support the audio element.</audio>`;
+
+              q.questions.forEach((subQuestion, subIndex) => {
+                  const subQuestionDiv = document.createElement("div");
+                  subQuestionDiv.classList.add("sub-question");
+                  subQuestionDiv.innerHTML = `<p>${subQuestion.question}</p>`;
+                  subQuestion.options.forEach((opt, optIndex) => {
+                      subQuestionDiv.innerHTML += `<div class="radio-option"><input type="radio" name="question_${index}_subQuestion_${subIndex}" id="question_${index}_subQuestion_${subIndex}_option_${optIndex}" value="${opt}"><label for="question_${index}_subQuestion_${subIndex}_option_${optIndex}">${opt}</label></div>`;
                   });
-                  break;                
+                  questionDiv.appendChild(subQuestionDiv);
+              });
+              break;                 
 
-            case "reference":
-                questionDiv.innerHTML = `<p>${q.question}</p>`;
-                q.options.forEach((opt, optIndex) => {
-                    questionDiv.innerHTML += `<div class="radio-option"><input type="radio" name="question_${index}" id="question_${index}_option_${optIndex}" value="${opt}"><label for="question_${index}_option_${optIndex}">${opt}</label></div>`;
-                });
-                break;
+          case "reference":
+              questionDiv.innerHTML = `<p>${q.question}</p>`;
+              q.options.forEach((opt, optIndex) => {
+                  questionDiv.innerHTML += `<div class="radio-option"><input type="radio" name="question_${index}" id="question_${index}_option_${optIndex}" value="${opt}"><label for="question_${index}_option_${optIndex}">${opt}</label></div>`;
+              });
+              break;
 
-            case "paragraph":
-                  // Rendering the paragraph text
-                  questionDiv.innerHTML = `<p class="paragraph-text">${q.text}</p>`;
-                  
-                  // Rendering the list of questions related to the paragraph
-                  q.questions.forEach((subQ, subIndex) => {
-                      questionDiv.innerHTML += `<p>${subQ.question}</p>`;
-                      subQ.options.forEach((opt, optIndex) => {
-                          questionDiv.innerHTML += `<div class="radio-option"><input type="radio" name="question_${index}_subQuestion_${subIndex}" id="question_${index}_subQuestion_${subIndex}_option_${optIndex}" value="${opt}"><label for="question_${index}_subQuestion_${subIndex}_option_${optIndex}">${opt}</label></div>`;
-                      });
+          case "paragraph":
+              // Rendering the paragraph text
+              questionDiv.innerHTML = `<p class="paragraph-text">${q.text}</p>`;
+              
+              // Rendering the list of questions related to the paragraph
+              q.questions.forEach((subQ, subIndex) => {
+                  questionDiv.innerHTML += `<p>${subQ.question}</p>`;
+                  subQ.options.forEach((opt, optIndex) => {
+                      questionDiv.innerHTML += `<div class="radio-option"><input type="radio" name="question_${index}_subQuestion_${subIndex}" id="question_${index}_subQuestion_${subIndex}_option_${optIndex}" value="${opt}"><label for="question_${index}_subQuestion_${subIndex}_option_${optIndex}">${opt}</label></div>`;
                   });
-            break;
-            
-        }
+              });
+              break;
 
-        exerciseSection.appendChild(questionDiv);
-        document.querySelectorAll('input').forEach(function(element) {
-            element.setAttribute('tabindex', '0');
-            element.setAttribute('autocomplete', 'off')
-          });
-    });
+          case "picture-test":
+              // Rendering the image for picture-test
+              questionDiv.innerHTML = `<img src="${q.imageUrl}" width="${q.scale}" alt="Question Image" class="question-image" style="max-width: 100%; margin-bottom: 10px;">`;
+
+              // Rendering the question label
+              questionDiv.innerHTML += `<p>${q.question}</p>`;
+              
+              // Rendering the options as radio buttons
+              q.options.forEach((opt, optIndex) => {
+                  questionDiv.innerHTML += `
+                      <div class="radio-option">
+                          <input type="radio" name="question_${index}" id="question_${index}_option_${optIndex}" value="${opt}">
+                          <label for="question_${index}_option_${optIndex}">${opt}</label>
+                      </div>`;
+              });
+              break;
+      }
+
+      exerciseSection.appendChild(questionDiv);
+      document.querySelectorAll('input').forEach(function(element) {
+          element.setAttribute('tabindex', '0');
+          element.setAttribute('autocomplete', 'off')
+      });
+  });
 }
 
+
 function submitTest() {
-  
-  
   const totalQuestions = questions.length;
   const pointsPerQuestion = 100 / totalQuestions; // Points for each question
-
   let score = 0;
 
   // Iterate over each question to check the user's answer
   questions.forEach((question, index) => {
       let userAnswer = "";
-      
-      // Get the question DOM element based on index
-      const questionElement = document.querySelectorAll(".question")[index];
+      const questionElement = document.querySelectorAll(".question")[index]; // Get the DOM element of the question by index
 
-      // Check for paragraph questions
-      if (question.type === "paragraph") {
+      if (question.type === "picture-test") {
+          // Process picture-test
+          const imageElement = questionElement.querySelector("img");
+          const radioInputs = questionElement.querySelectorAll("input[type='radio']:checked");
+
+          radioInputs.forEach(radioInput => {
+              if (radioInput) {
+                  userAnswer = radioInput.value.trim();
+              }
+          });
+
+          const correctAnswer = question.correctAnswer ? question.correctAnswer.trim().toLowerCase() : "";
+          if (userAnswer.toLowerCase() === correctAnswer && userAnswer !== "") {
+              score += pointsPerQuestion;
+              questionElement.classList.add("correct");
+          } else {
+              questionElement.classList.add("incorrect");
+          }
+      } else if (question.type === "paragraph") {
+          // Paragraph-style question processing
+          let paragraphScore = 0; // Variable to track score for this paragraph
           question.questions.forEach((subQ, subIndex) => {
               const subQuestionElement = questionElement.querySelectorAll(".radio-option")[subIndex];
               const radioInput = subQuestionElement.querySelector("input[type='radio']:checked");
 
-              // If a radio input is selected
               if (radioInput) {
                   userAnswer = radioInput.value.trim();
               }
 
               const correctAnswer = subQ.correctAnswer ? subQ.correctAnswer.trim().toLowerCase() : ""; // Safely access correctAnswer
 
-              // Compare user answer with the correct answer
+              // Check if the answer is correct
               if (userAnswer.toLowerCase() === correctAnswer && userAnswer !== "") {
-                  score += pointsPerQuestion / question.questions.length;
+                  paragraphScore += (pointsPerQuestion / question.questions.length); // Partial score for each sub-question
                   subQuestionElement.classList.add("correct");
               } else {
                   subQuestionElement.classList.add("incorrect");
               }
           });
+
+          // Add the total paragraph score to the main score
+          score += paragraphScore;
+      } else if (question.type === "listening-test") {
+          // Process listening-test
+          const audioElement = questionElement.querySelector("audio");
+          const selectedAnswer = questionElement.querySelector("input[type='radio']:checked");
+
+          if (selectedAnswer) {
+              userAnswer = selectedAnswer.value.trim();
+          }
+
+          const correctAnswer = question.correctAnswer ? question.correctAnswer.trim().toLowerCase() : "";
+
+          if (userAnswer.toLowerCase() === correctAnswer && userAnswer !== "") {
+              score += pointsPerQuestion;
+              questionElement.classList.add("correct");
+          } else {
+              questionElement.classList.add("incorrect");
+          }
       } else {
-          let userAnswer = "";
+          // Standard question with text input or radio buttons
           const textInput = questionElement.querySelector("input[type='text']");
           if (textInput) {
               userAnswer = textInput.value.trim();
@@ -143,7 +193,7 @@ function submitTest() {
               userAnswer = radioInput.value.trim();
           }
 
-          const correctAnswer = question.correctAnswer ? question.correctAnswer.trim().toLowerCase() : ""; // Safely access correctAnswer
+          const correctAnswer = question.correctAnswer ? question.correctAnswer.trim().toLowerCase() : "";
           if (userAnswer.toLowerCase() === correctAnswer && userAnswer !== "") {
               score += pointsPerQuestion;
               questionElement.classList.add("correct");
