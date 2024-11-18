@@ -1,6 +1,6 @@
 let totalGems = 0;
         // Create an audio element
-        const winSound = new Audio("../sfx/win1.wav");
+        const winSound = new Audio("../../sfx/win1.wav");
         winSound.volume = 0.8; // Set volume to 10%
 
         // Add event listener to play sound on document click
@@ -655,7 +655,7 @@ document.getElementById('close-card').addEventListener('click', function(event) 
 
 
            // Create an audio element
-           const clickSound = new Audio("../sfx/click.wav");
+           const clickSound = new Audio("../../sfx/click.wav");
            clickSound.volume = 0.05; // Set volume to 10%
    
            // Add event listener to play sound on document click

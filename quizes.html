@@ -381,14 +381,22 @@ padding: 8px;
   border-radius: 100px;
   padding: 5px;
 }
+
+.logo {
+  width: 120px;
+  filter: invert(100%);
+  position: absolute;
+  left: 35px;
+  top: 35px;
+}
   </style>
 </head>
 <body>
 
 <header id="header">
-  <div id="gems-container"><img src="icons/ic_gem_gold.png" alt="Gems" id="gems-ic" draggable="false" title="Gems"><h4 id="gems" title="Gems">0</h4><img hidden id="audioToggle" src="https://img.icons8.com/fluency-systems-regular/25/ffffff/high-volume.png" style="vertical-align: middle; margin-left: 20px; cursor: pointer;" title="Toggle Audio" onclick="toggleAudio()"><img src="" width="35px" height="35px"  style="vertical-align: middle; margin-left: 20px; cursor: pointer;" id="pfp" draggable="false" onclick="window.location.replace('profile.html')"></div>
+  <div id="gems-container"><img src="images/wordify-brand.png" alt="Wordify" class="logo"> <img src="icons/ic_gem_gold.png" alt="Gems" id="gems-ic" draggable="false" title="Gems"><h4 id="gems" title="Gems">0</h4><img hidden id="audioToggle" src="https://img.icons8.com/fluency-systems-regular/25/ffffff/high-volume.png" style="vertical-align: middle; margin-left: 20px; cursor: pointer;" title="Toggle Audio" onclick="toggleAudio()"><img src="" width="35px" height="35px"  style="vertical-align: middle; margin-left: 20px; cursor: pointer;" id="pfp" draggable="false" onclick="window.location.replace('profile.html')"></div>
   <h2 id="greeting">Hey, User!</h2>
-  <h1 id="main-title">Quizzes</h1>
+  <h1 id="main-title"></h1>
   <h3 id="avg-score">Your Score: </h3>
   <h3 id="rank"><span>Rank: Starter </span><img src="https://img.icons8.com/3d-fluency/94/compass.png" width="25px" style="vertical-align: middle; margin-left: 5px;" draggable="false" tabindex="0"></h3>
   <div class="sort-container" id="sortContainer"><img draggable="false" src="https://img.icons8.com/fluency-systems-regular/25/ffffff/empty-filter.png" alt="Sort By" class="sort-ic" id="sort"><h4 id="sort-name">All</h4></div>
@@ -500,8 +508,9 @@ function handleScroll() {
     document.getElementById('greeting').style.display = 'none';
     document.getElementById('avg-score').style.display = 'none';
     document.getElementById('rank').style.display = 'none';
-    document.getElementById('gems-container').style.display = 'none';
+    document.getElementById('gems-container').style.display = '';
     document.getElementById('sortContainer').style.display = 'none';
+    document.querySelector('.logo').style.top = '20px';
 
   } else {
     header.style.height = '';
@@ -511,6 +520,7 @@ function handleScroll() {
     document.getElementById('rank').style.display = '';
     document.getElementById('gems-container').style.display = '';
     document.getElementById('sortContainer').style.display = '';
+    document.querySelector('.logo').style.top = '';
   }
 }
 
