@@ -312,7 +312,11 @@ correctDivs.forEach(div => {
     const img = div.querySelector('img.wrong-img'); // Find the img with class "wrong-img"
     if (img) {
         img.src = '../icons/ic_tick_gold.png';
-        totalGems = totalGems + 1;
+        if (!submitted) {
+          totalGems = totalGems + 1;
+          } else {
+            totalGems = totalGems + 0.4;
+          }
     }
 });
 
@@ -321,7 +325,7 @@ correctDivs.forEach(div => {
 
       // Use an if statement to check if the test is completed
         if (completed.includes(testId)) {
-          totalGems = totalGems + 3;
+          totalGems = totalGems + 1;
           console.log(totalGems)
     
                       } else {
@@ -338,9 +342,9 @@ correctDivs.forEach(div => {
                         // Add the new score to the array
                         
                         scores.push(Math.round(score));
+                        
                         if (!submitted) {
                         totalGems = totalGems + 15;
-                        submitted = true;
                         }
                         // Store the updated array back into localStorage
 
@@ -360,7 +364,7 @@ correctDivs.forEach(div => {
         animateCounter(document.getElementById('gemsEarned'), Math.floor(parseFloat(totalGems)));
         localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) + totalGems).toString());
 
-        
+        submitted = true;
 }
 
 
