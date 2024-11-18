@@ -15,6 +15,7 @@ function renderQuestions() {
       const questionDiv = document.createElement("div");
       questionDiv.classList.add("question");
       questionDiv.tabIndex = '0';
+      q.question.replace("____", `<input type="text" id="question_${index}" placeholder="Fill in the blank">`);
 
       switch (q.type) {
           case "normal":
@@ -44,7 +45,7 @@ function renderQuestions() {
               break;
 
           case "listening":
-              questionDiv.innerHTML = `<p>${q.question}</p><audio src="${q.audioUrl}" type="audio/mpeg" controls style="width: 100%;">Your browser does not support the audio element.</audio>`;
+              questionDiv.innerHTML = `<audio src="${q.audioUrl}" type="audio/mpeg" controls style="width: 100%;">Your browser does not support the audio element.</audio><p>${q.question.replace("____", `<input type="text" id="question_${index}" placeholder="Fill in the blank">`)}</p>`;
               q.options.forEach((opt, optIndex) => {
                   questionDiv.innerHTML += `<div class="radio-option"><input type="radio" name="question_${index}" id="question_${index}_option_${optIndex}" value="${opt}"><label for="question_${index}_option_${optIndex}">${opt}</label></div>`;
               });
@@ -52,7 +53,7 @@ function renderQuestions() {
 
           case "listening-test":
               // Listening-Test Question
-              questionDiv.innerHTML = `<p>${q.question}</p><audio src="${q.audioUrl}" type="audio/mpeg" controls style="width: 100%;">Your browser does not support the audio element.</audio>`;
+              questionDiv.innerHTML = `<audio src="${q.audioUrl}" type="audio/mpeg" controls style="width: 100%;">Your browser does not support the audio element.</audio><p>${q.question}</p>`;
 
               q.questions.forEach((subQuestion, subIndex) => {
                   const subQuestionDiv = document.createElement("div");
@@ -109,6 +110,8 @@ function renderQuestions() {
           element.setAttribute('autocomplete', 'off')
       });
   });
+
+  
 }
 
 

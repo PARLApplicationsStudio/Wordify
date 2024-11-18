@@ -133,6 +133,7 @@ header p {
 .question p {
   font-size: 1.2em;
   margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .radio-option {
@@ -151,7 +152,7 @@ input[type="text"] {
   border: none;
   border-radius: 4px;
   transition: box-shadow 0.3s ease;
-  margin-top: 10px;
+  margin-top: 15px;
   margin-bottom: 10px;
   background-color: transparent;
   border: 2px solid white;

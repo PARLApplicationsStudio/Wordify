@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <title>Wordify | Basics 1</title>
+    <title>Wordify | Basics 2</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" href="../../icon.png" type="image/png">
     
@@ -13,7 +13,7 @@
 
     <header>
         <img src="https://img.icons8.com/fluency-systems-regular/48/ffffff/circled-chevron-left.png" alt="Exit" class="exit" id="exit" draggable="false">
-        <h1>Wordify | Basics 1</h1>
+        <h1>Wordify | Basics 2</h1>
         <p>Basic English Questions to Determine Your Level</p>
     </header>
 
@@ -111,76 +111,64 @@
 
 const questions = [
     {
-        type: "picture-test", 
-        question: "What is this?", 
-        options: ["Cat", "Elephant", "Rabbit","Dog"], 
-        correctAnswer: "Dog",
-        imageUrl: "https://media0.giphy.com/media/y9uGAxRuKTsv5aJyAB/giphy.gif?cid=6c09b95225mfh7369jho56jonldnyt5lzsriq4wuzduyddz2&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s", 
-        scale: "150px"
+        type: "normal-test",
+        question: "I ______ my teeth every morning.",
+        options: ["brush", "brushes", "brushing", "brushed"],
+        correctAnswer: "brush"
     },
     {
-        type: "picture-test", 
-        question: "What is this?", 
-        options: ["Girl", "Boy", "Child", "Woman"], 
-        correctAnswer: "Woman",
-        imageUrl: "https://media3.giphy.com/avatars/ak_ditto_art/3yyGXmNcFkIe.gif", 
-        scale: "150px"
+        type: "normal-test",
+        question: "We ______ dinner at 7 o’clock.",
+        options: ["eat", "eats", "eating", "ate"],
+        correctAnswer: "eat"
     },
     {
-        type: "picture-test", 
-        question: "What is this?", 
-        options: ["Apple", "Banana", "Orange", "Lemon"], 
-        correctAnswer: "Orange",
-        imageUrl: "https://i.pinimg.com/originals/3d/d5/6f/3dd56f11d2e43e4cf58ba02571e256a9.gif", 
-        scale: "100px"
+        type: "normal-test",
+        question: "She ______ her room every weekend.",
+        options: ["clean", "cleans", "cleaning", "cleaned"],
+        correctAnswer: "cleans"
     },
     {
-        type: "picture-test", 
-        question: "What is this?", 
-        options: ["Boy", "Girl", "Man", "Woman"], 
-        correctAnswer: "Boy",
-        imageUrl: "https://media4.giphy.com/media/XM9gStaDSwrewTeVLq/giphy.gif", 
-        scale: "200px"
+        type: "normal-test",
+        question: "The sun ______ in the sky during the day.",
+        options: ["shine", "shines", "shining", "shined"],
+        correctAnswer: "shines"
     },
     {
-        type: "picture-test", 
-        question: "What is this?", 
-        options: ["Dog", "Cat", "Rabbit", "Elephant"], 
-        correctAnswer: "Rabbit",
-        imageUrl: "https://img.clipart-library.com/2/clip-transparent-bunny-gif/clip-transparent-bunny-gif-2.gif", 
-        scale: "200px"
+        type: "normal-test",
+        question: "My friends ______ in the same neighborhood.",
+        options: ["live", "lives", "living", "lived"],
+        correctAnswer: "live"
     },
     {
-        type: "picture-test", 
-        question: "What is this?", 
-        options: ["Strawberry", "Cherry", "Apple", "Orange"], 
-        correctAnswer: "Strawberry",
-        imageUrl: "https://www.icegif.com/wp-content/uploads/2022/08/icegif-915.gif", 
-        scale: "120px"
+        type: "normal-test",
+        question: "What time ______ you wake up?",
+        options: ["do", "does", "is", "are"],
+        correctAnswer: "do"
     },
     {
-        type: "picture-test", 
-        question: "What is this?", 
-        options: ["Man", "Woman", "Boy", "Girl"], 
-        correctAnswer: "Man",
-        imageUrl: "https://www.pngkey.com/png/full/5-53704_walking-man-cartoon-clip-art-freeuse-download-cartoon.png", 
-        scale: "120px"
+        type: "normal-test",
+        question: "Where ______ she work?",
+        options: ["do", "does", "is", "are"],
+        correctAnswer: "does"
     },
     {
-        type: "picture-test", 
-        question: "What is this?", 
-        options: ["Tiger", "Elephant", "Bear", "Lion"], 
-        correctAnswer: "Lion",
-        imageUrl: "https://media.tenor.com/52UnVgrB_G0AAAAi/lion-african-lion.gif", 
-        scale: "180px"
+        type: "normal-test",
+        question: "How many brothers ______ you have?",
+        options: ["do", "does", "is", "are"],
+        correctAnswer: "do"
     },
     {
-        type: "picture-test", 
-        question: "What is this?", 
-        options: ["Fish", "Bird", "Dog", "Horse"], 
-        correctAnswer: "Bird",
-        imageUrl: "https://img1.picmix.com/output/stamp/normal/2/4/0/7/1117042_91959.gif", 
-        scale: "120px"
+        type: "normal-test",
+        question: "What ______ your favorite color?",
+        options: ["is", "are", "does", "do"],
+        correctAnswer: "is"
+    },
+    {
+        type: "normal-test",
+        question: "Where ______ they live?",
+        options: ["do", "does", "is", "are"],
+        correctAnswer: "do"
     }
 ];
 
@@ -189,7 +177,9 @@ const questions = [
 
 
 
-        const testId = 'a1-bl1'
+
+
+        const testId = 'a1-bl3'
         const fullURL = window.location.href;
 console.log(fullURL);  // Outputs the entire URL of the current page
 
