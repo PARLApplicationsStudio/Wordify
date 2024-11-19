@@ -113,64 +113,74 @@ const questions = [
     {
         type: "normal-test",
         question: "Choose the correct sentence:",
-        options: ["She can speak English fluently.", "She can to speak English fluently.", "She can speaks English fluently.", "She can speaking English fluently."],
+        options: shuffle(["She can speak English fluently.", "She can to speak English fluently.", "She can speaks English fluently.", "She can speaking English fluently."]),
         correctAnswer: "She can speak English fluently."
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["He is taller than me.", "He is taller than I.", "He is more taller than me.", "He is tall than me."],
+        options: shuffle(["He is taller than me.", "He is taller than I.", "He is more taller than me.", "He is tall than me."]),
         correctAnswer: "He is taller than me."
     },
     {
         type: "normal-test",
         question: "Which word completes the sentence? 'I _______ to the store.'",
-        options: ["going", "goes", "go", "gone"],
+        options: shuffle(["going", "goes", "go", "gone"]),
         correctAnswer: "go"
     },
     {
         type: "normal-test",
         question: "Which of these sentences is in the present perfect tense?",
-        options: ["I saw him yesterday.", "I have seen him yesterday.", "I had seen him yesterday.", "I have seen him."],
+        options: shuffle(["I saw him yesterday.", "I have seen him yesterday.", "I had seen him yesterday.", "I have seen him."]),
         correctAnswer: "I have seen him."
     },
     {
         type: "normal-test",
         question: "Which word is a synonym of 'surprise'?",
-        options: ["astonishment", "peace", "sadness", "happiness"],
+        options: shuffle(["astonishment", "peace", "sadness", "happiness"]),
         correctAnswer: "astonishment"
     },
     {
         type: "normal-test",
         question: "Which sentence uses the correct conditional form?",
-        options: ["If it rains, I will stay home.", "If it rained, I will stay home.", "If it rains, I stay home.", "If it rain, I will stay home."],
+        options: shuffle(["If it rains, I will stay home.", "If it rained, I will stay home.", "If it rains, I stay home.", "If it rain, I will stay home."]),
         correctAnswer: "If it rains, I will stay home."
     },
     {
         type: "normal-test",
         question: "Which word is the correct antonym of 'common'?",
-        options: ["rare", "usual", "frequent", "typical"],
+        options: shuffle(["rare", "usual", "frequent", "typical"]),
         correctAnswer: "rare"
     },
     {
         type: "normal-test",
         question: "Choose the correct verb form: 'He _______ breakfast every morning.'",
-        options: ["eat", "eats", "eating", "eaten"],
+        options: shuffle(["eat", "eats", "eating", "eaten"]),
         correctAnswer: "eats"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["She plays the piano well.", "She play the piano well.", "She playing the piano well.", "She play the piano good."],
+        options: shuffle(["She plays the piano well.", "She play the piano well.", "She playing the piano well.", "She play the piano good."]),
         correctAnswer: "She plays the piano well."
     },
     {
         type: "normal-test",
         question: "What is the plural form of 'child'?",
-        options: ["childs", "children", "childs'", "childes"],
+        options: shuffle(["childs", "children", "childs'", "childes"]),
         correctAnswer: "children"
     }
 ];
+
+// Function to shuffle options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 

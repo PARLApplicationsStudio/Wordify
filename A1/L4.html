@@ -113,64 +113,75 @@ const questions = [
     {
         type: "normal-test",
         question: "What is the past tense of 'eat'?",
-        options: ["ate", "eaten", "eats", "eating"],
+        options: shuffle(["eating", "eaten", "ate", "eats"]),
         correctAnswer: "ate"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["I can plays the piano.", "I can play the piano.", "I can playing the piano.", "I can played the piano."],
+        options: shuffle(["I can playing the piano.", "I can play the piano.", "I can played the piano.", "I can plays the piano."]),
         correctAnswer: "I can play the piano."
     },
     {
         type: "normal-test",
         question: "Which word completes the sentence?\n'I _______ to the store yesterday.'",
-        options: ["go", "goes", "going", "went"],
+        options: shuffle(["going", "went", "goes", "go"]),
         correctAnswer: "went"
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'soft'?",
-        options: ["hard", "small", "big", "noisy"],
+        options: shuffle(["small", "hard", "big", "noisy"]),
         correctAnswer: "hard"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["She don't like chocolate.", "She doesn't like chocolate.", "She not like chocolate.", "She no like chocolate."],
+        options: shuffle(["She doesn't like chocolate.", "She no like chocolate.", "She don't like chocolate.", "She not like chocolate."]),
         correctAnswer: "She doesn't like chocolate."
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'day'?",
-        options: ["night", "morning", "evening", "afternoon"],
+        options: shuffle(["night", "evening", "afternoon", "morning"]),
         correctAnswer: "night"
     },
     {
         type: "normal-test",
         question: "Which word is a season?",
-        options: ["dog", "winter", "car", "fish"],
+        options: shuffle(["fish", "car", "dog", "winter"]),
         correctAnswer: "winter"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["I have a new phone.", "I has a new phone.", "I haves a new phone.", "I had a new phone."],
+        options: shuffle(["I have a new phone.", "I haves a new phone.", "I had a new phone.", "I has a new phone."]),
         correctAnswer: "I have a new phone."
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'open'?",
-        options: ["closed", "big", "tall", "small"],
+        options: shuffle(["big", "small", "closed", "tall"]),
         correctAnswer: "closed"
     },
     {
         type: "normal-test",
         question: "Which one is a correct sentence?",
-        options: ["I play soccer every Sunday.", "I plays soccer every Sunday.", "I playing soccer every Sunday.", "I played soccer every Sunday."],
+        options: shuffle(["I play soccer every Sunday.", "I plays soccer every Sunday.", "I played soccer every Sunday.", "I playing soccer every Sunday."]),
         correctAnswer: "I play soccer every Sunday."
     }
 ];
+
+// Function to shuffle options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
+
 
 
 

@@ -113,64 +113,74 @@ const questions = [
     {
         type: "normal-test",
         question: "Which of these sentences is in the future perfect tense?",
-        options: ["I will have completed the report by tomorrow.", "I have completed the report by tomorrow.", "I completed the report by tomorrow.", "I will complete the report by tomorrow."],
+        options: shuffle(["I will have completed the report by tomorrow.", "I have completed the report by tomorrow.", "I completed the report by tomorrow.", "I will complete the report by tomorrow."]),
         correctAnswer: "I will have completed the report by tomorrow."
     },
     {
         type: "normal-test",
         question: "Which word is an adjective?",
-        options: ["quickly", "walk", "beautiful", "run"],
+        options: shuffle(["quickly", "walk", "beautiful", "run"]),
         correctAnswer: "beautiful"
     },
     {
         type: "normal-test",
         question: "Which of these is a correct sentence?",
-        options: ["She sings beautiful.", "She sing beautifully.", "She sings beautifully.", "She sings beautifully."],
+        options: shuffle(["She sings beautiful.", "She sing beautifully.", "She sings beautifully.", "She sings beautifully."]),
         correctAnswer: "She sings beautifully."
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'success'?",
-        options: ["failure", "challenge", "victory", "improvement"],
+        options: shuffle(["failure", "challenge", "victory", "improvement"]),
         correctAnswer: "failure"
     },
     {
         type: "normal-test",
         question: "Which word is a synonym for 'strange'?",
-        options: ["familiar", "ordinary", "odd", "common"],
+        options: shuffle(["familiar", "ordinary", "odd", "common"]),
         correctAnswer: "odd"
     },
     {
         type: "normal-test",
         question: "Choose the correct sentence:",
-        options: ["She is the best singer of all.", "She is the best singer than all.", "She is the more best singer.", "She is better singer than all."],
+        options: shuffle(["She is the best singer of all.", "She is the best singer than all.", "She is the more best singer.", "She is better singer than all."]),
         correctAnswer: "She is the best singer of all."
     },
     {
         type: "normal-test",
         question: "Which of these sentences is grammatically correct?",
-        options: ["I have been to Paris in 2010.", "I went to Paris in 2010.", "I have gone to Paris in 2010.", "I had went to Paris in 2010."],
+        options: shuffle(["I have been to Paris in 2010.", "I went to Paris in 2010.", "I have gone to Paris in 2010.", "I had went to Paris in 2010."]),
         correctAnswer: "I went to Paris in 2010."
     },
     {
         type: "normal-test",
         question: "What is the synonym of 'hardworking'?",
-        options: ["lazy", "diligent", "slow", "weak"],
+        options: shuffle(["lazy", "diligent", "slow", "weak"]),
         correctAnswer: "diligent"
     },
     {
         type: "normal-test",
         question: "Which is the correct comparative form of 'good'?",
-        options: ["gooder", "better", "more good", "best"],
+        options: shuffle(["gooder", "better", "more good", "best"]),
         correctAnswer: "better"
     },
     {
         type: "normal-test",
         question: "Which word completes the sentence: 'He didn't want _______ the book.'",
-        options: ["to read", "reading", "read", "to reading"],
+        options: shuffle(["to read", "reading", "read", "to reading"]),
         correctAnswer: "to read"
     }
 ];
+
+// Function to shuffle options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 

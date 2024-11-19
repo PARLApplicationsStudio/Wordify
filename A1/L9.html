@@ -113,64 +113,74 @@ const questions = [
     {
         type: "normal-test",
         question: "What is the plural form of 'child'?",
-        options: ["childs", "children", "childs", "childrenes"],
+        options: shuffle(["childs", "children", "childs", "childrenes"]),
         correctAnswer: "children"
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'hot'?",
-        options: ["cold", "small", "tall", "fast"],
+        options: shuffle(["cold", "small", "tall", "fast"]),
         correctAnswer: "cold"
     },
     {
         type: "normal-test",
         question: "Which of these is a color?",
-        options: ["table", "green", "quickly", "car"],
+        options: shuffle(["table", "green", "quickly", "car"]),
         correctAnswer: "green"
     },
     {
         type: "normal-test",
         question: "Which of these is a season?",
-        options: ["spring", "apple", "dog", "table"],
+        options: shuffle(["spring", "apple", "dog", "table"]),
         correctAnswer: "spring"
     },
     {
         type: "normal-test",
         question: "Which word completes the sentence?\n'I _______ to work by car.'",
-        options: ["goes", "going", "go", "gone"],
+        options: shuffle(["goes", "going", "go", "gone"]),
         correctAnswer: "go"
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'young'?",
-        options: ["old", "tall", "small", "hot"],
+        options: shuffle(["old", "tall", "small", "hot"]),
         correctAnswer: "old"
     },
     {
         type: "normal-test",
         question: "Which word completes the sentence?\n'He _______ to the gym every morning.'",
-        options: ["goes", "go", "going", "gone"],
+        options: shuffle(["goes", "go", "going", "gone"]),
         correctAnswer: "goes"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["She are my friend.", "She is my friend.", "She my friend is.", "She is friend my."],
+        options: shuffle(["She are my friend.", "She is my friend.", "She my friend is.", "She is friend my."]),
         correctAnswer: "She is my friend."
     },
     {
         type: "normal-test",
         question: "Which one is a correct sentence?",
-        options: ["I likes to run.", "I like to run.", "I liking to run.", "I liked to run."],
+        options: shuffle(["I likes to run.", "I like to run.", "I liking to run.", "I liked to run."]),
         correctAnswer: "I like to run."
     },
     {
         type: "normal-test",
         question: "Which of these is a profession?",
-        options: ["teacher", "table", "green", "car"],
+        options: shuffle(["teacher", "table", "green", "car"]),
         correctAnswer: "teacher"
     }
 ];
+
+// Function to shuffle options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 

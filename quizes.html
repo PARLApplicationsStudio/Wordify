@@ -180,7 +180,7 @@
   padding: 30px;
   width: 500px;
   color: black;
-  height: 40%;
+  height: 400px;
   border-radius: 10px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
 }
@@ -294,7 +294,7 @@ padding: 8px;
 }
 
 .cookiesContent {
-  width: 30vw;
+  width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -416,15 +416,17 @@ padding: 8px;
   </form>
 </div>
 
-<div class="overlay2" id="overlay2">
-<div class="container">
-  <div class="cookiesContent" id="cookiesPopup">
-    <img src="https://img.icons8.com/3d-fluency/94/confetti.png" alt="cookies-img" />
-    <p>You've spent one hour on Wordify! As a reward, you’ve earned 20 Gems. Great job!</p>
-    <button class="accept" id="acceptBtn" onclick="document.getElementById('overlay2').style.display = 'none'">Yeppi!</button>
+<!-- The overlay for the modal -->
+<div class="overlay2" id="overlay2" style="display:none;">
+  <div class="container">
+    <div class="cookiesContent" id="cookiesPopup">
+      <img id="modalIcon" src="https://img.icons8.com/3d-fluency/94/confetti.png" alt="modal-icon" />
+      <p id="modalText">Default message goes here.</p>
+      <button class="accept" id="acceptBtn">Yeppi!</button>
+    </div>
   </div>
 </div>
-</div>
+
 
 <audio id="background-audio" loop>
   <source src="" type="audio/mp3">
@@ -541,6 +543,7 @@ if (scores && scores.length > 0) {
 
     // Determine the arrow based on the average score
     let arrow = average >= 60 ? '↑' : '↓';
+    
 
     // Set the average score with the arrow in the 'avg-score' h3
     document.getElementById("avg-score").innerHTML = `Average Score: ${average.toFixed(2)} ${arrow}`;
@@ -598,7 +601,9 @@ if (scores && scores.length > 0) {
   // Function to calculate the average brightness of an image
   function getAverageColor(imageUrl, callback) {}
 
-
+if (!JSON.parse(localStorage.getItem("low-tests") || "[]").length) {
+  localStorage.removeItem("low-tests");
+}
 // Function to check the stage value from localStorage
 function getStage() {
   const stage = localStorage.getItem("stage");
@@ -750,6 +755,68 @@ if (gems !== null) {
     }
 } else {
     console.log('"gems" key does not exist in local storage.');
+}
+
+
+  // Retrieve the values from local storage
+  let avgScore = parseFloat(localStorage.getItem("avg-score"));
+  let avgHigh = parseFloat(localStorage.getItem("avgs-high"));
+
+  // Check if the "avg-score" has a value but "avgs-high" does not
+  if (avgScore && !avgHigh) {
+    // Set "avgs-high" to the value of "avg-score"
+    localStorage.setItem("avgs-high", avgScore);
+  }
+
+  // Every time the page loads, check if "avg-score" is higher than "avgs-high"
+  if (avgScore && avgHigh) {
+    if (avgScore > avgHigh) {
+      // Update "avgs-high" with the new higher "avg-score"
+      localStorage.setItem("avgs-high", avgScore);
+    } else if (avgScore === avgHigh) {
+      // Do nothing if values are equal
+    } else if (avgScore <= avgHigh - 15 && localStorage.getItem("low-tests")) {
+
+      // Show an alert if the avg-score is 15 less than the highest score
+      showModal({
+    iconSrc: 'https://img.icons8.com/3d-fluency/94/downcast-face-with-sweat.png', // Custom icon
+    message: "Your average score is getting lower. Wordify has a list of tests you didn't pass before. You can study them to improve your score!",
+    okAction: () => window.location.replace('fails.html'), // Custom action
+    buttonText: "Show Me" // Custom button text
+  });
+    }
+  }
+
+  // Function to display the modal with customizable parameters
+function showModal({ iconSrc, message, okAction, buttonText = 'Yeppi!' }) {
+  // Set the custom icon in the modal
+  document.getElementById('modalIcon').src = iconSrc || 'https://img.icons8.com/3d-fluency/94/confetti.png'; // Default icon
+  document.getElementById('modalIcon').draggable = false;
+  
+  // Set the custom message in the modal
+  document.getElementById('modalText').innerText = message || "Default message goes here."; // Default message
+  
+  // Set the custom button text
+  document.getElementById('acceptBtn').innerText = buttonText || 'Yeppi!'; // Default button text
+  
+  // Set the custom action for the "OK" button
+  document.getElementById('acceptBtn').onclick = function() {
+    // Execute the custom okAction if provided
+    if (okAction && typeof okAction === 'function') {
+      okAction();
+    }
+    // Close the modal after the action
+    closeModal();
+  };
+
+  // Show the modal
+  document.getElementById('overlay2').style.display = 'flex';
+}
+
+// Function to close the modal
+function closeModal() {
+  // Hide the modal
+  document.getElementById('overlay2').style.display = 'none';
 }
 </script>
 <script src="time.js"></script>

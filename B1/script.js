@@ -211,6 +211,39 @@ function submitTest() {
   const resultText = document.getElementById("resultText");
   animateCounter(resultText, Math.round(score));
 
+                          
+// Check if the low-tests key exists in localStorage
+if (!localStorage.getItem('low-tests')) {
+  // If the key doesn't exist, initialize it as an empty array
+  localStorage.setItem('low-tests', JSON.stringify([]));
+}
+
+// Get the current low-tests array from localStorage
+let lowTests = JSON.parse(localStorage.getItem('low-tests'));
+
+// Check if score is less than 50
+if (score < 50) {
+  // Get the page title and the relative URL path
+  const pageTitle = document.title;
+  let relativePath = window.location.pathname.replace(/^\/|\/$/g, '');  // Strips leading/trailing slashes
+
+  // Remove "Wordify/" from the path, if it exists
+  relativePath = relativePath.replace(/^Wordify\//, '');
+
+  // Create a test object to add to the low-tests array
+  const test = {
+      name: pageTitle,
+      url: relativePath,
+      id: testId
+  };
+
+  // Add the test object to the low-tests array
+  lowTests.push(test);
+
+  // Save the updated low-tests array back to localStorage
+  localStorage.setItem('low-tests', JSON.stringify(lowTests));
+}
+
   const scoreState = document.getElementById("score-state");
   let scoreMessage = "";
   let messageColor = "";
@@ -353,7 +386,8 @@ correctDivs.forEach(div => {
 
                         localStorage.setItem('scores', JSON.stringify(scores));
                         console.log(totalGems)
-                        
+
+
                         
           }
 
@@ -475,8 +509,8 @@ document.addEventListener('click', function() {
         });
         
 
-        if (window.innerHeight < 600) {
-            alert('To interact with Wordify, your screen height must be at least 600 pixels');
+        if (window.innerHeight < 300) {
+            alert('To interact with Wordify, your screen height must be at least 300 pixels');
             window.location.href = "../index.html";  // Redirect to the specified page after alert
         }
 
@@ -488,7 +522,7 @@ document.addEventListener('click', function() {
 
             // Use an if statement to check if the test is completed
             if (completed.includes(testId)) {
-              window.history.back();
+              window.location.replace('../../../quizes.html');
               localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) + 1.5).toString());
             } else {
                                 // Display a confirmation dialog
@@ -496,7 +530,7 @@ document.addEventListener('click', function() {
                 
                 // Navigate back only if the user confirms
                 if (confirmation) {
-                  window.history.back();
+                  window.location.replace('../../../quizes.html');
                     localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) + 1.5).toString());
                 }
 

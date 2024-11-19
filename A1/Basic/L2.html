@@ -113,64 +113,74 @@ const questions = [
     {
         type: "normal-test",
         question: "She ______ her homework every day.",
-        options: ["do", "does", "doing", "did"],
+        options: shuffle(["do", "does", "doing", "did"]),
         correctAnswer: "does"
     },
     {
         type: "normal-test",
         question: "They ______ football in the park.",
-        options: ["play", "plays", "playing", "played"],
+        options: shuffle(["play", "plays", "playing", "played"]),
         correctAnswer: "play"
     },
     {
         type: "normal-test",
         question: "We ______ to school at 8 o’clock.",
-        options: ["go", "goes", "going", "went"],
+        options: shuffle(["go", "goes", "going", "went"]),
         correctAnswer: "go"
     },
     {
         type: "normal-test",
         question: "The dog ______ at the door.",
-        options: ["bark", "barks", "barking", "barked"],
+        options: shuffle(["bark", "barks", "barking", "barked"]),
         correctAnswer: "barks"
     },
     {
         type: "normal-test",
         question: "I ______ breakfast at 7 o’clock every morning.",
-        options: ["eat", "eats", "eating", "ate"],
+        options: shuffle(["eat", "eats", "eating", "ate"]),
         correctAnswer: "eat"
     },
     {
         type: "normal-test",
         question: "She ______ to music in her free time.",
-        options: ["listen", "listens", "listening", "listened"],
+        options: shuffle(["listen", "listens", "listening", "listened"]),
         correctAnswer: "listens"
     },
     {
         type: "normal-test",
         question: "He ______ water when he is thirsty.",
-        options: ["drink", "drinks", "drinking", "drank"],
+        options: shuffle(["drink", "drinks", "drinking", "drank"]),
         correctAnswer: "drinks"
     },
     {
         type: "normal-test",
         question: "We ______ in a small house.",
-        options: ["live", "lives", "living", "lived"],
+        options: shuffle(["live", "lives", "living", "lived"]),
         correctAnswer: "live"
     },
     {
         type: "normal-test",
         question: "The baby ______ when it is tired.",
-        options: ["cry", "cries", "crying", "cried"],
+        options: shuffle(["cry", "cries", "crying", "cried"]),
         correctAnswer: "cries"
     },
     {
         type: "normal-test",
         question: "The shop ______ at 9 o’clock every day.",
-        options: ["open", "opens", "opening", "opened"],
+        options: shuffle(["open", "opens", "opening", "opened"]),
         correctAnswer: "opens"
     }
 ];
+
+// Function to shuffle options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 

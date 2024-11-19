@@ -113,7 +113,7 @@ const questions = [
     {
         type: "picture-test", 
         question: "What is this?", 
-        options: ["Cat", "Elephant", "Rabbit","Dog"], 
+        options: shuffle(["Cat", "Elephant", "Rabbit", "Dog"]), 
         correctAnswer: "Dog",
         imageUrl: "https://media0.giphy.com/media/y9uGAxRuKTsv5aJyAB/giphy.gif?cid=6c09b95225mfh7369jho56jonldnyt5lzsriq4wuzduyddz2&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s", 
         scale: "150px"
@@ -121,7 +121,7 @@ const questions = [
     {
         type: "picture-test", 
         question: "What is this?", 
-        options: ["Girl", "Boy", "Child", "Woman"], 
+        options: shuffle(["Girl", "Boy", "Child", "Woman"]), 
         correctAnswer: "Woman",
         imageUrl: "https://media3.giphy.com/avatars/ak_ditto_art/3yyGXmNcFkIe.gif", 
         scale: "150px"
@@ -129,7 +129,7 @@ const questions = [
     {
         type: "picture-test", 
         question: "What is this?", 
-        options: ["Apple", "Banana", "Orange", "Lemon"], 
+        options: shuffle(["Apple", "Banana", "Orange", "Lemon"]), 
         correctAnswer: "Orange",
         imageUrl: "https://i.pinimg.com/originals/3d/d5/6f/3dd56f11d2e43e4cf58ba02571e256a9.gif", 
         scale: "100px"
@@ -137,7 +137,7 @@ const questions = [
     {
         type: "picture-test", 
         question: "What is this?", 
-        options: ["Boy", "Girl", "Man", "Woman"], 
+        options: shuffle(["Boy", "Girl", "Man", "Woman"]), 
         correctAnswer: "Boy",
         imageUrl: "https://media4.giphy.com/media/XM9gStaDSwrewTeVLq/giphy.gif", 
         scale: "200px"
@@ -145,7 +145,7 @@ const questions = [
     {
         type: "picture-test", 
         question: "What is this?", 
-        options: ["Dog", "Cat", "Rabbit", "Elephant"], 
+        options: shuffle(["Dog", "Cat", "Rabbit", "Elephant"]), 
         correctAnswer: "Rabbit",
         imageUrl: "https://img.clipart-library.com/2/clip-transparent-bunny-gif/clip-transparent-bunny-gif-2.gif", 
         scale: "200px"
@@ -153,7 +153,7 @@ const questions = [
     {
         type: "picture-test", 
         question: "What is this?", 
-        options: ["Strawberry", "Cherry", "Apple", "Orange"], 
+        options: shuffle(["Strawberry", "Cherry", "Apple", "Orange"]), 
         correctAnswer: "Strawberry",
         imageUrl: "https://www.icegif.com/wp-content/uploads/2022/08/icegif-915.gif", 
         scale: "120px"
@@ -161,7 +161,7 @@ const questions = [
     {
         type: "picture-test", 
         question: "What is this?", 
-        options: ["Man", "Woman", "Boy", "Girl"], 
+        options: shuffle(["Man", "Woman", "Boy", "Girl"]), 
         correctAnswer: "Man",
         imageUrl: "https://www.pngkey.com/png/full/5-53704_walking-man-cartoon-clip-art-freeuse-download-cartoon.png", 
         scale: "120px"
@@ -169,7 +169,7 @@ const questions = [
     {
         type: "picture-test", 
         question: "What is this?", 
-        options: ["Tiger", "Elephant", "Bear", "Lion"], 
+        options: shuffle(["Tiger", "Elephant", "Bear", "Lion"]), 
         correctAnswer: "Lion",
         imageUrl: "https://media.tenor.com/52UnVgrB_G0AAAAi/lion-african-lion.gif", 
         scale: "180px"
@@ -177,12 +177,22 @@ const questions = [
     {
         type: "picture-test", 
         question: "What is this?", 
-        options: ["Fish", "Bird", "Dog", "Horse"], 
+        options: shuffle(["Fish", "Bird", "Dog", "Horse"]), 
         correctAnswer: "Bird",
         imageUrl: "https://img1.picmix.com/output/stamp/normal/2/4/0/7/1117042_91959.gif", 
         scale: "120px"
     }
 ];
+
+// Function to shuffle options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 

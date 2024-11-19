@@ -113,84 +113,94 @@ const questions = [
     {
         type: "normal-test",
         question: "What is the past tense of 'do'?",
-        options: ["does", "done", "did", "doing"],
+        options: shuffle(["does", "done", "did", "doing"]),
         correctAnswer: "did"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: [
+        options: shuffle([
             "She can sings well.",
             "She can sing well.",
             "She sing well.",
             "She can sung well."
-        ],
+        ]),
         correctAnswer: "She can sing well."
     },
     {
         type: "normal-test",
         question: "Which word completes the sentence?\n'They _______ a lot of homework last night.'",
-        options: ["do", "does", "did", "doing"],
+        options: shuffle(["do", "does", "did", "doing"]),
         correctAnswer: "did"
     },
     {
         type: "normal-test",
         question: "Which word is a verb?",
-        options: ["run", "book", "house", "quick"],
+        options: shuffle(["run", "book", "house", "quick"]),
         correctAnswer: "run"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: [
+        options: shuffle([
             "They will go to the party.",
             "They will goes to the party.",
             "They will going to the party.",
             "They will went to the party."
-        ],
+        ]),
         correctAnswer: "They will go to the party."
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'happy'?",
-        options: ["sad", "tall", "quick", "large"],
+        options: shuffle(["sad", "tall", "quick", "large"]),
         correctAnswer: "sad"
     },
     {
         type: "normal-test",
         question: "Which word completes the sentence?\n'He _______ to the store every day.'",
-        options: ["go", "going", "goes", "gone"],
+        options: shuffle(["go", "going", "goes", "gone"]),
         correctAnswer: "goes"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: [
+        options: shuffle([
             "They doesn't like pizza.",
             "They don't likes pizza.",
             "They don't like pizza.",
             "They does like pizza."
-        ],
+        ]),
         correctAnswer: "They don't like pizza."
     },
     {
         type: "normal-test",
         question: "Which of these is a correct sentence?",
-        options: [
+        options: shuffle([
             "I plays soccer.",
             "I play soccer.",
             "I playeds soccer.",
             "I playing soccer."
-        ],
+        ]),
         correctAnswer: "I play soccer."
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'clean'?",
-        options: ["dirty", "quick", "tall", "heavy"],
+        options: shuffle(["dirty", "quick", "tall", "heavy"]),
         correctAnswer: "dirty"
     }
 ];
+
+// Function to shuffle options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 

@@ -113,64 +113,74 @@ const questions = [
     {
         type: "normal-test",
         question: "Which of these sentences is correct?",
-        options: ["He don’t like coffee.", "He doesn't like coffee.", "He not like coffee.", "He doesn't likes coffee."],
+        options: shuffle(["He don’t like coffee.", "He doesn't like coffee.", "He not like coffee.", "He doesn't likes coffee."]),
         correctAnswer: "He doesn't like coffee."
     },
     {
         type: "normal-test",
         question: "Which word is an adjective?",
-        options: ["quickly", "running", "beautiful", "books"],
+        options: shuffle(["quickly", "running", "beautiful", "books"]),
         correctAnswer: "beautiful"
     },
     {
         type: "normal-test",
         question: "What is the correct form of 'eat' in the past tense?",
-        options: ["eat", "eats", "eating", "ate"],
+        options: shuffle(["eat", "eats", "eating", "ate"]),
         correctAnswer: "ate"
     },
     {
         type: "normal-test",
         question: "Choose the correct sentence:",
-        options: ["He can to play the guitar.", "He can playing the guitar.", "He can play the guitar.", "He can plays the guitar."],
+        options: shuffle(["He can to play the guitar.", "He can playing the guitar.", "He can play the guitar.", "He can plays the guitar."]),
         correctAnswer: "He can play the guitar."
     },
     {
         type: "normal-test",
         question: "Which sentence is in the past continuous tense?",
-        options: ["I am studying at the moment.", "I was studying at the moment.", "I study at the moment.", "I had studied at the moment."],
+        options: shuffle(["I am studying at the moment.", "I was studying at the moment.", "I study at the moment.", "I had studied at the moment."]),
         correctAnswer: "I was studying at the moment."
     },
     {
         type: "normal-test",
         question: "Which of these sentences is correct?",
-        options: ["I have been reading for two hours.", "I am reading for two hours.", "I read for two hours.", "I reads for two hours."],
+        options: shuffle(["I have been reading for two hours.", "I am reading for two hours.", "I read for two hours.", "I reads for two hours."]),
         correctAnswer: "I have been reading for two hours."
     },
     {
         type: "normal-test",
         question: "Which word is a synonym for 'strong'?",
-        options: ["weak", "powerful", "small", "soft"],
+        options: shuffle(["weak", "powerful", "small", "soft"]),
         correctAnswer: "powerful"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["They have already gone to the store.", "They already gone to the store.", "They have go to the store already.", "They have gone to store already."],
+        options: shuffle(["They have already gone to the store.", "They already gone to the store.", "They have go to the store already.", "They have gone to store already."]),
         correctAnswer: "They have already gone to the store."
     },
     {
         type: "normal-test",
         question: "Choose the correct form: 'She _______ in the park when it started raining.'",
-        options: ["walks", "was walking", "walked", "had walked"],
+        options: shuffle(["walks", "was walking", "walked", "had walked"]),
         correctAnswer: "was walking"
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'young'?",
-        options: ["old", "tall", "strong", "small"],
+        options: shuffle(["old", "tall", "strong", "small"]),
         correctAnswer: "old"
     }
 ];
+
+// Function to shuffle options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 

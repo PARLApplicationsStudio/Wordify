@@ -113,64 +113,74 @@ const questions = [
     {
         type: "normal-test",
         question: "Which of these sentences is grammatically correct?",
-        options: ["She can't hardly wait.", "She can hardly wait.", "She can hardly to wait.", "She can't wait hardly."],
+        options: shuffle(["She can't hardly wait.", "She can hardly wait.", "She can hardly to wait.", "She can't wait hardly."]),
         correctAnswer: "She can hardly wait."
     },
     {
         type: "normal-test",
         question: "What is the past tense of 'go'?",
-        options: ["goed", "went", "gone", "goes"],
+        options: shuffle(["goed", "went", "gone", "goes"]),
         correctAnswer: "went"
     },
     {
         type: "normal-test",
         question: "Which sentence is in the correct present perfect tense?",
-        options: ["I has seen that movie.", "I have seen that movie.", "I seen that movie.", "I see that movie."],
+        options: shuffle(["I has seen that movie.", "I have seen that movie.", "I seen that movie.", "I see that movie."]),
         correctAnswer: "I have seen that movie."
     },
     {
         type: "normal-test",
         question: "Choose the correct question tag: 'You have been to the concert, _______?'",
-        options: ["haven't you", "haven't he", "don't you", "haven't they"],
+        options: shuffle(["haven't you", "haven't he", "don't you", "haven't they"]),
         correctAnswer: "haven't you"
     },
     {
         type: "normal-test",
         question: "Which of these sentences uses a gerund?",
-        options: ["I love to dance.", "I love dancing.", "I loved to dance.", "I love dance."],
+        options: shuffle(["I love to dance.", "I love dancing.", "I loved to dance.", "I love dance."]),
         correctAnswer: "I love dancing."
     },
     {
         type: "normal-test",
         question: "Choose the correct word to complete the sentence: 'It _______ in the morning.'",
-        options: ["rain", "rains", "rained", "raining"],
+        options: shuffle(["rain", "rains", "rained", "raining"]),
         correctAnswer: "rains"
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'optimistic'?",
-        options: ["pessimistic", "realistic", "practical", "hopeful"],
+        options: shuffle(["pessimistic", "realistic", "practical", "hopeful"]),
         correctAnswer: "pessimistic"
     },
     {
         type: "normal-test",
         question: "Which word completes the sentence: 'He plays the guitar _______.'",
-        options: ["perfect", "perfectly", "perfecting", "more perfect"],
+        options: shuffle(["perfect", "perfectly", "perfecting", "more perfect"]),
         correctAnswer: "perfectly"
     },
     {
         type: "normal-test",
         question: "What is the correct question form for 'He works here'?",
-        options: ["Does he works here?", "Does he work here?", "He works here?", "Work he here?"],
+        options: shuffle(["Does he works here?", "Does he work here?", "He works here?", "Work he here?"]),
         correctAnswer: "Does he work here?"
     },
     {
         type: "normal-test",
         question: "Which of these sentences is correct?",
-        options: ["She is a more intelligent than him.", "She is more intelligent than him.", "She is intelligent more than him.", "She is most intelligent than him."],
+        options: shuffle(["She is a more intelligent than him.", "She is more intelligent than him.", "She is intelligent more than him.", "She is most intelligent than him."]),
         correctAnswer: "She is more intelligent than him."
     }
 ];
+
+// Function to shuffle options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 

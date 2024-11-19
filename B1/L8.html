@@ -113,64 +113,74 @@ const questions = [
     {
         type: "normal-test",
         question: "Which sentence uses the correct future perfect tense?",
-        options: ["I will have finished the project by next week.", "I will finished the project by next week.", "I will have finished the project next week.", "I finish the project by next week."],
+        options: shuffle(["I will have finished the project by next week.", "I will finished the project by next week.", "I will have finished the project next week.", "I finish the project by next week."]),
         correctAnswer: "I will have finished the project by next week."
     },
     {
         type: "normal-test",
         question: "Choose the correct verb form: 'He _______ to the store at this moment.'",
-        options: ["is going", "is go", "go", "has gone"],
+        options: shuffle(["is going", "is go", "go", "has gone"]),
         correctAnswer: "is going"
     },
     {
         type: "normal-test",
         question: "What is the past tense of 'begin'?",
-        options: ["begun", "begins", "began", "beginning"],
+        options: shuffle(["begun", "begins", "began", "beginning"]),
         correctAnswer: "began"
     },
     {
         type: "normal-test",
         question: "Which sentence is in the correct passive voice?",
-        options: ["The book is read by the teacher.", "The teacher reads the book.", "The teacher read the book.", "The teacher is reading the book."],
+        options: shuffle(["The book is read by the teacher.", "The teacher reads the book.", "The teacher read the book.", "The teacher is reading the book."]),
         correctAnswer: "The book is read by the teacher."
     },
     {
         type: "normal-test",
         question: "Which word is the correct synonym of 'increase'?",
-        options: ["decrease", "grow", "shrink", "lessen"],
+        options: shuffle(["decrease", "grow", "shrink", "lessen"]),
         correctAnswer: "grow"
     },
     {
         type: "normal-test",
         question: "Which of these sentences is correct?",
-        options: ["If I were you, I will go to the party.", "If I were you, I would go to the party.", "If I was you, I would go to the party.", "If I was you, I will go to the party."],
+        options: shuffle(["If I were you, I will go to the party.", "If I were you, I would go to the party.", "If I was you, I would go to the party.", "If I was you, I will go to the party."]),
         correctAnswer: "If I were you, I would go to the party."
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["I have been waiting here for two hours.", "I have waiting here for two hours.", "I have waited here for two hours.", "I was waiting here for two hours."],
+        options: shuffle(["I have been waiting here for two hours.", "I have waiting here for two hours.", "I have waited here for two hours.", "I was waiting here for two hours."]),
         correctAnswer: "I have been waiting here for two hours."
     },
     {
         type: "normal-test",
         question: "What is the synonym of 'problematic'?",
-        options: ["easy", "difficult", "simple", "fun"],
+        options: shuffle(["easy", "difficult", "simple", "fun"]),
         correctAnswer: "difficult"
     },
     {
         type: "normal-test",
         question: "Which word is the correct use of 'despite'?",
-        options: ["Despite of the rain, we went outside.", "Despite the rain, we went outside.", "In spite of the rain, we go outside.", "Despite to the rain, we went outside."],
+        options: shuffle(["Despite of the rain, we went outside.", "Despite the rain, we went outside.", "In spite of the rain, we go outside.", "Despite to the rain, we went outside."]),
         correctAnswer: "Despite the rain, we went outside."
     },
     {
         type: "normal-test",
         question: "Which of these sentences is correct?",
-        options: ["The information is useful.", "The informations are useful.", "The information are useful.", "The information is usefully."],
+        options: shuffle(["The information is useful.", "The informations are useful.", "The information are useful.", "The information is usefully."]),
         correctAnswer: "The information is useful."
     }
 ];
+
+// Function to shuffle options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 

@@ -113,64 +113,74 @@ const questions = [
     {
         type: "normal-test",
         question: "Which of these sentences is correct?",
-        options: ["She has been to the party yesterday.", "She had been to the party yesterday.", "She was been to the party yesterday.", "She went to the party yesterday."],
+        options: shuffle(["She has been to the party yesterday.", "She had been to the party yesterday.", "She was been to the party yesterday.", "She went to the party yesterday."]),
         correctAnswer: "She went to the party yesterday."
     },
     {
         type: "normal-test",
         question: "Choose the correct verb form: 'By this time next year, I _______ my exams.'",
-        options: ["will finish", "finished", "will have finished", "have finished"],
+        options: shuffle(["will finish", "finished", "will have finished", "have finished"]),
         correctAnswer: "will have finished"
     },
     {
         type: "normal-test",
         question: "Which of these is a correct question?",
-        options: ["How often do you go to the gym?", "How often you go to the gym?", "How often do you going to the gym?", "How often you do go to the gym?"],
+        options: shuffle(["How often do you go to the gym?", "How often you go to the gym?", "How often do you going to the gym?", "How often you do go to the gym?"]),
         correctAnswer: "How often do you go to the gym?"
     },
     {
         type: "normal-test",
         question: "Choose the correct sentence:",
-        options: ["I have studied English for five years.", "I have studying English for five years.", "I studied English for five years.", "I study English for five years."],
+        options: shuffle(["I have studied English for five years.", "I have studying English for five years.", "I studied English for five years.", "I study English for five years."]),
         correctAnswer: "I have studied English for five years."
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'cheap'?",
-        options: ["expensive", "tall", "hard", "slow"],
+        options: shuffle(["expensive", "tall", "hard", "slow"]),
         correctAnswer: "expensive"
     },
     {
         type: "normal-test",
         question: "Which word completes the sentence: 'He has been working here _______ two years.'",
-        options: ["since", "for", "during", "while"],
+        options: shuffle(["since", "for", "during", "while"]),
         correctAnswer: "for"
     },
     {
         type: "normal-test",
         question: "Choose the correct form of the verb: 'If I _______ you, I would apologize.'",
-        options: ["am", "were", "was", "be"],
+        options: shuffle(["am", "were", "was", "be"]),
         correctAnswer: "were"
     },
     {
         type: "normal-test",
         question: "What is the plural of 'child'?",
-        options: ["childs", "children", "childes", "childrens"],
+        options: shuffle(["childs", "children", "childes", "childrens"]),
         correctAnswer: "children"
     },
     {
         type: "normal-test",
         question: "Which sentence is in the past perfect tense?",
-        options: ["He has finished his work.", "He finished his work.", "He had finished his work.", "He will finish his work."],
+        options: shuffle(["He has finished his work.", "He finished his work.", "He had finished his work.", "He will finish his work."]),
         correctAnswer: "He had finished his work."
     },
     {
         type: "normal-test",
         question: "Which of these is a synonym for 'angry'?",
-        options: ["happy", "furious", "tired", "calm"],
+        options: shuffle(["happy", "furious", "tired", "calm"]),
         correctAnswer: "furious"
     }
 ];
+
+// Function to shuffle options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 

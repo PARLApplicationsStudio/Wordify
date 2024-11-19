@@ -113,64 +113,74 @@ const questions = [
     {
         type: "normal-test",
         question: "What is the past tense of 'buy'?",
-        options: ["buyed", "bought", "buys", "buying"],
+        options: shuffle(["buyed", "bought", "buys", "buying"]),
         correctAnswer: "bought"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["I have a meeting yesterday.", "I had a meeting yesterday.", "I have meeting yesterday.", "I having a meeting yesterday."],
+        options: shuffle(["I had a meeting yesterday.", "I have a meeting yesterday.", "I have meeting yesterday.", "I having a meeting yesterday."]),
         correctAnswer: "I had a meeting yesterday."
     },
     {
         type: "normal-test",
         question: "Which word is a verb?",
-        options: ["play", "table", "green", "dog"],
+        options: shuffle(["play", "table", "green", "dog"]),
         correctAnswer: "play"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["He don't play soccer.", "He doesn't plays soccer.", "He doesn't play soccer.", "He don't playing soccer."],
+        options: shuffle(["He doesn't play soccer.", "He don't play soccer.", "He doesn't plays soccer.", "He don't playing soccer."]),
         correctAnswer: "He doesn't play soccer."
     },
     {
         type: "normal-test",
         question: "Which word completes the sentence?\n'I _______ a book right now.'",
-        options: ["read", "reads", "am reading", "reading"],
+        options: shuffle(["read", "am reading", "reads", "reading"]),
         correctAnswer: "am reading"
     },
     {
         type: "normal-test",
         question: "Which of these is a food item?",
-        options: ["pizza", "car", "table", "window"],
+        options: shuffle(["pizza", "car", "table", "window"]),
         correctAnswer: "pizza"
     },
     {
         type: "normal-test",
         question: "Which word completes the sentence?\n'Can you _______ the window, please?'",
-        options: ["open", "opens", "opening", "opened"],
+        options: shuffle(["open", "opens", "opening", "opened"]),
         correctAnswer: "open"
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'strong'?",
-        options: ["weak", "tall", "heavy", "loud"],
+        options: shuffle(["weak", "tall", "heavy", "loud"]),
         correctAnswer: "weak"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["They will not coming tomorrow.", "They will not come tomorrow.", "They will not to come tomorrow.", "They will not comes tomorrow."],
+        options: shuffle(["They will not come tomorrow.", "They will not coming tomorrow.", "They will not to come tomorrow.", "They will not comes tomorrow."]),
         correctAnswer: "They will not come tomorrow."
     },
     {
         type: "normal-test",
         question: "Which is the opposite of 'cheap'?",
-        options: ["expensive", "rich", "small", "high"],
+        options: shuffle(["expensive", "rich", "small", "high"]),
         correctAnswer: "expensive"
     }
 ];
+
+// Function to shuffle options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 

@@ -113,64 +113,74 @@ const questions = [
     {
         type: "normal-test",
         question: "Which sentence is in the correct conditional form?",
-        options: ["If I would have known, I would have helped.", "If I had known, I would have helped.", "If I know, I will help.", "If I will know, I would help."],
+        options: shuffle(["If I would have known, I would have helped.", "If I had known, I would have helped.", "If I know, I will help.", "If I will know, I would help."]),
         correctAnswer: "If I had known, I would have helped."
     },
     {
         type: "normal-test",
         question: "Choose the correct word: 'She _______ to the gym every day.'",
-        options: ["goes", "go", "gone", "going"],
+        options: shuffle(["goes", "go", "gone", "going"]),
         correctAnswer: "goes"
     },
     {
         type: "normal-test",
         question: "Which sentence is in the past perfect tense?",
-        options: ["I have gone to the store.", "I had gone to the store.", "I was gone to the store.", "I go to the store."],
+        options: shuffle(["I have gone to the store.", "I had gone to the store.", "I was gone to the store.", "I go to the store."]),
         correctAnswer: "I had gone to the store."
     },
     {
         type: "normal-test",
         question: "What is the synonym of 'difficult'?",
-        options: ["easy", "hard", "fun", "quick"],
+        options: shuffle(["easy", "hard", "fun", "quick"]),
         correctAnswer: "hard"
     },
     {
         type: "normal-test",
         question: "Which word completes the sentence? 'I _______ a good book.'",
-        options: ["read", "reads", "reading", "have read"],
+        options: shuffle(["read", "reads", "reading", "have read"]),
         correctAnswer: "read"
     },
     {
         type: "normal-test",
         question: "Which of these is a question in the past tense?",
-        options: ["Did you eat dinner?", "Do you eat dinner?", "Have you eat dinner?", "You eat dinner?"],
+        options: shuffle(["Did you eat dinner?", "Do you eat dinner?", "Have you eat dinner?", "You eat dinner?"]),
         correctAnswer: "Did you eat dinner?"
     },
     {
         type: "normal-test",
         question: "What is the plural of 'person'?",
-        options: ["persons", "peoples", "persons'", "people"],
+        options: shuffle(["persons", "peoples", "persons'", "people"]),
         correctAnswer: "people"
     },
     {
         type: "normal-test",
         question: "Which sentence is grammatically correct?",
-        options: ["I have much homework.", "I have many homework.", "I have a lot homework.", "I have few homework."],
+        options: shuffle(["I have much homework.", "I have many homework.", "I have a lot homework.", "I have few homework."]),
         correctAnswer: "I have much homework."
     },
     {
         type: "normal-test",
         question: "Choose the correct word: 'We _______ swimming yesterday.'",
-        options: ["goes", "went", "going", "gone"],
+        options: shuffle(["goes", "went", "going", "gone"]),
         correctAnswer: "went"
     },
     {
         type: "normal-test",
         question: "Which sentence is in the correct future simple tense?",
-        options: ["I will go to the store tomorrow.", "I am going to the store tomorrow.", "I will going to the store tomorrow.", "I will gone to the store tomorrow."],
+        options: shuffle(["I will go to the store tomorrow.", "I am going to the store tomorrow.", "I will going to the store tomorrow.", "I will gone to the store tomorrow."]),
         correctAnswer: "I will go to the store tomorrow."
     }
 ];
+
+// Function to shuffle options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 

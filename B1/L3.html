@@ -113,64 +113,74 @@ const questions = [
     {
         type: "normal-test",
         question: "Which sentence uses the correct conditional form?",
-        options: ["If I would have known, I would have helped.", "If I knew, I would help.", "If I had known, I would have helped.", "If I will know, I will help."],
+        options: shuffle(["If I would have known, I would have helped.", "If I knew, I would help.", "If I had known, I would have helped.", "If I will know, I will help."]),
         correctAnswer: "If I had known, I would have helped."
     },
     {
         type: "normal-test",
         question: "What is the correct form of 'see' in the passive voice?",
-        options: ["is seen", "saw", "seen", "seeing"],
+        options: shuffle(["is seen", "saw", "seen", "seeing"]),
         correctAnswer: "is seen"
     },
     {
         type: "normal-test",
         question: "Which of these sentences is grammatically correct?",
-        options: ["Neither of the boys have been to Paris.", "Neither of the boys has been to Paris.", "Neither of the boys were been to Paris.", "Neither of the boys had been to Paris."],
+        options: shuffle(["Neither of the boys have been to Paris.", "Neither of the boys has been to Paris.", "Neither of the boys were been to Paris.", "Neither of the boys had been to Paris."]),
         correctAnswer: "Neither of the boys has been to Paris."
     },
     {
         type: "normal-test",
         question: "What is the past perfect continuous form of 'study'?",
-        options: ["had been studying", "has been studying", "had studied", "has studied"],
+        options: shuffle(["had been studying", "has been studying", "had studied", "has studied"]),
         correctAnswer: "had been studying"
     },
     {
         type: "normal-test",
         question: "Which word is a synonym for 'difficult'?",
-        options: ["easy", "hard", "soft", "quick"],
+        options: shuffle(["easy", "hard", "soft", "quick"]),
         correctAnswer: "hard"
     },
     {
         type: "normal-test",
         question: "Choose the correct form: 'I wish I _______ more time to finish the project.'",
-        options: ["had", "have", "would have", "will have"],
+        options: shuffle(["had", "have", "would have", "will have"]),
         correctAnswer: "had"
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'bright'?",
-        options: ["dull", "dark", "shiny", "loud"],
+        options: shuffle(["dull", "dark", "shiny", "loud"]),
         correctAnswer: "dull"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["He is taller than I am.", "He is taller than me am.", "He is more taller than I am.", "He is the tallest than I am."],
+        options: shuffle(["He is taller than I am.", "He is taller than me am.", "He is more taller than I am.", "He is the tallest than I am."]),
         correctAnswer: "He is taller than I am."
     },
     {
         type: "normal-test",
         question: "Choose the correct verb form: 'By the time she arrives, I _______ all the work.'",
-        options: ["had finished", "will finish", "finish", "will have finished"],
+        options: shuffle(["had finished", "will finish", "finish", "will have finished"]),
         correctAnswer: "will have finished"
     },
     {
         type: "normal-test",
         question: "Which of these is the correct usage of 'neither'?",
-        options: ["Neither of the books are interesting.", "Neither of the books is interesting.", "Neither of books is interesting.", "Neither of books are interesting."],
+        options: shuffle(["Neither of the books are interesting.", "Neither of the books is interesting.", "Neither of books is interesting.", "Neither of books are interesting."]),
         correctAnswer: "Neither of the books is interesting."
     }
 ];
+
+// Function to shuffle options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 

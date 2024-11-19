@@ -113,64 +113,74 @@ const questions = [
     {
         type: "normal-test",
         question: "Which of these sentences is correct?",
-        options: ["I have already ate lunch.", "I already have eaten lunch.", "I already ate lunch.", "I have eaten lunch already."],
+        options: shuffle(["I have already ate lunch.", "I already have eaten lunch.", "I already ate lunch.", "I have eaten lunch already."]),
         correctAnswer: "I have eaten lunch already."
     },
     {
         type: "normal-test",
         question: "Which of these words is a noun?",
-        options: ["run", "quickly", "happiness", "beautiful"],
+        options: shuffle(["run", "quickly", "happiness", "beautiful"]),
         correctAnswer: "happiness"
     },
     {
         type: "normal-test",
         question: "Which sentence uses the correct comparative form?",
-        options: ["She is more smarter than him.", "She is smartest than him.", "She is more smart than him.", "She is smarter than him."],
+        options: shuffle(["She is more smarter than him.", "She is smartest than him.", "She is more smart than him.", "She is smarter than him."]),
         correctAnswer: "She is smarter than him."
     },
     {
         type: "normal-test",
         question: "Choose the correct sentence:",
-        options: ["I have been working here since 2010.", "I have working here since 2010.", "I been working here since 2010.", "I works here since 2010."],
+        options: shuffle(["I have been working here since 2010.", "I have working here since 2010.", "I been working here since 2010.", "I works here since 2010."]),
         correctAnswer: "I have been working here since 2010."
     },
     {
         type: "normal-test",
         question: "What is the plural form of 'leaf'?",
-        options: ["leafs", "leaves", "leafes", "leafs'"],
+        options: shuffle(["leafs", "leaves", "leafes", "leafs'"]),
         correctAnswer: "leaves"
     },
     {
         type: "normal-test",
         question: "Which word is the correct form of 'to go' in the future continuous?",
-        options: ["will be going", "will going", "will have gone", "will go"],
+        options: shuffle(["will be going", "will going", "will have gone", "will go"]),
         correctAnswer: "will be going"
     },
     {
         type: "normal-test",
         question: "Which of these sentences is grammatically correct?",
-        options: ["I don't like this movie either.", "I don't like this movie too.", "I like this movie neither.", "I don't like neither this movie."],
+        options: shuffle(["I don't like this movie either.", "I don't like this movie too.", "I like this movie neither.", "I don't like neither this movie."]),
         correctAnswer: "I don't like this movie either."
     },
     {
         type: "normal-test",
         question: "Choose the correct sentence:",
-        options: ["I haven't seen him yesterday.", "I didn't seen him yesterday.", "I don't saw him yesterday.", "I didn't see him yesterday."],
+        options: shuffle(["I haven't seen him yesterday.", "I didn't seen him yesterday.", "I don't saw him yesterday.", "I didn't see him yesterday."]),
         correctAnswer: "I didn't see him yesterday."
     },
     {
         type: "normal-test",
         question: "Which of these is the correct use of 'unless'?",
-        options: ["I will go unless it rains.", "I will go unless if it rains.", "I will go unless it will rain.", "I will go unless raining."],
+        options: shuffle(["I will go unless it rains.", "I will go unless if it rains.", "I will go unless it will rain.", "I will go unless raining."]),
         correctAnswer: "I will go unless it rains."
     },
     {
         type: "normal-test",
         question: "Which word is the antonym of 'rich'?",
-        options: ["poor", "wealthy", "happy", "strong"],
+        options: shuffle(["poor", "wealthy", "happy", "strong"]),
         correctAnswer: "poor"
     }
 ];
+
+// Function to shuffle options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 

@@ -113,64 +113,74 @@ const questions = [
     {
         type: "normal-test", 
         question: "Which of these is the correct past form of 'have'?", 
-        options: ["haved", "had", "has", "having"], 
+        options: shuffle(["haved", "had", "has", "having"]), 
         correctAnswer: "had"
     },
     {
         type: "normal-test", 
         question: "Which of these sentences is correct?", 
-        options: ["She haven't finished her work yet.", "She doesn't finish her work yet.", "She hasn't finished her work yet.", "She not finish her work yet."], 
+        options: shuffle(["She haven't finished her work yet.", "She doesn't finish her work yet.", "She hasn't finished her work yet.", "She not finish her work yet."]), 
         correctAnswer: "She hasn't finished her work yet."
     },
     {
         type: "normal-test", 
         question: "Which word is a synonym for 'happy'?", 
-        options: ["sad", "content", "angry", "tired"], 
+        options: shuffle(["sad", "content", "angry", "tired"]), 
         correctAnswer: "content"
     },
     {
         type: "normal-test", 
         question: "Choose the correct option: 'If I _______ rich, I would travel the world.'", 
-        options: ["am", "were", "was", "is"], 
+        options: shuffle(["am", "were", "was", "is"]), 
         correctAnswer: "were"
     },
     {
         type: "normal-test", 
         question: "Which of these is a correct question?", 
-        options: ["How long you have been learning English?", "How long have you been learning English?", "How long you been learning English?", "How long you have been learn English?"], 
+        options: shuffle(["How long you have been learning English?", "How long have you been learning English?", "How long you been learning English?", "How long you have been learn English?"]), 
         correctAnswer: "How long have you been learning English?"
     },
     {
         type: "normal-test", 
         question: "Choose the correct form of the verb: 'They _______ to the cinema every weekend.'", 
-        options: ["goes", "went", "gone", "go"], 
+        options: shuffle(["goes", "went", "gone", "go"]), 
         correctAnswer: "go"
     },
     {
         type: "normal-test", 
         question: "Which word completes the sentence: 'I _______ to the store tomorrow.'", 
-        options: ["go", "went", "will go", "going"], 
+        options: shuffle(["go", "went", "will go", "going"]), 
         correctAnswer: "will go"
     },
     {
         type: "normal-test", 
         question: "Which of these sentences is correct?", 
-        options: ["They can plays soccer well.", "They can play soccer well.", "They can played soccer well.", "They play can soccer well."], 
+        options: shuffle(["They can plays soccer well.", "They can play soccer well.", "They can played soccer well.", "They play can soccer well."]), 
         correctAnswer: "They can play soccer well."
     },
     {
         type: "normal-test", 
         question: "Which of these is the correct passive form?", 
-        options: ["The book is read by him.", "The book read by him.", "The book was reading by him.", "The book has been readed by him."], 
+        options: shuffle(["The book is read by him.", "The book read by him.", "The book was reading by him.", "The book has been readed by him."]), 
         correctAnswer: "The book is read by him."
     },
     {
         type: "normal-test", 
         question: "Choose the correct sentence:", 
-        options: ["I have been to London last summer.", "I was been to London last summer.", "I went to London last summer.", "I gone to London last summer."], 
+        options: shuffle(["I have been to London last summer.", "I was been to London last summer.", "I went to London last summer.", "I gone to London last summer."]), 
         correctAnswer: "I went to London last summer."
     }
 ];
+
+// Function to shuffle options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 

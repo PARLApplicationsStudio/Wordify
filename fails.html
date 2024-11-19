@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test List</title>
+    <style>
+        @font-face {
+                font-family: 'Pangram Sans';
+                src: url('fonts/pangram-sans.otf') format('opentype');
+                font-weight: normal;
+                font-style: normal;
+            }
+            
+            /* Global Styles */
+            * {
+                font-family: 'Pangram Sans', sans-serif;
+                user-select: none;
+            }
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .test-item {
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            margin: 10px 0;
+            background-color: rgb(238, 238, 238);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .test-item:hover {
+            background-color: #e1e1e1;
+        }
+        .test-item img {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fail List</h1>
+    <ul id="test-list"></ul>
+
+    <script>
+        // Get the test list from localStorage
+        const tests = JSON.parse(localStorage.getItem('low-tests')) || [];
+
+        // Get the completed quizzes array from localStorage
+        const completedQuizzes = JSON.parse(localStorage.getItem('completedQuizzes')) || [];
+
+        // Function to render the test list
+        function renderTestList() {
+            const testListContainer = document.getElementById('test-list');
+            testListContainer.innerHTML = ''; // Clear any existing content
+
+            tests.forEach(test => {
+                const testItem = document.createElement('li');
+                testItem.className = 'test-item';
+
+                // Create icon element
+                const icon = document.createElement('img');
+                icon.src = 'https://img.icons8.com/fluency/35/book--v1.png';
+                icon.alt = 'Test Icon';
+
+                // Create text element for the test name
+                const text = document.createElement('span');
+                text.textContent = test.name;
+
+                // Append the icon and text to the test item
+                testItem.appendChild(icon);
+                testItem.appendChild(text);
+
+                // Add event listener to handle test item click
+                testItem.addEventListener('click', () => {
+
+                    localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) || 0) - 16);
+
+                    // Remove the test id from the completed quizzes array
+                    const index = completedQuizzes.indexOf(test.id);
+                    if (index !== -1) {
+                        completedQuizzes.splice(index, 1);
+                        localStorage.setItem('completedQuizzes', JSON.stringify(completedQuizzes));
+                    }
+
+                    // Remove the test item from the low-tests array in localStorage
+                    const testIndex = tests.findIndex(t => t.id === test.id);
+                    if (testIndex !== -1) {
+                        tests.splice(testIndex, 1);
+                        localStorage.setItem('low-tests', JSON.stringify(tests));
+                    }
+
+                    // Navigate to the test URL
+                    window.location.href = test.url;
+                });
+
+                // Append the test item to the list
+                testListContainer.appendChild(testItem);
+            });
+        }
+
+        // Render the test list when the page loads
+        renderTestList();
+
+        if (!JSON.parse(localStorage.getItem("low-tests") || "[]").length) {
+            window.location.replace('quizes.html')
+        }
+    </script>
+</body>
+</html>

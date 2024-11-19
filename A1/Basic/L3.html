@@ -113,64 +113,74 @@ const questions = [
     {
         type: "normal-test",
         question: "I ______ my teeth every morning.",
-        options: ["brush", "brushes", "brushing", "brushed"],
+        options: shuffle(["brush", "brushes", "brushing", "brushed"]),
         correctAnswer: "brush"
     },
     {
         type: "normal-test",
         question: "We ______ dinner at 7 o’clock.",
-        options: ["eat", "eats", "eating", "ate"],
+        options: shuffle(["eat", "eats", "eating", "ate"]),
         correctAnswer: "eat"
     },
     {
         type: "normal-test",
         question: "She ______ her room every weekend.",
-        options: ["clean", "cleans", "cleaning", "cleaned"],
+        options: shuffle(["clean", "cleans", "cleaning", "cleaned"]),
         correctAnswer: "cleans"
     },
     {
         type: "normal-test",
         question: "The sun ______ in the sky during the day.",
-        options: ["shine", "shines", "shining", "shined"],
+        options: shuffle(["shine", "shines", "shining", "shined"]),
         correctAnswer: "shines"
     },
     {
         type: "normal-test",
         question: "My friends ______ in the same neighborhood.",
-        options: ["live", "lives", "living", "lived"],
+        options: shuffle(["live", "lives", "living", "lived"]),
         correctAnswer: "live"
     },
     {
         type: "normal-test",
         question: "What time ______ you wake up?",
-        options: ["do", "does", "is", "are"],
+        options: shuffle(["do", "does", "is", "are"]),
         correctAnswer: "do"
     },
     {
         type: "normal-test",
         question: "Where ______ she work?",
-        options: ["do", "does", "is", "are"],
+        options: shuffle(["do", "does", "is", "are"]),
         correctAnswer: "does"
     },
     {
         type: "normal-test",
         question: "How many brothers ______ you have?",
-        options: ["do", "does", "is", "are"],
+        options: shuffle(["do", "does", "is", "are"]),
         correctAnswer: "do"
     },
     {
         type: "normal-test",
         question: "What ______ your favorite color?",
-        options: ["is", "are", "does", "do"],
+        options: shuffle(["is", "are", "does", "do"]),
         correctAnswer: "is"
     },
     {
         type: "normal-test",
         question: "Where ______ they live?",
-        options: ["do", "does", "is", "are"],
+        options: shuffle(["do", "does", "is", "are"]),
         correctAnswer: "do"
     }
 ];
+
+// Function to shuffle options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 
