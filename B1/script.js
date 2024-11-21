@@ -523,6 +523,7 @@ document.addEventListener('click', function() {
             // Use an if statement to check if the test is completed
             if (completed.includes(testId)) {
               window.location.replace('/quizes.html');
+
               localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) + 1.5).toString());
             } else {
                                 // Display a confirmation dialog
@@ -537,6 +538,8 @@ document.addEventListener('click', function() {
 
             }
       });
+      
+      document.getElementById('exit').style.display = 'none';
 
 // Load questions on page load
 window.onload = renderQuestions;

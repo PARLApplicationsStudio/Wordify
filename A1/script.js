@@ -538,6 +538,8 @@ document.addEventListener('click', function() {
 
             }
       });
+      
+      document.getElementById('exit').style.display = 'none';
 
 // Load questions on page load
 window.onload = renderQuestions;
