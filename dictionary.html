@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Dictionary</title>
+    <style>
+            @font-face {
+      font-family: 'Pangram Sans';
+      src: url('fonts/pangram-sans.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* Global Styles */
+    * {
+      font-family: 'Pangram Sans', sans-serif;
+      user-select: none;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      image-rendering: optimizeSpeed
+    }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        /* Header Styling with gradient background */
+        header {
+            background: linear-gradient(90deg, #007bff, #006e7e); /* Gradient from blue to dark cyan */
+            color: white;
+            padding: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Search container */
+        .search-container {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .search-container input {
+            width: 97%;
+            padding: 20px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        /* Dictionary List */
+        .dictionary-list {
+            width: 95%;
+            border-radius: 10px;
+            margin: 0 auto;
+            background-color: rgb(246, 246, 246);
+            padding: 15px;
+        }
+
+        .dictionary-item {
+            display: flex;
+            align-items: center;
+            padding: 25px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid black;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+            cursor: pointer;
+        }
+
+        .dictionary-item:hover {
+            background-color: #e5e5e5;
+        }
+
+        .dictionary-item .original-word {
+            color: #000000;
+        }
+
+        .dictionary-item .translated-word {
+            color: #616161;
+            margin-left: 25px;
+        }
+
+        .dictionary-item .locked-icon {
+            display: none;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .dictionary-item.locked .locked-icon {
+            display: inline-block;
+        }
+
+        .dictionary-item.locked .translated-word {
+            color: transparent;
+        }
+
+        /* Gem amount display */
+        .locked .gem-amount {
+            color: #000000;
+            margin-left: 10px;
+            vertical-align: middle;
+            font-size: 16px;
+        }
+
+        .gem-amount {
+            color: #000000;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        /* Gem icon and notification */
+        .gem-notification {
+            color: #d9534f;
+            display: none;
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .gem-notification.active {
+            display: block;
+        }
+
+        /* Styling for icons */
+        .locked-icon {
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            vertical-align: middle;
+            scale: 1.1;
+        }
+
+        .locked-icon:hover {
+            opacity: 0.7;
+        }
+
+        .gem-con {
+            position: absolute;
+            right: 80px;
+            padding: 8px;
+            border-radius: 100px;
+            transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+            cursor: pointer;
+        }
+
+        .gem-con:hover {
+            background-color: #bdbdbd;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        Dictionary
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search Dictionary..." onkeyup="searchDictionary()">
+    </div>
+
+    <div class="dictionary-list" id="dictionary-list"></div>
+
+    <div class="gem-notification" id="gem-notification">
+        You don't have enough gems to unlock this word. (Need 5 Gems)
+    </div>
+
+    <script>
+const dictionary = [
+    { original: 'a', translated: 'bir', locked: false },
+    { original: 'about', translated: 'hakkında', locked: false },
+    { original: 'adjective', translated: 'sıfat', locked: true },
+    { original: 'afternoon', translated: 'öğleden sonra', locked: false },
+    { original: 'all', translated: 'tüm', locked: false },
+    { original: 'already', translated: 'zaten', locked: false },
+    { original: 'always', translated: 'her zaman', locked: false },
+    { original: 'am', translated: 'oluyorum', locked: false },
+    { original: 'an', translated: 'bir', locked: false },
+    { original: 'and', translated: 've', locked: false },
+    { original: 'any', translated: 'herhangi bir', locked: true },
+    { original: 'apple', translated: 'elma', locked: true },
+    { original: 'are', translated: 'olmak', locked: false },
+    { original: 'around', translated: 'çevresinde', locked: false },
+    { original: 'as', translated: 'olarak', locked: false },
+    { original: 'at', translated: 'de', locked: false },
+    { original: 'ate', translated: 'yedi', locked: true },
+    { original: 'baby', translated: 'bebek', locked: true },
+    { original: 'back', translated: 'arka', locked: false },
+    { original: 'bad', translated: 'kötü', locked: false },
+    { original: 'banana', translated: 'muz', locked: true },
+    { original: 'basket', translated: 'sepet', locked: false },
+    { original: 'be', translated: 'olmak', locked: true },
+    { original: 'beautiful', translated: 'güzel', locked: false },
+    { original: 'bear', translated: 'ayı', locked: true },
+    { original: 'bird', translated: 'kuş', locked: true },
+    { original: 'black', translated: 'siyah', locked: false },
+    { original: 'blue', translated: 'mavi', locked: false },
+    { original: 'book', translated: 'kitap', locked: false },
+    { original: 'breakfast', translated: 'kahvaltı', locked: true },
+    { original: 'cat', translated: 'kedi', locked: true },
+    { original: 'chair', translated: 'sandalye', locked: false },
+    { original: 'child', translated: 'çocuk', locked: true },
+    { original: 'children', translated: 'çocuklar', locked: true },
+    { original: 'city', translated: 'şehir', locked: false },
+    { original: 'day', translated: 'gün', locked: false },
+    { original: 'dog', translated: 'köpek', locked: true },
+    { original: 'drink', translated: 'içmek', locked: false },
+    { original: 'evening', translated: 'akşam', locked: false },
+    { original: 'father', translated: 'baba', locked: true },
+    { original: 'fruit', translated: 'meyve', locked: false },
+    { original: 'game', translated: 'oyun', locked: false },
+    { original: 'good', translated: 'iyi', locked: false },
+    { original: 'grandmother', translated: 'büyükanne', locked: true },
+    { original: 'grape', translated: 'üzüm', locked: true },
+    { original: 'green', translated: 'yeşil', locked: false },
+    { original: 'horse', translated: 'at', locked: true },
+    { original: 'house', translated: 'ev', locked: false },
+    { original: 'ice', translated: 'buz', locked: true },
+    { original: 'key', translated: 'anahtar', locked: false },
+    { original: 'king', translated: 'kral', locked: true },
+    { original: 'lemon', translated: 'limon', locked: true },
+    { original: 'love', translated: 'aşk', locked: false },
+    { original: 'man', translated: 'adam', locked: false },
+    { original: 'mother', translated: 'anne', locked: true },
+    { original: 'orange', translated: 'portakal', locked: true },
+    { original: 'parent', translated: 'ebeveyn', locked: true },
+    { original: 'plural', translated: 'çoğul', locked: false },
+    { original: 'red', translated: 'kırmızı', locked: false },
+    { original: 'river', translated: 'nehir', locked: false },
+    { original: 'school', translated: 'okul', locked: false },
+    { original: 'student', translated: 'öğrenci', locked: false },
+    { original: 'sun', translated: 'güneş', locked: false },
+    { original: 'tree', translated: 'ağaç', locked: true },
+    { original: 'water', translated: 'su', locked: true },
+    { original: 'woman', translated: 'kadın', locked: false },
+    { original: 'yellow', translated: 'sarı', locked: false }
+];
+
+
+
+
+        // Function to render the dictionary
+        function renderDictionary() {
+    const dictionaryList = document.getElementById('dictionary-list');
+    dictionaryList.innerHTML = ''; // Clear existing content
+
+    // Sort the dictionary alphabetically by the 'original' property
+    const sortedDictionary = [...dictionary].sort((a, b) => 
+        a.original.localeCompare(b.original)
+    );
+
+    sortedDictionary.forEach((item, index) => {
+        const listItem = document.createElement('div');
+        listItem.classList.add('dictionary-item');
+        if (item.locked) listItem.classList.add('locked');
+        
+        listItem.innerHTML = `
+            <span class="original-word">${item.original}</span>
+            <span class="translated-word">${item.locked ? '' : item.translated}</span>
+            <div class="gem-con" onclick="unlockWord(${index})">
+                <img draggable="false" src="icons/ic_gem_gold.png" class="locked-icon" data-index="${index}">
+                ${item.locked ? `<span class="gem-amount">5</span>` : ''}
+            </div>
+        `;
+
+        dictionaryList.appendChild(listItem);
+    });
+}
+
+
+
+        // Function to handle unlocking a word
+        function unlockWord(index) {
+            const gems = parseInt(localStorage.getItem('gems') || '0');
+            if (gems >= 5) {
+                // Deduct 5 gems and unlock the word
+                localStorage.setItem('gems', gems - 5);
+                dictionary[index].locked = false;
+                renderDictionary();
+                document.getElementById('gem-notification').classList.remove('active');
+            } else {
+                // Show the gem notification
+                document.getElementById('gem-notification').classList.add('active');
+            }
+        }
+
+        // Function to search through dictionary
+        function searchDictionary() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const filteredDictionary = dictionary.filter(item => item.original.toLowerCase().includes(searchTerm));
+            const dictionaryList = document.getElementById('dictionary-list');
+            dictionaryList.innerHTML = ''; // Clear existing content
+
+            filteredDictionary.forEach((item, index) => {
+                const listItem = document.createElement('div');
+                listItem.classList.add('dictionary-item');
+                if (item.locked) listItem.classList.add('locked');
+                
+                listItem.innerHTML = `
+                    <span class="original-word">${item.original}</span>
+                    <span class="translated-word">${item.locked ? '' : item.translated}</span>
+                    <div class="gem-con" onclick="unlockWord(${index})">
+                        <img draggable="false" src="icons/ic_gem_gold.png" class="locked-icon" data-index="${index}">
+                        ${item.locked ? `<span class="gem-amount">5</span>` : ''}
+                    </div>
+                `;
+
+                dictionaryList.appendChild(listItem);
+            });
+        }
+
+        // Initialize with some gems for testing
+        if (!localStorage.getItem('gems')) {
+            localStorage.setItem('gems', '10'); // For testing purposes, you can change this value
+        }
+
+        // Render the dictionary when page loads
+        window.onload = renderDictionary;
+        console.log(dictionary)
+
+    </script>
+</body>
+
+</html>
