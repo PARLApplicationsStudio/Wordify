@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wordify - The interactive platform to make learning English easy, faster, and more enjoyable.">
+    <title>Get Started with Wordify</title>
+    <link rel="icon" href="icon.png">
+    <style>
+        /* Global Styles */
+
+        @font-face {
+      font-family: 'Pangram Sans';
+      src: url('fonts/pangram-sans.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* Global Styles */
+    * {
+      font-family: 'Pangram Sans', sans-serif;
+      user-select: none;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      image-rendering: optimizeSpeed
+    }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(100deg, #0044ff 30%, #008c9b 100%);
+            color: #fff;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        section.intro {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #ffffff;
+        }
+
+        section.intro h2 {
+            font-size: 2.5rem;
+            color: #0044cc; /* Blue */
+        }
+
+        section.intro p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        section.features {
+            background-color: #ffffff;
+            padding: 70px;
+            text-align: center;
+        }
+
+        section.features h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .feature {
+            display: inline-block;
+            width: 30%;
+            margin: 20px;
+            padding: 50px;
+            background: linear-gradient(110deg, #0044ff 10%, #43009b 80%);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+        .feature:hover {
+            scale: 1.05;
+        }
+
+        .feature h4 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #ffffff; /* Blue */
+        }
+
+        .feature p {
+            font-size: 1rem;
+            color: rgb(194, 194, 194);
+        }
+
+        section.testimonials {
+            background-color: #f9f9f9;
+            padding: 60px 20px;
+            text-align: center;
+            display: none;
+        }
+
+        section.testimonials h3 {
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        .testimonial {
+            display: inline-block;
+            width: 45%;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .testimonial cite {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #0044cc; /* Blue */
+        }
+
+        section.faq {
+            background-color: #ffffff;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        section.faq h3 {
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        .faq-item {
+            background: linear-gradient(100deg, #ffffff 30%, #ebebeb 100%);
+            margin-top: 50px;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: rgb(0, 0, 0);
+            border: 1px solid rgb(156, 156, 156);
+        }
+
+        .faq-item h4 {
+            color: #000000; /* Blue */
+        }
+
+        .faq-item p {
+            font-size: 1rem;
+            color: #4e4e4e;
+            margin-top: 20px;
+        }
+
+        section.get-started {
+            background-color: #0044cc; /* Blue */
+            color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        section.get-started h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+
+        }
+
+        section.get-started .buttons {
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 20px;
+            width: 200px;
+            margin: 10px;
+            font-size: 16px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            background-color: #1c2f7a; /* Cyan */
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #070d28; /* Darker Cyan */
+        }
+
+        footer {
+            background-color: #191062;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .feature {
+                width: 90vw;
+                padding: 30px;
+            }
+
+            .testimonial {
+                width: 90%;
+            }
+
+            section.intro h2,
+            section.get-started h2 {
+                font-size: 2rem;
+            }
+
+            section.features .feature {
+                width: 80%;
+                margin: 10px 0;
+            }
+
+            .buttons .btn {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .feature {
+                width: 90%;
+            }
+
+            .testimonial {
+                width: 100%;
+                margin: 20px 0;
+            }
+
+            section.intro h2,
+            section.get-started h2 {
+                font-size: 1.5rem;
+            }
+
+            .buttons .btn {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+        }
+
+        .logo {
+            width: 200px;
+            filter: invert(100%);
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+       <img draggable="false" src="images/wordify-brand.png" alt="Wordify" class="logo">
+    </header>
+
+    <section class="intro">
+        <h2>Get Started with Wordify</h2>
+        <p>Wordify is the most interactive platform for learning English. It is designed to make learning fun, engaging, and efficient. Whether you're a beginner or an advanced learner, Wordify is tailored to suit your stage of learning. Start your journey now!</p>
+    </section>
+
+    <section class="features">
+        <h3>Key Features</h3>
+        <div class="feature">
+            <h4>4 English Stages</h4>
+            <p>Wordify covers four stages of English, from basic to advanced, to help you grow step by step, ensuring that you master English as it's used in daily and industry life.</p>
+        </div>
+        <div class="feature">
+            <h4>Over 400 Questions</h4>
+            <p>With over 400 questions across a variety of types—text, paragraphs, listenings, and picture quizzes—Wordify makes learning fun and almost endless!</p>
+        </div>
+        <div class="feature">
+            <h4>American Accent</h4>
+            <p>We use American English and accent to help you master pronunciation for real-world communication in industries where American English is widely used.</p>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h3>What Our Users Say</h3>
+        <div class="testimonial">
+            <p>"Wordify has made learning English so much easier. The interactive quizzes and variety of question types keep me engaged and learning every day!"</p>
+            <cite>- Maria, English Learner</cite>
+        </div>
+        <div class="testimonial">
+            <p>"I love how Wordify helps me with both grammar and accent. The American accent practice has really helped me sound more natural in conversations!"</p>
+            <cite>- Ahmed, Professional</cite>
+        </div>
+    </section>
+
+    <section class="faq">
+        <h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <h4>Q: How does Wordify help me improve my accent?</h4>
+            <p>A: Wordify uses real-life American accent pronunciation, helping you sound more natural when speaking English. Practice with our quizzes and see rapid improvement!</p>
+        </div>
+        <div class="faq-item">
+            <h4>Q: Are the quizzes suitable for all levels?</h4>
+            <p>A: Yes! Wordify offers quizzes across four English stages, ranging from basic to advanced, so you can learn at your own pace and improve quickly.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Q: Can I use Wordify on my phone?</h4>
+            <p>A: Absolutely! Wordify is available as a web app and also as a dedicated Android app, which is capable of auto-updates with minimal downloads.</p>
+        </div>
+    </section>
+
+    <section class="get-started">
+        <h2>Ready to Get Started?</h2>
+        <p>Start learning English the fun and interactive way. Choose how you want to access Wordify, and start your journey today!</p>
+        <div class="buttons">
+            <a href="index.html" class="btn">Start Now</a>
+            <a href="https://github.com/PARLApplicationsStudio/Wordify/releases/download/wordify-app/wordify.apk" class="btn">Download the App</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Wordify. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>
