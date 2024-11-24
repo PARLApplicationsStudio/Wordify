@@ -109,68 +109,79 @@
 
     <script>
 
+// Shuffle function to randomize the array
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+// Shuffling the options in each question
 const questions = [
     {
         type: "normal-test",
         question: "What is the opposite of 'empty'?",
-        options: ["big", "tall", "small", "full"],
+        options: shuffle(["big", "tall", "small", "full"]),
         correctAnswer: "full"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["They are my friends.", "They is my friends.", "They be my friends.", "They are my friend."],
+        options: shuffle(["They are my friends.", "They is my friends.", "They be my friends.", "They are my friend."]),
         correctAnswer: "They are my friends."
     },
     {
         type: "normal-test",
         question: "Which word is a color?",
-        options: ["dog", "jump", "green", "happy"],
+        options: shuffle(["dog", "jump", "green", "happy"]),
         correctAnswer: "green"
     },
     {
         type: "normal-test",
         question: "What is the plural form of 'city'?",
-        options: ["citys", "citis", "cities", "citieses"],
+        options: shuffle(["citys", "citis", "cities", "citieses"]),
         correctAnswer: "cities"
     },
     {
         type: "normal-test",
         question: "Which word completes the sentence?\n'He _______ to the park every Saturday.'",
-        options: ["gone", "going", "go", "goes"],
+        options: shuffle(["gone", "going", "go", "goes"]),
         correctAnswer: "goes"
     },
     {
         type: "normal-test",
         question: "Which of these is a profession?",
-        options: ["shoe", "doctor", "quickly", "table"],
+        options: shuffle(["shoe", "doctor", "quickly", "table"]),
         correctAnswer: "doctor"
     },
     {
         type: "normal-test",
         question: "Which of these is a fruit?",
-        options: ["pencil", "chair", "apple", "bread"],
+        options: shuffle(["pencil", "chair", "apple", "bread"]),
         correctAnswer: "apple"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["She doesn't like coffee.", "She don't like coffee.", "She doesn't likes coffee.", "She not like coffee."],
+        options: shuffle(["She doesn't like coffee.", "She don't like coffee.", "She doesn't likes coffee.", "She not like coffee."]),
         correctAnswer: "She doesn't like coffee."
     },
     {
         type: "normal-test",
         question: "Which one is a correct sentence?",
-        options: ["I am going to the store.", "I going store.", "I goes to the store.", "I going to the store."],
+        options: shuffle(["I am going to the store.", "I going store.", "I goes to the store.", "I going to the store."]),
         correctAnswer: "I am going to the store."
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'high'?",
-        options: ["small", "low", "big", "tall"],
+        options: shuffle(["small", "low", "big", "tall"]),
         correctAnswer: "low"
     }
 ];
+
 
 
 

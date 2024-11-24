@@ -113,64 +113,74 @@ const questions = [
     {
         type: "normal-test",
         question: "What is the opposite of 'big'?",
-        options: ["heavy", "small", "light", "tall"],
+        options: shuffle(["heavy", "small", "light", "tall"]),
         correctAnswer: "small"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["He be my brother.", "He is my brother.", "He am my brother.", "He are my brother."],
+        options: shuffle(["He be my brother.", "He is my brother.", "He am my brother.", "He are my brother."]),
         correctAnswer: "He is my brother."
     },
     {
         type: "normal-test",
         question: "Which word is a color?",
-        options: ["blue", "house", "cat", "walk"],
+        options: shuffle(["blue", "house", "cat", "walk"]),
         correctAnswer: "blue"
     },
     {
         type: "fill-in-the-blank-test",
         question: "Choose the correct form of the verb: 'They __ to school every day.'",
-        options: ["gone", "goes", "going", "go"],
+        options: shuffle(["gone", "goes", "going", "go"]),
         correctAnswer: "go"
     },
     {
         type: "normal-test",
         question: "What is the plural of 'book'?",
-        options: ["book", "books", "bookes", "bookses"],
+        options: shuffle(["book", "books", "bookes", "bookses"]),
         correctAnswer: "books"
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'happy'?",
-        options: ["sad", "excited", "angry", "tired"],
+        options: shuffle(["sad", "excited", "angry", "tired"]),
         correctAnswer: "sad"
     },
     {
         type: "normal-test",
         question: "Which of these is a vegetable?",
-        options: ["carrot", "apple", "bread", "chicken"],
+        options: shuffle(["carrot", "apple", "bread", "chicken"]),
         correctAnswer: "carrot"
     },
     {
         type: "normal-test",
         question: "Choose the correct question: '______ you like ice cream?'",
-        options: ["Have", "Does", "Do", "Are"],
+        options: shuffle(["Have", "Does", "Do", "Are"]),
         correctAnswer: "Do"
     },
     {
         type: "normal-test",
         question: "Which of these is a correct sentence?",
-        options: ["She doesn't like pizza.", "She doesn't likes pizza.", "She don't like pizza.", "She don't likes pizza."],
+        options: shuffle(["She doesn't like pizza.", "She doesn't likes pizza.", "She don't like pizza.", "She don't likes pizza."]),
         correctAnswer: "She doesn't like pizza."
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'fast'?",
-        options: ["quick", "big", "slow", "small"],
+        options: shuffle(["quick", "big", "slow", "small"]),
         correctAnswer: "slow"
     }
 ];
+
+// Shuffle function to randomize the options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 

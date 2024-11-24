@@ -113,64 +113,74 @@ const questions = [
     {
         type: "normal-test",
         question: "What is the past tense of 'speak'?",
-        options: ["speaking", "spoke", "speaks", "speaked"],
+        options: shuffle(["speaking", "spoke", "speaks", "speaked"]),
         correctAnswer: "spoke"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["I will go to the store.", "I will to go to the store.", "I will goes to the store.", "I going to the store."],
+        options: shuffle(["I will go to the store.", "I will to go to the store.", "I will goes to the store.", "I going to the store."]),
         correctAnswer: "I will go to the store."
     },
     {
         type: "normal-test",
         question: "Which of these is a correct sentence?",
-        options: ["She doesn't want to dance.", "She not want to dance.", "She doesn't wants to dance.", "She don't want to dance."],
+        options: shuffle(["She doesn't want to dance.", "She not want to dance.", "She doesn't wants to dance.", "She don't want to dance."]),
         correctAnswer: "She doesn't want to dance."
     },
     {
         type: "normal-test",
         question: "Which word is a verb?",
-        options: ["quickly", "run", "apple", "dog"],
+        options: shuffle(["quickly", "run", "apple", "dog"]),
         correctAnswer: "run"
     },
     {
         type: "normal-test",
         question: "Which word completes the sentence?\n'He _______ his homework every evening.'",
-        options: ["does", "doing", "did", "do"],
+        options: shuffle(["does", "doing", "did", "do"]),
         correctAnswer: "does"
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'full'?",
-        options: ["big", "small", "empty", "tall"],
+        options: shuffle(["big", "small", "empty", "tall"]),
         correctAnswer: "empty"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["They can play basketball.", "They can playing basketball.", "They can plays basketball.", "They can played basketball."],
+        options: shuffle(["They can play basketball.", "They can playing basketball.", "They can plays basketball.", "They can played basketball."]),
         correctAnswer: "They can play basketball."
     },
     {
         type: "normal-test",
         question: "Which word completes the sentence?\n'I have _______ friends.'",
-        options: ["some", "any", "an", "a"],
+        options: shuffle(["some", "any", "an", "a"]),
         correctAnswer: "some"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["I don't like swimming.", "I not like swimming.", "I doesn't like swimming.", "I don't likes swimming."],
+        options: shuffle(["I don't like swimming.", "I not like swimming.", "I doesn't like swimming.", "I don't likes swimming."]),
         correctAnswer: "I don't like swimming."
     },
     {
         type: "normal-test",
         question: "Which is the opposite of 'near'?",
-        options: ["far", "faraway", "close", "open"],
+        options: shuffle(["far", "faraway", "close", "open"]),
         correctAnswer: "far"
     }
 ];
+
+// Shuffle function to randomize the options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 

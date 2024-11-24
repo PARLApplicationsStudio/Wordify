@@ -335,7 +335,7 @@ incorrectDivs.forEach(div => {
         img.height = 30; // Set height to 30px
         img.className = 'wrong-img'; // Set the class to 'wrong-img'
         div.appendChild(img); // Append the img to the .incorrect div
-        totalGems = totalGems - 0.1;
+        totalGems = totalGems - 0.2;
         
     }
 });
@@ -349,9 +349,9 @@ correctDivs.forEach(div => {
     if (img) {
         img.src = '../icons/ic_tick_gold.png';
         if (!submitted) {
-          totalGems = totalGems + 1;
+          totalGems = totalGems + 0.7;
           } else {
-            totalGems = totalGems + 0.4;
+            totalGems = totalGems + 0.3;
           }
     }
 });
@@ -361,7 +361,6 @@ correctDivs.forEach(div => {
 
       // Use an if statement to check if the test is completed
         if (completed.includes(testId)) {
-          totalGems = totalGems + 1;
           console.log(totalGems)
     
                       } else {
@@ -381,6 +380,9 @@ correctDivs.forEach(div => {
                         
                         if (!submitted) {
                         totalGems = totalGems + 15;
+                        submitted = true;
+                        } else {
+                          document.getElementById('gems-div').style.display = 'none';
                         }
                         // Store the updated array back into localStorage
 
@@ -400,7 +402,7 @@ correctDivs.forEach(div => {
 
         animateCounter(document.getElementById('gemsEarned'), Math.floor(parseFloat(totalGems)));
         localStorage.setItem('gems', (parseInt(localStorage.getItem('gems')) + totalGems).toString());
-
+        document.getElementById('gems-div').style.display = 'none';
         submitted = true;
 }
 

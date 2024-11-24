@@ -113,64 +113,74 @@ const questions = [
     {
         type: "normal-test",
         question: "What is the opposite of 'up'?",
-        options: ["right", "left", "forward", "down"],
+        options: shuffle(["right", "left", "forward", "down"]),
         correctAnswer: "down"
     },
     {
         type: "normal-test",
         question: "Choose the correct form of the verb: 'I _______ a book.'",
-        options: ["read", "reading", "reads", "red"],
+        options: shuffle(["read", "reading", "reads", "red"]),
         correctAnswer: "read"
     },
     {
         type: "normal-test",
         question: "Which of these is a correct sentence?",
-        options: ["It is raining.", "It raining is.", "It rain is.", "It is rain."],
+        options: shuffle(["It is raining.", "It raining is.", "It rain is.", "It is rain."]),
         correctAnswer: "It is raining."
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["I likes to swim.", "I like to swim.", "I like swimming.", "I liking to swim."],
+        options: shuffle(["I likes to swim.", "I like to swim.", "I like swimming.", "I liking to swim."]),
         correctAnswer: "I like to swim."
     },
     {
         type: "normal-test",
         question: "What is the plural of 'man'?",
-        options: ["mens", "mans", "men", "man"],
+        options: shuffle(["mens", "mans", "men", "man"]),
         correctAnswer: "men"
     },
     {
         type: "normal-test",
         question: "Which of these is a fruit?",
-        options: ["carrot", "potato", "bread", "apple"],
+        options: shuffle(["carrot", "potato", "bread", "apple"]),
         correctAnswer: "apple"
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'tall'?",
-        options: ["short", "big", "large", "small"],
+        options: shuffle(["short", "big", "large", "small"]),
         correctAnswer: "short"
     },
     {
         type: "normal-test",
         question: "Which word is a color?",
-        options: ["red", "eat", "dog", "run"],
+        options: shuffle(["red", "eat", "dog", "run"]),
         correctAnswer: "red"
     },
     {
         type: "normal-test",
         question: "Which one is a correct sentence?",
-        options: ["He play soccer.", "He playing soccer.", "He soccer playing.", "He is playing soccer."],
+        options: shuffle(["He play soccer.", "He playing soccer.", "He soccer playing.", "He is playing soccer."]),
         correctAnswer: "He is playing soccer."
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'cold'?",
-        options: ["big", "warm", "fast", "hot"],
+        options: shuffle(["big", "warm", "fast", "hot"]),
         correctAnswer: "hot"
     }
 ];
+
+// Shuffle function to randomize options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 

@@ -113,64 +113,74 @@ const questions = [
     {
         type: "normal-test",
         question: "What is the correct past tense form of 'go'?",
-        options: ["go", "gone", "went", "going"],
+        options: shuffle(["go", "gone", "went", "going"]),
         correctAnswer: "went"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["I doesn't like coffee.", "I don't coffee like.", "I don't like coffee.", "I don't likes coffee."],
+        options: shuffle(["I doesn't like coffee.", "I don't coffee like.", "I don't like coffee.", "I don't likes coffee."]),
         correctAnswer: "I don't like coffee."
     },
     {
         type: "normal-test",
         question: "Choose the correct word: '________ is your favorite color?'",
-        options: ["What", "How", "Who", "Where"],
+        options: shuffle(["What", "How", "Who", "Where"]),
         correctAnswer: "What"
     },
     {
         type: "normal-test",
         question: "Which word is a profession?",
-        options: ["quickly", "run", "teacher", "blue"],
+        options: shuffle(["quickly", "run", "teacher", "blue"]),
         correctAnswer: "teacher"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["She can play tennis.", "She can plays tennis.", "She can playing tennis.", "She can played tennis."],
+        options: shuffle(["She can play tennis.", "She can plays tennis.", "She can playing tennis.", "She can played tennis."]),
         correctAnswer: "She can play tennis."
     },
     {
         type: "normal-test",
         question: "Which is the opposite of 'easy'?",
-        options: ["heavy", "nice", "soft", "difficult"],
+        options: shuffle(["heavy", "nice", "soft", "difficult"]),
         correctAnswer: "difficult"
     },
     {
         type: "normal-test",
         question: "Which word completes the sentence: 'I need _______ water.'",
-        options: ["an", "any", "some", "a"],
+        options: shuffle(["an", "any", "some", "a"]),
         correctAnswer: "some"
     },
     {
         type: "normal-test",
         question: "Which one is a correct question: '________ your friends like sports?'",
-        options: ["Are", "Do", "Does", "Have"],
+        options: shuffle(["Are", "Do", "Does", "Have"]),
         correctAnswer: "Do"
     },
     {
         type: "normal-test",
         question: "What is the opposite of 'young'?",
-        options: ["tall", "big", "old", "short"],
+        options: shuffle(["tall", "big", "old", "short"]),
         correctAnswer: "old"
     },
     {
         type: "normal-test",
         question: "Which sentence is correct?",
-        options: ["They goes to the park.", "They going to the park.", "They gone to the park.", "They go to the park."],
+        options: shuffle(["They goes to the park.", "They going to the park.", "They gone to the park.", "They go to the park."]),
         correctAnswer: "They go to the park."
     }
 ];
+
+// Shuffle function to randomize options
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+}
+
 
 
 
