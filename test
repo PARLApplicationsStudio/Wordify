@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word List Processor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .word-list {
+            margin-bottom: 20px;
+        }
+        .word-item {
+            margin-bottom: 10px;
+        }
+        .word-item input {
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button:disabled {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Word List Processor</h1>
+
+        <label for="originalWords">Paste Original Words:</label>
+        <textarea id="originalWords" placeholder="Paste original words here..."></textarea>
+
+        <label for="translatedWords">Paste Translated Words:</label>
+        <textarea id="translatedWords" placeholder="Paste translated words here..."></textarea>
+
+        <button id="processBtn" onclick="processWords()">Process</button>
+
+        <div id="wordList" class="word-list"></div>
+
+        <button id="generateBtn" onclick="generateDictionary()">Generate Dictionary</button>
+
+        <pre id="output"></pre>
+    </div>
+
+    <script>
+        // Store the lock states in localStorage
+        function processWords() {
+            const originalText = document.getElementById('originalWords').value.trim();
+            const translatedText = document.getElementById('translatedWords').value.trim();
+
+            if (!originalText || !translatedText) {
+                alert("Both original and translated word lists must be filled.");
+                return;
+            }
+
+            const originalWords = originalText.split('\n').map(word => word.trim());
+            const translatedWords = translatedText.split('\n').map(word => word.trim());
+
+            if (originalWords.length !== translatedWords.length) {
+                alert("Original and Translated word lists must have the same number of words.");
+                return;
+            }
+
+            const wordListDiv = document.getElementById('wordList');
+            wordListDiv.innerHTML = '';  // Clear previous list
+
+            // Retrieve the previous lock states from localStorage (if any)
+            const savedLocks = JSON.parse(localStorage.getItem('wordLocks')) || {};
+
+            for (let i = 0; i < originalWords.length; i++) {
+                const wordItemDiv = document.createElement('div');
+                wordItemDiv.classList.add('word-item');
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = `lock-${i}`;
+                checkbox.checked = savedLocks[i] || false; // Apply previous lock state if available
+
+                const label = document.createElement('label');
+                label.setAttribute('for', `lock-${i}`);
+                label.textContent = originalWords[i] + " (Translate: " + translatedWords[i] + ")";
+
+                wordItemDiv.appendChild(checkbox);
+                wordItemDiv.appendChild(label);
+                wordListDiv.appendChild(wordItemDiv);
+            }
+
+            document.getElementById('generateBtn').disabled = false;
+        }
+
+        function generateDictionary() {
+            const originalText = document.getElementById('originalWords').value.trim();
+            const translatedText = document.getElementById('translatedWords').value.trim();
+
+            const originalWords = originalText.split('\n').map(word => word.trim());
+            const translatedWords = translatedText.split('\n').map(word => word.trim());
+
+            const dictionary = [];
+            const locks = {};  // Object to hold lock states
+
+            for (let i = 0; i < originalWords.length; i++) {
+                const locked = document.getElementById(`lock-${i}`).checked;
+                dictionary.push({
+                    original: originalWords[i],
+                    translated: translatedWords[i],
+                    locked: locked
+                });
+
+                // Store the current lock state in the `locks` object
+                locks[i] = locked;
+            }
+
+            // Save the lock states to localStorage
+            localStorage.setItem('wordLocks', JSON.stringify(locks));
+
+            const output = document.getElementById('output');
+            output.textContent = `const dictionary = ${JSON.stringify(dictionary, null, 2)};`;
+        }
+    </script>
+
+</body>
+</html>

@@ -471,7 +471,9 @@ const quizzes = [
   { testName: "Lesson 20", url: "B1/L10.html", id: "b1-l10", backgroundImage: "https://images.pexels.com/photos/18069084/pexels-photo-18069084/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-role-of-ai-in-computer-optimisation-for-reduced-energy-consumption-it-was-created-by-linus-zoll-as-part.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }
 ];
 
-
+if (!localStorage.getItem('lang')) {
+        window.location.replace('s=lang.html');
+      }
 
         // Create an audio element
         const clickSound = new Audio("sfx/click.wav");

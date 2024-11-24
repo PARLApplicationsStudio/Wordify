@@ -30,9 +30,14 @@
   <script src="script.js"></script>
   <script>
       if (!localStorage.getItem('username') || !localStorage.getItem('stage')) {
+        
 
       } else {
         window.location.replace('quizes.html')
+      }
+
+      if (!localStorage.getItem('lang')) {
+        window.location.replace('s=lang.html');
       }
   </script>
 </body>

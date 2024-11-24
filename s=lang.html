@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordify | Select Your Language</title>
+    <link rel="icon" href="icon.png" type="image/png">
+    <style>
+        /* Global Styles */
+        @font-face {
+    font-family: 'Pangram Sans';
+    src: url('fonts/pangram-sans.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+  
+  /* Global Styles */
+  * {
+    font-family: 'Pangram Sans', sans-serif;
+    user-select: none;
+}
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: #f4f4f4;
+            background-image: url('images/background2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+
+        /* Header */
+        header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #ff6854, #0d90e1);
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        /* Container */
+        .language-container {
+            position: relative;
+            top: 60px;
+            z-index: 2;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.573);
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 80px auto;
+        }
+
+        /* Title */
+        .language-container h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .language-container p {
+            font-size: 1rem;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        /* Language List */
+        .language-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .language-item {
+            margin: 10px 0;
+        }
+
+        /* Buttons */
+        .language-btn {
+            width: 100%;
+            font-size: 16px;
+            padding: 16px;
+            color: #000000;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #ffffff;
+            transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+            border: none;
+            text-align: left;
+        }
+
+        .language-btn:hover {
+            scale: 1.01;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .language-btn:active {
+            outline: none;
+            scale: 0.98;
+        }
+
+        .language-btn:focus {
+            outline: none;
+            border: 1px solid black;
+        }
+
+        /* Footer Note */
+        .footer-note {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .logo {
+            width: 200px;
+            filter: invert(100%);
+            vertical-align: middle;
+        }
+        .flag {
+            max-width: 40px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .done-btn.active {
+            width: 100%;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #0d90e1;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+            margin-top: 20px;
+            pointer-events: all;
+        }
+
+        .done-btn:hover {
+            scale: 1.01;
+        }
+
+        .done-btn:active {
+            scale: 0.98;
+        }
+
+        .done-btn {
+            width: 100%;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #a8a8a8;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+            margin-top: 20px;
+            pointer-events: none;
+        }
+
+        ::-webkit-scrollbar {
+  width: 0; /* Width of the scrollbar */
+  height: 12px; /* Height for horizontal scrollbar */
+}
+
+/* Style the scrollbar handle/thumb */
+::-webkit-scrollbar-thumb {
+  background-color: darkgray;
+  border-radius: 10px;
+  border: 3px solid #fff;
+}
+
+/* Style the scrollbar track (background) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .language-container {
+                width: 90%;
+                padding: 30px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header><img draggable="false" src="images/wordify-brand.png" alt="Wordify" class="logo"></header>
+    <div class="language-container">
+        <h1 id="header-title">Select Your Language</h1>
+        <p id="header-description">Choose your native language to personalize your learning experience:</p>
+        <ul class="language-list">
+            <li class="language-item"><button class="language-btn" data-lang="tr"><img draggable="false" src="icons/ic_turkey_flag.png" class="flag"> Turkish </button></li>
+            <li class="language-item"><button class="language-btn" data-lang="fa"><img draggable="false" src="icons/ic_iran_flag.png" class="flag"> Persian </button></li>
+            <li class="language-item"><button class="language-btn" data-lang="ar"><img draggable="false" src="icons/ic_saudi_flag.png" class="flag"> Arabic </button></li>
+            <li class="language-item"><button class="language-btn" data-lang="ru"><img draggable="false" src="icons/ic_russia_flag.png" class="flag"> Russian </button></li>
+            <li class="language-item"><button class="language-btn" data-lang="de"><img draggable="false" src="icons/ic_germany_flag.png" class="flag"> German </button></li>
+            <li class="language-item"><button class="language-btn" data-lang="ja"><img draggable="false" src="icons/ic_japan_flag.png" class="flag"> Japanese </button></li>
+        </ul>
+        <button class="done-btn">Done</button>
+    </div>
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const languages = {
+        "tr": {
+            title: "Dilinizi Seçin",
+            description: "Öğrenim deneyiminizi kişiselleştirmek için ana dilinizi seçin:"
+        },
+        "fa": {
+            title: "زبان خود را انتخاب کنید",
+            description: "برای شخصی سازی تجربه یادگیری خود زبان مادری خود را انتخاب کنید:"
+        },
+        "ar": {
+            title: "اختر لغتك",
+            description: "اختر لغتك الأصلية لتخصيص تجربة التعلم الخاصة بك:"
+        },
+        "ru": {
+            title: "Выберите свой язык",
+            description: "Выберите родной язык, чтобы персонализировать процесс обучения:"
+        },
+        "de": {
+            title: "Wählen Sie Ihre Sprache",
+            description: "Wählen Sie Ihre Muttersprache, um Ihr Lernerlebnis zu personalisieren:"
+        },
+        "ja": {
+            title: "言語を選択してください",
+            description: "学習体験をパーソナライズするために母国語を選択してください:"
+        }
+    };
+
+    const languageButtons = document.querySelectorAll(".language-btn");
+    const doneButton = document.querySelector(".done-btn");
+    const headerTitle = document.getElementById("header-title");
+    const headerDescription = document.getElementById("header-description");
+    let selectedLanguage = null;
+
+    function updateDoneButtonState() {
+        if (selectedLanguage) {
+            doneButton.classList.add("active");
+        } else {
+            doneButton.classList.remove("active");
+        }
+    }
+
+    function updateHeader(languageCode) {
+        if (languages[languageCode]) {
+            headerTitle.textContent = languages[languageCode].title;
+            headerDescription.textContent = languages[languageCode].description;
+        }
+    }
+
+    function focusLanguageButton(languageCode) {
+        const buttonToFocus = document.querySelector(`.language-btn[data-lang="${languageCode}"]`);
+        if (buttonToFocus) {
+            buttonToFocus.focus();
+            buttonToFocus.classList.add("active");
+            selectedLanguage = languageCode;
+            updateHeader(languageCode);
+            updateDoneButtonState();
+        }
+    }
+
+    function detectLanguage() {
+        const savedLanguage = localStorage.getItem("lang");
+        if (savedLanguage && languages[savedLanguage]) {
+            // Focus on the saved language option
+            focusLanguageButton(savedLanguage);
+        } else {
+            // Detect browser language and focus if available
+            const userLang = navigator.language.slice(0, 2);
+            if (languages[userLang]) {
+                focusLanguageButton(userLang);
+            }
+        }
+    }
+
+    languageButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            languageButtons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+            selectedLanguage = button.dataset.lang;
+            updateHeader(selectedLanguage);
+            updateDoneButtonState();
+        });
+    });
+
+    doneButton.addEventListener("click", () => {
+        if (selectedLanguage) {
+            localStorage.setItem("lang", selectedLanguage);
+            window.location.href = "index.html";
+        }
+    });
+
+    detectLanguage();
+});
+
+    </script>
+</body>
+</html>

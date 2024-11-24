@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Dictionary</title>
+    <title>Dictionary</title>
+    <link rel="icon" href="icon.png" type="image/png">
     <style>
             @font-face {
       font-family: 'Pangram Sans';
@@ -170,80 +171,10 @@
     <div class="gem-notification" id="gem-notification">
         You don't have enough gems to unlock this word. (Need 5 Gems)
     </div>
-
+    <script src="dictionary.js"></script>
     <script>
-const dictionary = [
-    { original: 'a', translated: 'bir', locked: false },
-    { original: 'about', translated: 'hakkında', locked: false },
-    { original: 'adjective', translated: 'sıfat', locked: true },
-    { original: 'afternoon', translated: 'öğleden sonra', locked: false },
-    { original: 'all', translated: 'tüm', locked: false },
-    { original: 'already', translated: 'zaten', locked: false },
-    { original: 'always', translated: 'her zaman', locked: false },
-    { original: 'am', translated: 'oluyorum', locked: false },
-    { original: 'an', translated: 'bir', locked: false },
-    { original: 'and', translated: 've', locked: false },
-    { original: 'any', translated: 'herhangi bir', locked: true },
-    { original: 'apple', translated: 'elma', locked: true },
-    { original: 'are', translated: 'olmak', locked: false },
-    { original: 'around', translated: 'çevresinde', locked: false },
-    { original: 'as', translated: 'olarak', locked: false },
-    { original: 'at', translated: 'de', locked: false },
-    { original: 'ate', translated: 'yedi', locked: true },
-    { original: 'baby', translated: 'bebek', locked: true },
-    { original: 'back', translated: 'arka', locked: false },
-    { original: 'bad', translated: 'kötü', locked: false },
-    { original: 'banana', translated: 'muz', locked: true },
-    { original: 'basket', translated: 'sepet', locked: false },
-    { original: 'be', translated: 'olmak', locked: true },
-    { original: 'beautiful', translated: 'güzel', locked: false },
-    { original: 'bear', translated: 'ayı', locked: true },
-    { original: 'bird', translated: 'kuş', locked: true },
-    { original: 'black', translated: 'siyah', locked: false },
-    { original: 'blue', translated: 'mavi', locked: false },
-    { original: 'book', translated: 'kitap', locked: false },
-    { original: 'breakfast', translated: 'kahvaltı', locked: true },
-    { original: 'cat', translated: 'kedi', locked: true },
-    { original: 'chair', translated: 'sandalye', locked: false },
-    { original: 'child', translated: 'çocuk', locked: true },
-    { original: 'children', translated: 'çocuklar', locked: true },
-    { original: 'city', translated: 'şehir', locked: false },
-    { original: 'day', translated: 'gün', locked: false },
-    { original: 'dog', translated: 'köpek', locked: true },
-    { original: 'drink', translated: 'içmek', locked: false },
-    { original: 'evening', translated: 'akşam', locked: false },
-    { original: 'father', translated: 'baba', locked: true },
-    { original: 'fruit', translated: 'meyve', locked: false },
-    { original: 'game', translated: 'oyun', locked: false },
-    { original: 'good', translated: 'iyi', locked: false },
-    { original: 'grandmother', translated: 'büyükanne', locked: true },
-    { original: 'grape', translated: 'üzüm', locked: true },
-    { original: 'green', translated: 'yeşil', locked: false },
-    { original: 'horse', translated: 'at', locked: true },
-    { original: 'house', translated: 'ev', locked: false },
-    { original: 'ice', translated: 'buz', locked: true },
-    { original: 'key', translated: 'anahtar', locked: false },
-    { original: 'king', translated: 'kral', locked: true },
-    { original: 'lemon', translated: 'limon', locked: true },
-    { original: 'love', translated: 'aşk', locked: false },
-    { original: 'man', translated: 'adam', locked: false },
-    { original: 'mother', translated: 'anne', locked: true },
-    { original: 'orange', translated: 'portakal', locked: true },
-    { original: 'parent', translated: 'ebeveyn', locked: true },
-    { original: 'plural', translated: 'çoğul', locked: false },
-    { original: 'red', translated: 'kırmızı', locked: false },
-    { original: 'river', translated: 'nehir', locked: false },
-    { original: 'school', translated: 'okul', locked: false },
-    { original: 'student', translated: 'öğrenci', locked: false },
-    { original: 'sun', translated: 'güneş', locked: false },
-    { original: 'tree', translated: 'ağaç', locked: true },
-    { original: 'water', translated: 'su', locked: true },
-    { original: 'woman', translated: 'kadın', locked: false },
-    { original: 'yellow', translated: 'sarı', locked: false }
-];
 
-
-
+        
 
         // Function to render the dictionary
         function renderDictionary() {
@@ -265,7 +196,7 @@ const dictionary = [
             <span class="translated-word">${item.locked ? '' : item.translated}</span>
             <div class="gem-con" onclick="unlockWord(${index})">
                 <img draggable="false" src="icons/ic_gem_gold.png" class="locked-icon" data-index="${index}">
-                ${item.locked ? `<span class="gem-amount">5</span>` : ''}
+                ${item.locked ? `<span class="gem-amount">3</span>` : ''}
             </div>
         `;
 
@@ -278,15 +209,14 @@ const dictionary = [
         // Function to handle unlocking a word
         function unlockWord(index) {
             const gems = parseInt(localStorage.getItem('gems') || '0');
-            if (gems >= 5) {
+            if (gems >= 3) {
                 // Deduct 5 gems and unlock the word
-                localStorage.setItem('gems', gems - 5);
+                localStorage.setItem('gems', gems - 3);
                 dictionary[index].locked = false;
                 renderDictionary();
-                document.getElementById('gem-notification').classList.remove('active');
             } else {
                 // Show the gem notification
-                document.getElementById('gem-notification').classList.add('active');
+                alert('You do not have enough gems to unlock this word.');
             }
         }
 
@@ -307,7 +237,7 @@ const dictionary = [
                     <span class="translated-word">${item.locked ? '' : item.translated}</span>
                     <div class="gem-con" onclick="unlockWord(${index})">
                         <img draggable="false" src="icons/ic_gem_gold.png" class="locked-icon" data-index="${index}">
-                        ${item.locked ? `<span class="gem-amount">5</span>` : ''}
+                        ${item.locked ? `<span class="gem-amount">3</span>` : ''}
                     </div>
                 `;
 
