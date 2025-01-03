@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <title>Wordify | Basics 2</title>
+    <title>Wordify | Paragraphs 2</title>
     <link rel="stylesheet" href="../style.css">
-    <link rel="icon" href="../../icon.png" type="image/png">
+    <link rel="icon" href="../icon.png" type="image/png">
     
 </head>
 <body>
@@ -13,8 +13,8 @@
 
     <header>
         <img src="https://img.icons8.com/fluency-systems-regular/48/ffffff/circled-chevron-left.png" alt="Exit" class="exit" id="exit" draggable="false">
-        <h1>Wordify | Basics 2</h1>
-        <p>Basic English Questions to Determine Your Level</p>
+        <h1>Wordify | Paragraphs 2</h1>
+        <p>Enhance your reading and grammar skills by working through these paragraph-based questions.</p>
     </header>
 
     <main class="container">
@@ -112,66 +112,47 @@
 const questions = [
     {
         type: "normal-test",
-        question: "I ______ a dog.",
-        options: shuffle(["have", "has"]),
-        correctAnswer: "have"
+        question: `Emily has a large family and a close group of friends. She lives with her parents, two younger brothers, and a pet cat named Bella. Every Sunday, Emily’s family gathers for a big meal at her grandparents' house. They enjoy spending time together, talking about old memories, and playing board games. Emily’s best friend, Mia, often joins them. Mia and Emily have known each other since childhood, and they do everything together. On weekdays, Emily likes to spend time with her friends after school, going to the park or studying together. She values both her family and her friends deeply and feels lucky to have them in her life.<br><br> <br> Who is this story about? <br>`,
+        options: shuffle(["Emily", "Mia", "Sarah", "Anna"]),
+        correctAnswer: "Emily"
     },
     {
         type: "normal-test",
-        question: "She ______ a ball.",
-        options: shuffle(["has", "have"]),
-        correctAnswer: "has"
+        question: "Who does Emily live with?",
+        options: shuffle(["her friends", "her grandparents", "her parents and brothers", "her cousins"]),
+        correctAnswer: "her parents and brothers"
     },
     {
         type: "normal-test",
-        question: "I ______ a book.",
-        options: shuffle(["have", "has"]),
-        correctAnswer: "have"
+        question: "What is the name of Emily's pet?",
+        options: shuffle(["Bella", "Max", "Charlie", "Milo"]),
+        correctAnswer: "Bella"
     },
     {
         type: "normal-test",
-        question: "He ______ a hat.",
-        options: shuffle(["has", "have"]),
-        correctAnswer: "has"
+        question: "What does Emily's family do every Sunday?",
+        options: shuffle(["go to the park", "watch movies", "gather for a big meal", "go shopping"]),
+        correctAnswer: "gather for a big meal"
     },
     {
         type: "normal-test",
-        question: "We ______ friends.",
-        options: shuffle(["are", "is"]),
-        correctAnswer: "are"
+        question: "Who is Emily's best friend?",
+        options: shuffle(["Mia", "Lily", "Sophia", "Anna"]),
+        correctAnswer: "Mia"
     },
     {
         type: "normal-test",
-        question: "You ______ a pencil.",
-        options: shuffle(["have", "has"]),
-        correctAnswer: "have"
+        question: "What do Emily and Mia enjoy doing together?",
+        options: shuffle(["playing sports", "going to the park and studying", "shopping", "playing video games"]),
+        correctAnswer: "going to the park and studying"
     },
     {
         type: "normal-test",
-        question: "It ______ a bird.",
-        options: shuffle(["is", "are"]),
-        correctAnswer: "is"
-    },
-    {
-        type: "normal-test",
-        question: "I ______ happy.",
-        options: shuffle(["am", "is"]),
-        correctAnswer: "am"
-    },
-    {
-        type: "normal-test",
-        question: "They ______ a car.",
-        options: shuffle(["have", "has"]),
-        correctAnswer: "have"
-    },
-    {
-        type: "normal-test",
-        question: "She ______ a chair.",
-        options: shuffle(["has", "have"]),
-        correctAnswer: "has"
+        question: "How does Emily feel about her family and friends?",
+        options: shuffle(["lonely", "bored", "lucky", "unhappy"]),
+        correctAnswer: "lucky"
     }
 ];
-
 
 
 // Function to shuffle options
@@ -186,11 +167,7 @@ function shuffle(array) {
 
 
 
-
-
-
-
-        const testId = 'a1-bl2'
+        const testId = 'a1-pl2'
         const fullURL = window.location.href;
 console.log(fullURL);  // Outputs the entire URL of the current page
 
@@ -198,8 +175,6 @@ console.log(fullURL);  // Outputs the entire URL of the current page
     </script>
     <script src="../script.js"></script>
     <script src="../../time.js"></script>
-    
-    
     
 </body>
 </html>

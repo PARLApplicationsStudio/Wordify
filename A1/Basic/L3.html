@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <title>Wordify | Basics 2</title>
+    <title>Wordify | Basics 3</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" href="../../icon.png" type="image/png">
     
@@ -13,7 +13,7 @@
 
     <header>
         <img src="https://img.icons8.com/fluency-systems-regular/48/ffffff/circled-chevron-left.png" alt="Exit" class="exit" id="exit" draggable="false">
-        <h1>Wordify | Basics 2</h1>
+        <h1>Wordify | Basics 3</h1>
         <p>Basic English Questions to Determine Your Level</p>
     </header>
 
@@ -112,65 +112,66 @@
 const questions = [
     {
         type: "normal-test",
-        question: "I ______ my teeth every morning.",
-        options: shuffle(["brush", "brushes", "brushing", "brushed"]),
-        correctAnswer: "brush"
+        question: "I ______ a pen.",
+        options: shuffle(["have", "has", "having", "had"]),
+        correctAnswer: "have"
     },
     {
         type: "normal-test",
-        question: "We ______ dinner at 7 o’clock.",
-        options: shuffle(["eat", "eats", "eating", "ate"]),
-        correctAnswer: "eat"
+        question: "This is ______ cat.",
+        options: shuffle(["my", "me", "I", "mine"]),
+        correctAnswer: "my"
     },
     {
         type: "normal-test",
-        question: "She ______ her room every weekend.",
-        options: shuffle(["clean", "cleans", "cleaning", "cleaned"]),
-        correctAnswer: "cleans"
+        question: "She ______ a book.",
+        options: shuffle(["read", "reads", "reading", "readed"]),
+        correctAnswer: "reads"
     },
     {
         type: "normal-test",
-        question: "The sun ______ in the sky during the day.",
-        options: shuffle(["shine", "shines", "shining", "shined"]),
-        correctAnswer: "shines"
+        question: "We ______ to school.",
+        options: shuffle(["go", "goes", "going", "gone"]),
+        correctAnswer: "go"
     },
     {
         type: "normal-test",
-        question: "My friends ______ in the same neighborhood.",
+        question: "He ______ happy.",
+        options: shuffle(["is", "am", "are", "was"]),
+        correctAnswer: "is"
+    },
+    {
+        type: "normal-test",
+        question: "They ______ apples.",
+        options: shuffle(["like", "likes", "liking", "liked"]),
+        correctAnswer: "like"
+    },
+    {
+        type: "normal-test",
+        question: "It ______ hot today.",
+        options: shuffle(["is", "am", "are", "was"]),
+        correctAnswer: "is"
+    },
+    {
+        type: "normal-test",
+        question: "The sun ______ in the sky.",
+        options: shuffle(["is", "am", "are", "was"]),
+        correctAnswer: "is"
+    },
+    {
+        type: "normal-test",
+        question: "We ______ in a house.",
         options: shuffle(["live", "lives", "living", "lived"]),
         correctAnswer: "live"
     },
     {
         type: "normal-test",
-        question: "What time ______ you wake up?",
-        options: shuffle(["do", "does", "is", "are"]),
-        correctAnswer: "do"
-    },
-    {
-        type: "normal-test",
-        question: "Where ______ she work?",
-        options: shuffle(["do", "does", "is", "are"]),
-        correctAnswer: "does"
-    },
-    {
-        type: "normal-test",
-        question: "How many brothers ______ you have?",
-        options: shuffle(["do", "does", "is", "are"]),
-        correctAnswer: "do"
-    },
-    {
-        type: "normal-test",
-        question: "What ______ your favorite color?",
-        options: shuffle(["is", "are", "does", "do"]),
-        correctAnswer: "is"
-    },
-    {
-        type: "normal-test",
-        question: "Where ______ they live?",
-        options: shuffle(["do", "does", "is", "are"]),
-        correctAnswer: "do"
+        question: "You ______ a friend.",
+        options: shuffle(["are", "is", "am", "was"]),
+        correctAnswer: "are"
     }
 ];
+
 
 // Function to shuffle options
 function shuffle(array) {

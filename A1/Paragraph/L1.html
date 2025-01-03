@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <title>Wordify | Basics 2</title>
+    <title>Wordify | Paragraphs 1</title>
     <link rel="stylesheet" href="../style.css">
-    <link rel="icon" href="../../icon.png" type="image/png">
+    <link rel="icon" href="../icon.png" type="image/png">
     
 </head>
 <body>
@@ -13,8 +13,8 @@
 
     <header>
         <img src="https://img.icons8.com/fluency-systems-regular/48/ffffff/circled-chevron-left.png" alt="Exit" class="exit" id="exit" draggable="false">
-        <h1>Wordify | Basics 2</h1>
-        <p>Basic English Questions to Determine Your Level</p>
+        <h1>Wordify | Paragraphs 1</h1>
+        <p>Enhance your reading and grammar skills by working through these paragraph-based questions.</p>
     </header>
 
     <main class="container">
@@ -112,67 +112,47 @@
 const questions = [
     {
         type: "normal-test",
-        question: "I ______ a dog.",
-        options: shuffle(["have", "has"]),
-        correctAnswer: "have"
+        question: `John wakes up early in the morning and drinks a cup of coffee to start his day. He works at a small shop where he helps customers find what they need. After his work, he goes home and spends time with his family. Sometimes, he watches TV. On weekends, John enjoys walking in the park or visiting his friends. He likes these quiet moments and feels happy with his everyday life.<br><br> <br> Who is this story about? <br>`,
+        options: shuffle(["Tommy", "Lily", "Bella", "John"]),
+        correctAnswer: "John"
     },
     {
         type: "normal-test",
-        question: "She ______ a ball.",
-        options: shuffle(["has", "have"]),
-        correctAnswer: "has"
+        question: "What does John drink to start his day?",
+        options: shuffle(["tea", "juice", "coffee", "water"]),
+        correctAnswer: "coffee"
     },
     {
         type: "normal-test",
-        question: "I ______ a book.",
-        options: shuffle(["have", "has"]),
-        correctAnswer: "have"
+        question: "Where does John work?",
+        options: shuffle(["a school", "a park", "a small shop", "an office"]),
+        correctAnswer: "a small shop"
     },
     {
         type: "normal-test",
-        question: "He ______ a hat.",
-        options: shuffle(["has", "have"]),
-        correctAnswer: "has"
+        question: "What does John do after work?",
+        options: shuffle(["goes to the park", "spends time with his family", "plays video games", "visits his friends"]),
+        correctAnswer: "spends time with his family"
     },
     {
         type: "normal-test",
-        question: "We ______ friends.",
-        options: shuffle(["are", "is"]),
-        correctAnswer: "are"
+        question: "What does John sometimes do in his free time?",
+        options: shuffle(["go to the gym", "play with his dog", "watch TV", "read books"]),
+        correctAnswer: "play with his dog"
     },
     {
         type: "normal-test",
-        question: "You ______ a pencil.",
-        options: shuffle(["have", "has"]),
-        correctAnswer: "have"
+        question: "What does John enjoy doing on weekends?",
+        options: shuffle(["going to work", "walking in the park", "shopping", "staying at home"]),
+        correctAnswer: "walking in the park"
     },
     {
         type: "normal-test",
-        question: "It ______ a bird.",
-        options: shuffle(["is", "are"]),
-        correctAnswer: "is"
-    },
-    {
-        type: "normal-test",
-        question: "I ______ happy.",
-        options: shuffle(["am", "is"]),
-        correctAnswer: "am"
-    },
-    {
-        type: "normal-test",
-        question: "They ______ a car.",
-        options: shuffle(["have", "has"]),
-        correctAnswer: "have"
-    },
-    {
-        type: "normal-test",
-        question: "She ______ a chair.",
-        options: shuffle(["has", "have"]),
-        correctAnswer: "has"
+        question: "How does John feel about his everyday life?",
+        options: shuffle(["bored", "angry", "happy", "tired"]),
+        correctAnswer: "happy"
     }
 ];
-
-
 
 // Function to shuffle options
 function shuffle(array) {
@@ -186,11 +166,7 @@ function shuffle(array) {
 
 
 
-
-
-
-
-        const testId = 'a1-bl2'
+        const testId = 'a1-pl1'
         const fullURL = window.location.href;
 console.log(fullURL);  // Outputs the entire URL of the current page
 
@@ -198,8 +174,6 @@ console.log(fullURL);  // Outputs the entire URL of the current page
     </script>
     <script src="../script.js"></script>
     <script src="../../time.js"></script>
-    
-    
     
 </body>
 </html>

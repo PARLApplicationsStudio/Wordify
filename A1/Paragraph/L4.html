@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <title>Wordify | Basics 2</title>
+    <title>Wordify | Paragraphs 4</title>
     <link rel="stylesheet" href="../style.css">
-    <link rel="icon" href="../../icon.png" type="image/png">
+    <link rel="icon" href="../icon.png" type="image/png">
     
 </head>
 <body>
@@ -13,8 +13,8 @@
 
     <header>
         <img src="https://img.icons8.com/fluency-systems-regular/48/ffffff/circled-chevron-left.png" alt="Exit" class="exit" id="exit" draggable="false">
-        <h1>Wordify | Basics 2</h1>
-        <p>Basic English Questions to Determine Your Level</p>
+        <h1>Wordify | Paragraphs 4</h1>
+        <p>Enhance your reading and grammar skills by working through these paragraph-based questions.</p>
     </header>
 
     <main class="container">
@@ -112,63 +112,45 @@
 const questions = [
     {
         type: "normal-test",
-        question: "I ______ a dog.",
-        options: shuffle(["have", "has"]),
-        correctAnswer: "have"
+        question: `Marie Curie, born on November 7, 1867, in Warsaw, Poland, was a pioneering physicist and chemist known for her groundbreaking work on radioactivity. She moved to Paris, where she met Pierre Curie, and together they discovered the elements polonium and radium. In 1903, she became the first woman to win a Nobel Prize in Physics and later won a second Nobel in Chemistry in 1911. Her discoveries advanced radiation therapy for cancer, but her prolonged exposure to radiation led to her death from aplastic anemia in 1934. Curie remains a symbol of perseverance and scientific brilliance.<br><br> <br> Who is this biography about? <br>`,
+        options: shuffle(["Marie Curie", "Albert Einstein", "Isaac Newton", "Nikola Tesla"]),
+        correctAnswer: "Marie Curie"
     },
     {
         type: "normal-test",
-        question: "She ______ a ball.",
-        options: shuffle(["has", "have"]),
-        correctAnswer: "has"
+        question: "What elements did Marie and Pierre Curie discover?",
+        options: shuffle(["Polonium and radium", "Radium and uranium", "Polonium and lithium", "Radium and hydrogen"]),
+        correctAnswer: "Polonium and radium"
     },
     {
         type: "normal-test",
-        question: "I ______ a book.",
-        options: shuffle(["have", "has"]),
-        correctAnswer: "have"
+        question: "What was Marie Curie's first Nobel Prize for?",
+        options: shuffle(["Physics", "Chemistry", "Medicine", "Literature"]),
+        correctAnswer: "Physics"
     },
     {
         type: "normal-test",
-        question: "He ______ a hat.",
-        options: shuffle(["has", "have"]),
-        correctAnswer: "has"
+        question: "When did Marie Curie win her second Nobel Prize?",
+        options: shuffle(["1911", "1903", "1920", "1906"]),
+        correctAnswer: "1911"
     },
     {
         type: "normal-test",
-        question: "We ______ friends.",
-        options: shuffle(["are", "is"]),
-        correctAnswer: "are"
+        question: "What was the cause of Marie Curie's death?",
+        options: shuffle(["Cancer", "Aplastic anemia", "Radiation poisoning", "Heart disease"]),
+        correctAnswer: "Aplastic anemia"
     },
     {
         type: "normal-test",
-        question: "You ______ a pencil.",
-        options: shuffle(["have", "has"]),
-        correctAnswer: "have"
+        question: "What did Marie Curie contribute to the medical field?",
+        options: shuffle(["Developing antibiotics", "Radiation therapy for cancer treatment", "Vaccines for various diseases", "Advanced surgical techniques"]),
+        correctAnswer: "Radiation therapy for cancer treatment"
     },
     {
         type: "normal-test",
-        question: "It ______ a bird.",
-        options: shuffle(["is", "are"]),
-        correctAnswer: "is"
-    },
-    {
-        type: "normal-test",
-        question: "I ______ happy.",
-        options: shuffle(["am", "is"]),
-        correctAnswer: "am"
-    },
-    {
-        type: "normal-test",
-        question: "They ______ a car.",
-        options: shuffle(["have", "has"]),
-        correctAnswer: "have"
-    },
-    {
-        type: "normal-test",
-        question: "She ______ a chair.",
-        options: shuffle(["has", "have"]),
-        correctAnswer: "has"
+        question: "What challenges did Marie Curie face in her career?",
+        options: shuffle(["Being a woman in a male-dominated scientific community", "Lack of funding for her research", "Language barriers in France", "Opposition from her family"]),
+        correctAnswer: "Being a woman in a male-dominated scientific community"
     }
 ];
 
@@ -186,11 +168,7 @@ function shuffle(array) {
 
 
 
-
-
-
-
-        const testId = 'a1-bl2'
+        const testId = 'a1-pl4'
         const fullURL = window.location.href;
 console.log(fullURL);  // Outputs the entire URL of the current page
 
@@ -198,8 +176,6 @@ console.log(fullURL);  // Outputs the entire URL of the current page
     </script>
     <script src="../script.js"></script>
     <script src="../../time.js"></script>
-    
-    
     
 </body>
 </html>
